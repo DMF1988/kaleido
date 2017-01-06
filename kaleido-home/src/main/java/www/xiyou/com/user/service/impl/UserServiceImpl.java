@@ -8,7 +8,7 @@ import www.xiyou.com.user.service.UserService;
  * Created by chad.ding on 2017/1/6.
  */
 
-@Service
+@Service(value="userService")
 public class UserServiceImpl implements UserService {
     public User getUserInfo(int userId) {
         return null;

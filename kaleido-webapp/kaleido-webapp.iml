@@ -16,6 +16,8 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
         </fileset>
+        <fileset id="web application context" profiles="development" autodetected="true" />
+        <fileset id="web mvc servlet context" profiles="development" autodetected="true" />
       </configuration>
     </facet>
   </component>
