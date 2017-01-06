@@ -1,0 +1,22 @@
+#ignore node and bower library and compiled class
+
+build/
+/build
+*/build
+*/**/build
+/classes
+
+target/
+/target
+*/target
+*/**/target
+
+out/
+/out
+*/out
+*/**/out
+
+.tmp/
+
+kaleido-webapp/src/main/frontend/bower_components
+kaleido-webapp/src/main/frontend/node_modules
