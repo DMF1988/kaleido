@@ -1,8 +1,12 @@
 package www.xiyou.com.user.dao;
 
+import org.springframework.stereotype.Repository;
+import www.xiyou.com.user.entity.User;
+
 /**
  * Created by chad.ding on 2017/1/6.
  */
+@Repository
 public interface UserDao {
-
+    User getUserInfo(int id);
 }

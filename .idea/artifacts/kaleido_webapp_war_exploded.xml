@@ -7,6 +7,9 @@
           <element id="module-output" name="kaleido-webapp" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="kaleido-home-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="kaleido-home" />
+          </element>
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.10" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
