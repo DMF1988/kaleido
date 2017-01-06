@@ -11,6 +11,7 @@
     <modules>
         <module>kaleido-webapp</module>
         <module>kaleido-home</module>
+        <module>kaleido-dashboard</module>
     </modules>
 
     <properties>

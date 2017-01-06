@@ -22,12 +22,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="kaleido-dashboard" />
         <module name="kaleido-home" />
         <module name="kaleido-webapp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="kaleido" target="1.5" />
+      <module name="kaleido-dashboard" target="1.5" />
       <module name="kaleido-home" target="1.5" />
       <module name="kaleido-webapp" target="1.5" />
     </bytecodeTargetLevel>
