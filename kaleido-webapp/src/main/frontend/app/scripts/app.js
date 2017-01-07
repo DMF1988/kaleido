@@ -14,6 +14,7 @@
             'ng',
             'ngResource',
             'ngRoute',
+            'ngAnimate',
             'ui.bootstrap',
             'ui.router'
         ])
@@ -31,7 +32,8 @@
             $stateProvider
                 .state('help', {
                     url: '/help',
-                    templateUrl: 'views/help.html'
+                    templateUrl: 'views/help.html',
+                    controller: 'HelpCtrl as vm'
                 });
         }])
         .run(['$rootScope', function($rootScope){

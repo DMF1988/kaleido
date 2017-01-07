@@ -13,7 +13,7 @@
 	kaleidoApp.provider('$notify', function(){
 
 		return {
-			$get: ['$modal', function($modal){
+			$get: ['$uibModal', function($modal){
 
 				var icons = {
 					confirm: 'glyphicon-question-sign',
@@ -98,7 +98,7 @@
 
 					return $modal.open({
 						template: html,
-						controller: ['$scope', '$modalInstance', '$timeout', function($scope, $modalInstance, $timeout){
+						controller: ['$scope', '$uibModalInstance', '$timeout', function($scope, $modalInstance, $timeout){
 
 							if(['info', 'warn', 'error'].indexOf(notifyOptions.type) !== -1){
 								$scope.isNote = true;

@@ -21,3 +21,10 @@ out/
 kaleido-webapp/src/main/frontend/bower_components
 kaleido-webapp/src/main/frontend/node_modules
 kaleido-webapp/src/main/webapp/frontend
+
+.idea/misc.xml
+.idea/workspace.xml
+kaleido-dashboard/kaleido-dashboard.iml
+kaleido-home/kaleido-home.iml
+kaleido-webapp/kaleido-webapp.iml
+kaleido.iml

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dao.EnvListDao">
+<mapper namespace="user.dao.UserDao">
 	<resultMap id="BaseResultMap" type="vo.EnvList">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="env_name" property="envName" jdbcType="VARCHAR" />
@@ -39,7 +39,7 @@
 		create_by,
 		update_by
 	</sql>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	<select id="getUserInfo" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
 		from env_list
