@@ -28,3 +28,6 @@ kaleido-dashboard/kaleido-dashboard.iml
 kaleido-home/kaleido-home.iml
 kaleido-webapp/kaleido-webapp.iml
 kaleido.iml
+.idea/dataSources.ids
+.idea/dataSources.local.xml
+.idea/dataSources.xml

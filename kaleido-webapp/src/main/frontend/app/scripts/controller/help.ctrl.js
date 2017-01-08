@@ -1,7 +1,7 @@
 /**
  *@Author: chad.ding
  *@Copyright: 2008-2016 CHAD | 丁铭锋
- *@Date: 
+ *@Date: 2017-01-07 18:50:38
  */
 
 'use strict';

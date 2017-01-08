@@ -5,7 +5,21 @@
 <web-app>
   <display-name>kaleido-webapp</display-name>
 
-  <context-param>
+    <jsp-config>
+        <jsp-property-group>
+            <description>html encoding</description>
+            <display-name>JSPConfiguration</display-name>
+            <url-pattern>*.html</url-pattern>
+            <el-ignored>true</el-ignored>
+            <page-encoding>UTF-8</page-encoding>
+            <scripting-invalid>false</scripting-invalid>
+            <include-prelude></include-prelude>
+            <include-coda></include-coda>
+        </jsp-property-group>
+    </jsp-config>
+
+
+    <context-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>
           classpath*:applicationContext.xml
