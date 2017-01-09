@@ -21,6 +21,7 @@ out/
 kaleido-webapp/src/main/frontend/bower_components
 kaleido-webapp/src/main/frontend/node_modules
 kaleido-webapp/src/main/webapp/frontend
+kaleido-webapp/src/main/frontend/app/styles/main.css
 
 .idea/misc.xml
 .idea/workspace.xml
