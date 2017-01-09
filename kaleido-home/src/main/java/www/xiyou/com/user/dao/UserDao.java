@@ -8,5 +8,5 @@ import www.xiyou.com.user.entity.User;
  */
 @Repository(value="userDao")
 public interface UserDao {
-    User getUserInfo(int id);
+    User getUserInfo(String userId);
 }

@@ -1,4 +1,4 @@
-package www.xiyou.com.exception;
+package www.xiyou.com.common.exception;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import www.xiyou.com.annotation.KaleidoController;
+import www.xiyou.com.common.annotation.KaleidoController;
+import www.xiyou.com.common.util.KaleidoException;
 
 /**
  * Created by chad.ding on 2017/1/9.
@@ -20,7 +21,7 @@ public class KaleidoExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleKaleidoException(KaleidoException e, WebRequest request){
 
         ExceptionBody body = new ExceptionBody();
-        body.setCode(100);
+        body.setCode(e.getCode());
         body.setMsg(e.getMessage());
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.BAD_REQUEST;
@@ -31,7 +32,7 @@ public class KaleidoExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleUncaughtException(Exception e, WebRequest request){
 
         ExceptionBody body = new ExceptionBody();
-        body.setCode(404);
+        body.setCode(500);
         body.setMsg(e.getMessage());
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.BAD_REQUEST;

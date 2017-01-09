@@ -1,4 +1,4 @@
-package www.xiyou.com.annotation;
+package www.xiyou.com.common.annotation;
 
 import org.springframework.stereotype.Component;
 

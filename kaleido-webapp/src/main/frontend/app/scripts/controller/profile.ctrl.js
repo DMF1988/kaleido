@@ -22,7 +22,7 @@
             };
 
             var params = {
-                id: 1
+                userId: 20170107000000
             };
             _$profile.getProfileInfo(params).then(function(data){
                 vm.commonInfo.profile = data.data;

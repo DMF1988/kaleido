@@ -21,7 +21,7 @@
         .config(['$httpProvider', function($httpProvider) {
             $httpProvider.defaults.headers.common['Context-Type'] = 'application/json;charset=utf-8';
 
-            //$httpProvider.interceptors.push('$exceptionInterceptor');
+            $httpProvider.interceptors.push('$exceptionInterceptor');
         }])
         .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 

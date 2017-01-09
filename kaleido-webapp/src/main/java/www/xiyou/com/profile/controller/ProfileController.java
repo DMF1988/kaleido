@@ -7,7 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import www.xiyou.com.annotation.KaleidoController;
+import www.xiyou.com.common.annotation.KaleidoController;
+import www.xiyou.com.common.util.KaleidoException;
 import www.xiyou.com.profile.model.Profile;
 import www.xiyou.com.user.entity.User;
 import www.xiyou.com.user.service.UserService;
@@ -28,10 +29,10 @@ public class ProfileController {
     private UserService userService;
 
     @RequestMapping(value="/get", method = RequestMethod.GET)
-    public ResponseEntity<ResponseModel> getUserInfo(@RequestParam("id") int id, HttpServletRequest request){
+    public ResponseEntity<ResponseModel> getUserInfo(@RequestParam("userId") String userId, HttpServletRequest request) throws KaleidoException {
 
         Profile profile = new Profile();
-        User user = userService.getUserInfo(id);
+        User user = userService.getUserInfo(userId);
 
         profile.setUserId(user.getUserId());
         profile.setUserName(user.getUserName());

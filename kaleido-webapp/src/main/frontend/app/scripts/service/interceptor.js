@@ -31,8 +31,8 @@
             },
             responseError: function(error) {
                 var msg = '';
-                if(error.data && error.data.error && error.data.error.message){
-                    msg = error.data.error.message;
+                if(error.data){
+                    msg = error.data.msg;
                 }else{
                     msg = error.statusText; 
                 }
