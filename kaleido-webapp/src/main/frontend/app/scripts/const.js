@@ -28,7 +28,7 @@
         key: 'profile',
         children: [],
         url: '#!/profile',
-        text: '个人信息',
+        text: '个人中心',
         icon: 'fa-drivers-license',
         active: false
     }]);
