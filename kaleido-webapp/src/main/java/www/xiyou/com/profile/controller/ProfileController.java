@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import www.xiyou.com.annotation.KaleidoController;
 import www.xiyou.com.profile.model.Profile;
 import www.xiyou.com.user.entity.User;
 import www.xiyou.com.user.service.UserService;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @Controller
+@KaleidoController
 @RequestMapping("/profile")
 public class ProfileController {
 
