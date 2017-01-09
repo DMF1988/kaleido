@@ -36,22 +36,19 @@
   <listener>
       <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-    <!-- 控制jsp:include的编码 -->
-    <jsp-config>
-        <jsp-property-group>
-            <description>
-                Special property group for JSP Configuration HTML
-                example.
-            </description>
-            <display-name>JSPConfiguration</display-name>
-            <url-pattern>*.html</url-pattern>
-            <el-ignored>true</el-ignored>
-            <page-encoding>UTF-8</page-encoding>
-            <scripting-invalid>false</scripting-invalid>
-            <include-prelude></include-prelude>
-            <include-coda></include-coda>
-        </jsp-property-group>
-    </jsp-config>
+  <!-- 控制jsp:include的编码 -->
+  <jsp-config>
+      <jsp-property-group>
+          <description>Set included html charset</description>
+          <display-name>JSPConfiguration</display-name>
+          <url-pattern>*.html</url-pattern>
+          <el-ignored>true</el-ignored>
+          <page-encoding>UTF-8</page-encoding>
+          <scripting-invalid>false</scripting-invalid>
+          <include-prelude></include-prelude>
+          <include-coda></include-coda>
+      </jsp-property-group>
+  </jsp-config>
 
   <servlet>
       <servlet-name>mvc</servlet-name>

@@ -53,4 +53,9 @@
             <property name="location" value="classpath:properties/application-development.properties"></property>
         </bean>
     </beans>
+    <beans profile="test">
+        <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <property name="location" value="classpath:properties/application-test.properties"></property>
+        </bean>
+    </beans>
 </beans>

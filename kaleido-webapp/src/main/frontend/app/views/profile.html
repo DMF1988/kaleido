@@ -1,0 +1,31 @@
+<div>
+    <div class="clearfix"></div>
+    <div class="">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><i class="fa fa-bars"></i> 个人信息</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                       <div class="col-sm-5 text-right">邮箱</div>
+                       <div ng-bind="vm.commonInfo.profile.loginName" class="col-sm-7"></div>
+                    </div>
+                    <div class="row">
+                       <div class="col-sm-5 text-right">昵称</div>
+                       <div ng-bind="vm.commonInfo.profile.userName" class="col-sm-7"></div>
+                    </div>
+                    <div class="row">
+                       <div class="col-sm-5 text-right">姓名</div>
+                       <div ng-bind="vm.commonInfo.profile.realName" class="col-sm-7"></div>
+                    </div>
+                    <div class="row">
+                       <div class="col-sm-5 text-right">电话号码</div>
+                       <div ng-bind="vm.commonInfo.profile.phoneNum" class="col-sm-7"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

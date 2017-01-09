@@ -47,20 +47,10 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section active">
                             <h3>2017-01-08 21:51:22</h3>
-                            <ul class="nav side-menu" style="">
-                                <li class="active">
-                                    <a>
-                                        <i class="fa fa-camera-retro"></i>相册<span class="fa fa-chevron-down"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <i class="fa fa-address-book"></i>游记<span class="fa fa-chevron-down"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <i class="fa fa-drivers-license"></i>个人信息<span class="fa fa-chevron-down"></span>
+                            <ul class="nav side-menu">
+                                <li ng-class="{'active': menu.active}" ng-repeat="menu in menus">
+                                     <a ng-href="{{menu.url}}/{{userId}}">
+                                        <i class="fa {{menu.icon}}"></i>{{menu.text}}
                                     </a>
                                 </li>
                             </ul>
@@ -93,9 +83,9 @@
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="open">
+                            <li>
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                    <img src="images/img.jpg" alt="">John Doe
+                                    <img src="images/user.png" alt="">
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -115,64 +105,6 @@
                                     <i class="fa fa-envelope-o"></i>
                                     <span class="badge bg-green">6</span>
                                 </a>
-                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                                            <span>
-                          <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                                            <span>
-                          <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                                            <span>
-                          <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image"></span>
-                                            <span>
-                          <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="text-center">
-                                            <a>
-                                                <strong>See All Alerts</strong>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     </nav>
@@ -211,8 +143,20 @@
 <!-- endbuild -->
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
+<script src="scripts/const.js"></script>
+
 <script src="scripts/util/notify.js"></script>
+<script src="scripts/service/startup.js"></script>
+<script src="scripts/service/interceptor.js"></script>
+<!--resource-->
+<script src="scripts/resource/profile.res.js"></script>
+<!--resource end-->
+<!--controller-->
 <script src="scripts/controller/help.ctrl.js"></script>
+<script src="scripts/controller/profile.ctrl.js"></script>
+<script src="scripts/controller/album.ctrl.js"></script>
+<script src="scripts/controller/diary.ctrl.js"></script>
+<!--controller end-->
 <!--endbuild-->
 
 </html>

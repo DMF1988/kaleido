@@ -6,7 +6,7 @@ import www.xiyou.com.user.entity.User;
 /**
  * Created by chad.ding on 2017/1/6.
  */
-@Repository
+@Repository(value="userDao")
 public interface UserDao {
     User getUserInfo(int id);
 }

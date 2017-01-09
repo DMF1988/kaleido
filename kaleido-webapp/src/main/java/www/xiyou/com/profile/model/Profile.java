@@ -1,4 +1,4 @@
-package www.xiyou.com.user.entity;
+package www.xiyou.com.profile.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,14 +11,11 @@ import java.util.Date;
 
 @Setter
 @Getter
-public class User {
-    private int id;
+public class Profile {
     private String userId;
     private String loginName;
-    private String loginPassword;
     private String userName;
     private String realName;
     private String phoneNum;
     private Date createTime;
-    private Date lastUpdateTime;
 }

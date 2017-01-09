@@ -10,21 +10,19 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.factory('_$user', ['$resource', function($resource) {
-
+    kaleidoApp.factory('_$profile', ['$resource', function($resource) {
 
         var resource = {
-            getUserInfo: $resource(window.HOST + '/home/get', {}, { get: { method: 'POST' } })
+            getProfileInfo: $resource(window.HOST + '/profile/get', {}, { get: { method: 'GET' } })
         };
 
-
-        function getUserInfo(params) {
-            var q = resource.getUserInfo.get(params).$promise;
+        function getProfileInfo(params) {
+            var q = resource.getProfileInfo.get(params).$promise;
             return q;
         }
 
         return {
-            getUserInfo: getUserInfo
+            getProfileInfo: getProfileInfo
         };
 
     }]);

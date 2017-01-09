@@ -4,7 +4,7 @@
 
 'use strict';
 
-(function(angular) {
+(function(angular, window) {
 
     angular.element(document).ready(function() {
         angular.bootstrap(document, ['kaleidoApp']);
@@ -30,16 +30,32 @@
                 .otherwise('/');
 
             $stateProvider
+                .state('album', {
+                    url: '/album/:userId',
+                    templateUrl: 'views/album.html',
+                    controller: 'AlbumCtrl as vm'
+                })
+                .state('diary', {
+                    url: '/diary/:userId',
+                    templateUrl: 'views/diary.html',
+                    controller: 'DiaryCtrl as vm'
+                })
+                .state('profile', {
+                    url: '/profile/:userId',
+                    templateUrl: 'views/profile.html',
+                    controller: 'ProfileCtrl as vm'
+                })
                 .state('help', {
                     url: '/help',
                     templateUrl: 'views/help.html',
                     controller: 'HelpCtrl as vm'
                 });
         }])
-        .run(['$rootScope', function($rootScope){
-            $rootScope.showInfo = function(){
-                alert('hahahhaa');
-            };
+        .run(['$startup', function($startup){
+            
+            window.HOST = window.HOST || '/kaleido-webapp';
+
+            $startup.start();
         }]);
 
-})(angular);
+})(angular, window);
