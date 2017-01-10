@@ -37,7 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     public User login( String loginName, String loginPassowrd) throws KaleidoException {
-        User user = userDao.login(loginName, loginPassowrd);
+
+        User account = new User();
+        account.setLoginName(loginName);
+        account.setLoginPassword(loginPassowrd);
+
+        User user = userDao.login(account);
 
         if(user == null){
             throw new KaleidoException(UserError.LOGIN_FAILED, String.valueOf(loginName));
