@@ -13,8 +13,7 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-        <!-- 为了处理返回的JSON数据的编码，默认是ISO-88859-1的，这里把它设置为UTF-8,解决有乱码的情况 -->
+    <!--<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
                 <value>text/html;charset=UTF-8</value>
@@ -23,7 +22,7 @@
                 <value>text/plain;charset=UTF-8</value>
             </list>
         </property>
-    </bean>
+    </bean>-->
 
     <mvc:view-controller path="/" view-name="redirect:/frontend/index.jsp" />
     <mvc:resources mapping="/frontend/**" location="/frontend/" />
