@@ -19,4 +19,3 @@ CREATE TABLE `user` (
 
 insert user (user_id, login_name, login_password, user_name, real_name, phone_num) values
 ('201701070000001', 'chad_ding@126.com', '123456789', '吸毒欧阳锋', '习近平', '15334549385');
-

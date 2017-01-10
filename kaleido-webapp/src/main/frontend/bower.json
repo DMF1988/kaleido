@@ -36,10 +36,11 @@
         "build/css/custom.css",
         "build/js/custom.js"
       ]
-    }
+    },
     "fex-webuploader": {
       "main": [
-        "dist/webuploader.css"
+        "dist/webuploader.css",
+        "dist/webuploader.js"
       ]
     }
   }

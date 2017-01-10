@@ -6,7 +6,7 @@
 
 'use strict';
 
-(function(angular, $, WebUploader) {
+(function(angular, $, WebUploader, window) {
 
     var kaleidoApp = angular.module('kaleidoApp');
 
@@ -42,7 +42,7 @@
 
             var uploader = WebUploader.create({
                 auto: true,
-                server: 'http://webuploader.duapp.com/server/fileupload.php',
+                server: window.HOST+'/album/update',
                 pick: '#filePicker',
                 accept: {
                     title: 'Images',
@@ -120,4 +120,4 @@
 
     }]);
 
-})(angular, jQuery, WebUploader);
+})(angular, jQuery, WebUploader, window);
