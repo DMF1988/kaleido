@@ -1,5 +1,7 @@
 /**
- * Created by chad.ding on 2017/1/6.
+ *@Author: chad.ding
+ *@Copyright: 2017-2018 DMF
+ *@Date: 2017-01-10 17:52:17
  */
 
 'use strict';
@@ -27,7 +29,7 @@
 
             $urlRouterProvider
                 .when('/', '/kaleido/album')
-                .otherwise('/signup');
+                .otherwise('/login');
 
             $stateProvider
                 .state('kaleido', {

@@ -1,7 +1,7 @@
 /**
- *@Author: chad.ding@vipshop.com
- *@Copyright: 2008-2016 VIPSHOP.COM|唯品会
- *@Date: 2016-12-12 10:26:25
+ *@Author: chad.ding
+ *@Copyright: 2017-2018 DMF
+ *@Date: 2017-01-10 17:51:58
  */
 
 'use strict';
