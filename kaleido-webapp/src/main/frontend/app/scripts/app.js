@@ -48,6 +48,11 @@
                     templateUrl: 'views/diary/diary.html',
                     controller: 'DiaryCtrl as vm'
                 })
+                .state('kaleido.friend', {
+                    url: '/friend',
+                    templateUrl: 'views/friend/friend.html',
+                    controller: 'FriendCtrl as vm'
+                })
                 .state('kaleido.profile', {
                     url: '/profile',
                     templateUrl: 'views/profile/profile.html',

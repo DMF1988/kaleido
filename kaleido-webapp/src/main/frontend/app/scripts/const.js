@@ -25,6 +25,13 @@
         icon: 'fa-address-book',
         active: false
     },{
+        key: 'friend',
+        children: [],
+        url: '#!/kaleido/friend',
+        text: '好友',
+        icon: 'fa-group',
+        active: false
+    },{
         key: 'profile',
         children: [],
         url: '#!/kaleido/profile',
