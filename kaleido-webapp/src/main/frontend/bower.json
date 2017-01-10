@@ -37,5 +37,10 @@
         "build/js/custom.js"
       ]
     }
+    "fex-webuploader": {
+      "main": [
+        "dist/webuploader.css"
+      ]
+    }
   }
 }
