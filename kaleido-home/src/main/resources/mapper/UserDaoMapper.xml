@@ -17,10 +17,39 @@
 		id, user_id, login_name, login_password, user_name, real_name, phone_num, create_time, last_update_time
 	</sql>
 
+	<insert id="addUser" parameterType="www.xiyou.com.user.entity.User" useGeneratedKeys="true" keyProperty="id">
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			user_id, login_name, login_password,
+			<if test="userName != null">
+				user_name,
+			</if>
+			create_time, last_update_time
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			#{userId, jdbcType=VARCHAR}, #{loginName, jdbcType=VARCHAR}, #{loginPassword, jdbcType=VARCHAR},
+			<if test="userName != null">
+				#{userName, jdbcType=VARCHAR},
+			</if>
+			#{createTime, jdbcType=DATE}, #{lastUpdateTime, jdbcType=DATE}
+		</trim>
+	</insert>
+
+	<select id="login" resultMap="BaseResultMap" parameterType="www.xiyou.com.user.entity.User">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where login_name = #{loginName,jdbcType=VARCHAR} and login_password = #{loginPassword, jdbcType=VARCHAR}
+	</select>
+
 	<select id="getUserInfo" resultMap="BaseResultMap" parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" />
 		from user
 		where user_id = #{userId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="getLatestId" resultType="java.lang.String">
+		select user_id from user order by id desc limit 0,1;
 	</select>
 </mapper>

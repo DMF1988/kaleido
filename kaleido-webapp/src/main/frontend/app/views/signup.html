@@ -1,0 +1,43 @@
+<div>
+    <div class="login_wrapper">
+        <div class="animate form">
+            <section class="login_content">
+                <form name="vm.formOptions.form">
+                    <h1>注册</h1>
+                    <div>
+                        <input ng-class="{'parsley-error': vm.formOptions.form.email.$invalid && vm.formOptions.submitted}" ng-model="vm.formOptions.loginName" name="email" type="email" class="form-control" placeholder="邮箱/登录账号" required="true">
+                        <ul class="parsley-errors-list filled" id="parsley-id-5">
+                            <li ng-if="vm.formOptions.form.email.$error.required && vm.formOptions.submitted" class="parsley-required text-left">账号不能为空</li>
+                            <li ng-if="vm.formOptions.form.email.$error.email && vm.formOptions.submitted" class="parsley-required text-left">请输入正确的邮箱号</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <input ng-class="{'parsley-error': vm.formOptions.form.password.$invalid && vm.formOptions.submitted}" ng-model="vm.formOptions.loginPassword" ng-pattern="/^[0-9a-zA-Z]{6,}$/" name="password" type="password" class="form-control" placeholder="密码" required="true">
+                        <ul class="parsley-errors-list filled" id="parsley-id-5">
+                            <li ng-if="vm.formOptions.form.password.$error.required && vm.formOptions.submitted" class="parsley-required text-left">密码不能为空</li>
+                            <li ng-if="vm.formOptions.form.password.$error.pattern && vm.formOptions.submitted" class="parsley-required text-left">密码必须为不少于6位的英文字母或数字</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" placeholder="用户名/昵称">
+                    </div>
+                    <div>
+                        <a ng-click="vm.signup($event)" class="btn btn-default submit" href="javascript:;">提交</a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="separator">
+                        <p class="change_link">已经注册?
+                            <a href="#!/login" class="to_register"> 登录 </a>
+                        </p>
+                        <div class="clearfix"></div>
+                        <br>
+                        <div>
+                            <h1><i class="fa fa-cube"></i> 嬉游记</h1>
+                            <p>chad.ding©2016 All Rights Reserved. www.xiyou.com</p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

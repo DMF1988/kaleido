@@ -13,21 +13,21 @@
     kaleidoApp.constant('$MENUS', [{
         key: 'album',
         children: [],
-        url: '#!/album',
+        url: '#!/kaleido/album',
         text: '相册',
         icon: 'fa-camera-retro',
         active: false
     },{
         key: 'diary',
         children: [],
-        url: '#!/diary',
+        url: '#!/kaleido/diary',
         text: '游记',
         icon: 'fa-address-book',
         active: false
     },{
         key: 'profile',
         children: [],
-        url: '#!/profile',
+        url: '#!/kaleido/profile',
         text: '个人中心',
         icon: 'fa-drivers-license',
         active: false

@@ -29,10 +29,10 @@ public class ProfileController {
     private UserService userService;
 
     @RequestMapping(value="/get", method = RequestMethod.GET)
-    public ResponseEntity<ResponseModel> getUserInfo(@RequestParam("userId") String userId, HttpServletRequest request) throws KaleidoException {
+    public ResponseEntity<ResponseModel> getUserInfo() throws KaleidoException {
 
         Profile profile = new Profile();
-        User user = userService.getUserInfo(userId);
+        User user = userService.getUserInfo("201701070000001");
 
         profile.setUserId(user.getUserId());
         profile.setUserName(user.getUserName());

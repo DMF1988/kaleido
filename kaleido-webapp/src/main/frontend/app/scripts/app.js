@@ -26,36 +26,51 @@
         .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
             $urlRouterProvider
-                .when('/', '/help')
-                .otherwise('/');
+                .when('/', '/kaleido/album')
+                .otherwise('/signup');
 
             $stateProvider
-                .state('album', {
-                    url: '/album/:userId',
-                    templateUrl: 'views/album.html',
+                .state('kaleido', {
+                    url: '/kaleido',
+                    templateUrl: 'views/kaleido.html',
+                    controller: 'KaleidoCtrl as vm',
+                    abstract: true
+                })
+                .state('kaleido.album', {
+                    url: '/album',
+                    templateUrl: 'views/album/album.html',
                     controller: 'AlbumCtrl as vm'
                 })
-                .state('diary', {
-                    url: '/diary/:userId',
-                    templateUrl: 'views/diary.html',
+                .state('kaleido.diary', {
+                    url: '/diary',
+                    templateUrl: 'views/diary/diary.html',
                     controller: 'DiaryCtrl as vm'
                 })
-                .state('profile', {
-                    url: '/profile/:userId',
-                    templateUrl: 'views/profile.html',
+                .state('kaleido.profile', {
+                    url: '/profile',
+                    templateUrl: 'views/profile/profile.html',
                     controller: 'ProfileCtrl as vm'
                 })
                 .state('help', {
                     url: '/help',
                     templateUrl: 'views/help.html',
                     controller: 'HelpCtrl as vm'
+                })
+                .state('signup', {
+                    url: '/signup',
+                    templateUrl: 'views/signup.html',
+                    controller: 'SignupCtrl as vm'
+                })
+                .state('login', {
+                    url: '/login',
+                    templateUrl: 'views/login.html',
+                    controller: 'LoginCtrl as vm'
                 });
         }])
         .run(['$startup', function($startup){
             
             window.HOST = window.HOST || '/kaleido-webapp';
 
-            $startup.start();
         }]);
 
 })(angular, window);

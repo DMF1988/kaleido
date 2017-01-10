@@ -21,106 +21,8 @@
     <!-- endbuild -->
 </head>
 
-<body class="nav-md">
-    <div class="container body">
-        <div class="main_container">
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title">
-                            <i class="fa fa-cube"></i> <span>嬉游记</span>
-                        </a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- menu profile quick info -->
-                    <div class="profile">
-                        <div class="profile_pic">
-                            <img src="images/user.png" alt="opps" class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>你好,</span>
-                            <h2>习近平</h2>
-                        </div>
-                    </div>
-                    <!-- /menu profile quick info -->
-                    <br>
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                        <div class="menu_section active">
-                            <h3>2017-01-08 21:51:22</h3>
-                            <ul class="nav side-menu">
-                                <li ng-class="{'active': menu.active}" ng-repeat="menu in menus">
-                                     <a ng-href="{{menu.url}}/{{userId}}">
-                                        <i class="fa {{menu.icon}}"></i>{{menu.text}}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- /sidebar menu -->
-                    <!-- /menu footer buttons -->
-                    <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                    <!-- /menu footer buttons -->
-                </div>
-            </div>
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <nav class="" role="navigation">
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                    <img src="images/user.png" alt="">
-                                    <span class=" fa fa-angle-down"></span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="javascript:;">个人中心</a></li>
-                                    <li><a href="javascript:;">帮助</a></li>
-                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i>退出</a></li>
-                                </ul>
-                            </li>
-                            <li role="presentation" class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="badge bg-green">6</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- /top navigation -->
-            <!-- page content -->
-            <div class="right_col" style="min-height: 905px;">
-                <div ui-view></div>
-            </div>
-            <!-- /page content -->
-            <!-- footer content -->
-            <footer>
-                <div class="pull-right">
-                    嬉游记 <a href="https://colorlib.com">Colorlib</a>
-                </div>
-                <div class="clearfix"></div>
-            </footer>
-            <!-- /footer content -->
-        </div>
-    </div>
+<body class="nav-md footer_fixed login">
+    <div ui-view></div>
 </body>
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
@@ -135,6 +37,7 @@
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/gentelella/build/js/custom.js"></script>
 <script src="bower_components/noty/js/noty/packaged/jquery.noty.packaged.js"></script>
+<script src="bower_components/fex-webuploader/dist/webuploader.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -147,12 +50,16 @@
 <script src="scripts/service/interceptor.js"></script>
 <!--resource-->
 <script src="scripts/resource/profile.res.js"></script>
+<script src="scripts/resource/account.res.js"></script>
 <!--resource end-->
 <!--controller-->
-<script src="scripts/controller/help.ctrl.js"></script>
+<script src="scripts/controller/kaleido.ctrl.js"></script>
 <script src="scripts/controller/profile.ctrl.js"></script>
 <script src="scripts/controller/album.ctrl.js"></script>
 <script src="scripts/controller/diary.ctrl.js"></script>
+<script src="scripts/controller/help.ctrl.js"></script>
+<script src="scripts/controller/signup.ctrl.js"></script>
+<script src="scripts/controller/login.ctrl.js"></script>
 <!--controller end-->
 <!--endbuild-->
 

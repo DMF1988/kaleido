@@ -1,5 +1,6 @@
 package www.xiyou.com.user.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 
 @Setter
 @Getter
+@Data
 public class User {
     private int id;
     private String userId;

@@ -26,7 +26,6 @@ public class LoggerAspect {
 
        Runnable log =  new Runnable(){
             public void run(){
-                System.err.println(ex.getMessage());
                 logger.error(ex.getMessage());
             }
         };

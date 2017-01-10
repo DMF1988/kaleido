@@ -8,7 +8,8 @@ import www.xiyou.com.common.util.ErrorCode;
  */
 public enum UserError implements ErrorCode{
 
-    USER_NOT_EXIST(1001, "用户%s不存在");
+    USER_NOT_EXIST(1001, "用户%s不存在"),
+    LOGIN_FAILED(1002, "用户%s登录失败,请检查账号密码重新登录");
 
     @Getter
     private int code;
