@@ -5,12 +5,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import www.xiyou.com.common.util.KaleidoException;
 import www.xiyou.com.user.dao.UserDao;
 import www.xiyou.com.user.entity.User;
 import www.xiyou.com.user.exception.UserError;
 import www.xiyou.com.user.service.UserService;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -50,15 +53,20 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    @Transactional
     public String addUser(String loginName, String loginPassword, String userName) throws KaleidoException {
 
-        String latestId = userDao.getLatestId();
-        long userId = Long.valueOf(latestId)+1;
+        int num = userDao.checkUserExist(loginName);
+        if(num > 0){
+            throw new KaleidoException(UserError.USER_EXISTS, loginName);
+        }
+
+        String userId = this.generateUserId();
 
         User user = new User();
         user.setLoginName(loginName);
         user.setLoginPassword(loginPassword);
-        user.setUserId(String.valueOf(userId));
+        user.setUserId(userId);
         user.setCreateTime(new Date());
         user.setLastUpdateTime(new Date());
         if(userName != null){
@@ -70,5 +78,27 @@ public class UserServiceImpl implements UserService {
         return String.valueOf(userId);
     }
 
+    private String generateUserId() throws KaleidoException {
+
+        long userId = 0L;
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String today = format.format(new Date());
+
+        String latestId = userDao.getLatestId();
+        String latestDay = latestId.substring(0, 8);
+
+        if(today.equals(latestDay)){
+            userId = Long.valueOf(latestId)+1;
+        }else if(Integer.valueOf(today) > Integer.valueOf(latestDay)){
+            StringBuilder sb = new StringBuilder();
+            sb.append(today).append("0000001");
+            userId = Long.valueOf(sb.toString());
+        }else{
+            throw new KaleidoException("时间错误");
+        }
+
+        return String.valueOf(userId);
+    }
 
 }

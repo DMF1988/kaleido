@@ -52,4 +52,8 @@
 	<select id="getLatestId" resultType="java.lang.String">
 		select user_id from user order by id desc limit 0,1;
 	</select>
+
+	<select id="checkUserExist" resultType="Integer" parameterType="java.lang.String">
+		select count(*) from user where login_name = #{loginName, jdbcType=VARCHAR}
+	</select>
 </mapper>
