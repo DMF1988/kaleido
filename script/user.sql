@@ -12,10 +12,12 @@ CREATE TABLE `user` (
     `phone_num` varchar(20) DEFAULT NULL COMMENT '电话号码/手机号',
     `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
     `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后更新时间',
+    `deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT '记录是否已删除,1:true 0:false',
     PRIMARY KEY (`id`),
     UNIQUE KEY `user_id` (`user_id`),
     UNIQUE KEY `login_name` (`login_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-insert user (user_id, login_name, login_password, user_name, real_name, phone_num) values
-('201701070000001', 'chad_ding@126.com', '123456789', '吸毒欧阳锋', '习近平', '15334549385');
+-- insert user (user_id, login_name, login_password, user_name, real_name, phone_num) values ('201701070000001', 'chad_ding@126.com', '123456789', '吸毒欧阳锋', '习近平', '15334549385');
+
+-- alter table user add column deleted tinyint(1) not null default 0 comment '记录是否已删除,1:true 0:false';
