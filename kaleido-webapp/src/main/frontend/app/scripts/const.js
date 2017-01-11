@@ -11,6 +11,20 @@
     var kaleidoApp = angular.module('kaleidoApp');
 
     kaleidoApp.constant('$MENUS', [{
+        key: 'monitor',
+        children: [],
+        url: '#!/kaleido/monitor',
+        text: '动态',
+        icon: 'fa-send',
+        active: false
+    },{
+        key: 'footstep',
+        children: [],
+        url: '#!/kaleido/footstep',
+        text: '足迹',
+        icon: 'fa-map-marker',
+        active: false
+    },{
         key: 'album',
         children: [],
         url: '#!/kaleido/album',

@@ -38,6 +38,16 @@
                     controller: 'KaleidoCtrl as vm',
                     abstract: true
                 })
+                .state('kaleido.monitor', {
+                    url: '/monitor',
+                    templateUrl: 'views/monitor/monitor.html',
+                    controller: 'MonitorCtrl as vm'
+                })
+                .state('kaleido.footstep', {
+                    url: '/footstep',
+                    templateUrl: 'views/footstep/footstep.html',
+                    controller: 'FootstepCtrl as vm'
+                })
                 .state('kaleido.album', {
                     url: '/album',
                     templateUrl: 'views/album/album.html',
