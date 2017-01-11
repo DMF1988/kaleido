@@ -100,8 +100,10 @@
                     swf: 'swf/Uploader.swf',
                     disableGlobalDnd: true,
                     chunked: true,
-                    // server: 'http://webuploader.duapp.com/server/fileupload.php',
                     server: scope.uploadPath,
+                    formData: {
+                        name: '1111111'
+                    },
                     fileNumLimit: 300,
                     fileSizeLimit: 5 * 1024 * 1024, // 200 M
                     fileSingleSizeLimit: 1 * 1024 * 1024 // 50 M
@@ -130,6 +132,7 @@
                         $info = $('<p class="error"></p>'),
 
                         showError = function(code) {
+                            var text = '';
                             switch (code) {
                                 case 'exceed_size':
                                     text = '文件大小超出';
@@ -344,6 +347,7 @@
                             stats = uploader.getStats();
                             if (stats.successNum) {
                                 $notify.info('上传成功');
+                                scope.$emit('$uploadComplete');
                             } else {
                                 // 没有成功的图片，重设
                                 state = 'done';

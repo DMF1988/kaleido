@@ -53,6 +53,10 @@
             imageList: []
         };
 
+        $scope.$on('$uploadComplete', function(){
+            $uibModalInstance.dismiss();
+        });
+
     }]);
 
 })(angular, window);

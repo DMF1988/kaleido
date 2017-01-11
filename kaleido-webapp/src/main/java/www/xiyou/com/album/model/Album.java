@@ -10,6 +10,5 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Album {
-    private String[] images;
-    private String title;
+    private String albumId;
 }

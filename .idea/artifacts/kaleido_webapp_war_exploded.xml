@@ -10,6 +10,13 @@
           <element id="archive" name="kaleido-home-1.0-SNAPSHOT.jar">
             <element id="module-output" name="kaleido-home" />
           </element>
+          <element id="library" level="project" name="Maven: ma.glasnost.orika:orika-core:1.5.0" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.19.0-GA" />
+          <element id="library" level="project" name="Maven: com.thoughtworks.paranamer:paranamer:2.8" />
+          <element id="library" level="project" name="Maven: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2" />
+          <element id="library" level="project" name="Maven: com.carrotsearch:java-sizeof:0.0.4" />
+          <element id="library" level="project" name="Maven: org.codehaus.janino:janino:2.7.5" />
+          <element id="library" level="project" name="Maven: org.codehaus.janino:commons-compiler:2.7.5" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.10" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
