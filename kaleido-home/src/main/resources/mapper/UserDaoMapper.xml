@@ -39,7 +39,7 @@
 		select
 		<include refid="Base_Column_List" />
 		from user
-		where login_name = #{loginName,jdbcType=VARCHAR} and login_password = #{loginPassword, jdbcType=VARCHAR}
+		where deleted = 0 and login_name = #{loginName,jdbcType=VARCHAR} and login_password = #{loginPassword, jdbcType=VARCHAR}
 	</select>
 
 	<select id="getUserInfo" resultMap="BaseResultMap" parameterType="java.lang.String">

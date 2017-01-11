@@ -94,7 +94,7 @@ module.exports = function(grunt) {
             proxies: [
                 //{context: '/authsys-webapp/v2/privilegeBindingOfRole', host: '0.0.0.0', port: 8081},
                 //{context: '/authsys-webapp/v2/bindingPrivilege2Role', host: '0.0.0.0', port: 8081},
-                { context: '/kaleido-webapp', host: '10.101.138.13', port: 8080 }
+                { context: '/kaleido-webapp', host: 'localhost', port: 8080 }
             ],
             livereload: {
                 options: {
