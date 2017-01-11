@@ -102,7 +102,7 @@
                     chunked: true,
                     server: scope.uploadPath,
                     formData: {
-                        name: '1111111'
+                        uuid: '1111111'
                     },
                     fileNumLimit: 300,
                     fileSizeLimit: 5 * 1024 * 1024, // 200 M
@@ -415,8 +415,10 @@
 
                 uploader.onError = function(code) {
                     var text = '上传失败';
-                    switch(code){
-                        case 'F_EXCEED_SIZE': text = '图片超出允许的大小'; break;
+                    switch (code) {
+                        case 'F_EXCEED_SIZE':
+                            text = '图片超出允许的大小';
+                            break;
                     }
                     $notify.warn('错误: ' + text);
                 };

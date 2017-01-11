@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AlbumController {
 
     @RequestMapping(value="/upload", method= RequestMethod.POST)
-    public ResponseEntity<ResponseModel> uploadImage(@RequestParam("file") CommonsMultipartFile image, HttpServletRequest request, HttpServletResponse response){
+    public ResponseEntity<ResponseModel> uploadImage(@RequestParam("file") CommonsMultipartFile image, @RequestParam String uuid, HttpServletRequest request, HttpServletResponse response){
 
         return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
     }
