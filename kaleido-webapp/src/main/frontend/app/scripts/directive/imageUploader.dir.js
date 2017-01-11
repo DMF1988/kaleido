@@ -28,7 +28,7 @@
 
                 var uploader = WebUploader.create({
                     auto: true,
-                    swf: 'bower_components/fex-webuploader/dist/Uploader.swf',
+                    swf: 'swf/Uploader.swf',
                     server: scope.uploadPath,
                     pick: '#filePicker',
                     accept: {

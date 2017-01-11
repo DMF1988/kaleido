@@ -302,7 +302,8 @@ module.exports = function(grunt) {
                         '*.jsp',
                         'views/{,*/}*.html',
                         'images/{,*/}*.{webp}',
-                        'fonts/*'
+                        'fonts/*',
+                        'swf/*'
                     ]
                 }, {
                     expand: true,
