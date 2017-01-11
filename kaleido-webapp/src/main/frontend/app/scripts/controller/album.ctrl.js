@@ -10,7 +10,7 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('AlbumCtrl', ['$scope', '$uibModal', function($scope, $uibModal) {
+    kaleidoApp.controller('AlbumCtrl', ['$scope', '$http', '$uibModal', '$templateCache', function($scope, $http, $uibModal, $templateCache) {
 
         var vm = this;
 
@@ -19,17 +19,24 @@
             event && event.stopPropagation();
 
             $uibModal.open({
-                templateUrl: 'views/album/upload-image.tpl.html',
+                templateUrl: 'views/album/create-album-modal.tpl.html',
                 size: 'lg',
                 backdrop: 'static',
-                controller: 'UploadImageCtrl as vm'
+                controller: 'CreateAlbumModalCtrl as vm'
             });
 
         };
 
+        $http({
+            url: 'views/template/image-uploader.tpl.html',
+            mthod: 'GET'
+        }).then(function(data){
+            $templateCache.put('views/template/image-uploader.tpl.html', data.data);
+        });
+
     }]);
 
-    kaleidoApp.controller('UploadImageCtrl', ['$scope', '$uibModalInstance', '$timeout', function($scope, $uibModalInstance, $timeout) {
+    kaleidoApp.controller('CreateAlbumModalCtrl', ['$scope', '$uibModalInstance', '$timeout', function($scope, $uibModalInstance, $timeout) {
 
         var vm = this;
 
