@@ -1,4 +1,4 @@
-package www.xiyou.com.album.controller.model;
+package www.xiyou.com.album.model;
 
 import lombok.Getter;
 import lombok.Setter;

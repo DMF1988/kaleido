@@ -19,8 +19,8 @@
                 uploadPath: '@',
                 imageList: '='
             },
-            template: '<div id="uploader">' +
-                '<div id="fileList" class="uploader-list"></div>' +
+            template: '<div>' +
+                '<div id="fileList" class="uploader-list row"></div>' +
                 '<div id="filePicker">选择图片</div>' +
                 '</div>',
             link: function(scope, element, attrs) {
@@ -28,6 +28,7 @@
 
                 var uploader = WebUploader.create({
                     auto: true,
+                    swf: 'bower_components/fex-webuploader/dist/Uploader.swf',
                     server: scope.uploadPath,
                     pick: '#filePicker',
                     accept: {
@@ -41,9 +42,9 @@
 
                 uploader.on('fileQueued', function(file) {
                     var $li = $(
-                            '<div id="' + file.id + '" class="file-item thumbnail">' +
-                            '<img>' +
-                            '<div class="info">' + file.name + '</div>' +
+                            '<div id="' + file.id + '" class="file-item thumbnail col-sm-3">' +
+                            '<img style="margin-bottom: 10px;">' +
+                            '<span class="info">' + file.name + '</span>' +
                             '</div>'
                         ),
                         $img = $li.find('img');
@@ -62,7 +63,7 @@
                         }
 
                         $img.attr('src', src);
-                    }, 100, 100);
+                    }, 180, 150);
                 });
 
                 uploader.on('uploadProgress', function(file, percentage) {
@@ -91,7 +92,7 @@
 
                     // 避免重复创建
                     if (!$error.length) {
-                        $error = $('<div class="error"></div>').appendTo($li);
+                        $error = $('<span class="error"></span>').appendTo($li);
                     }
 
                     $error.text('上传失败');

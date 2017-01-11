@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(value="/album")
 public class AlbumController {
 
-    @RequestMapping(value="/update", method= RequestMethod.POST)
+    @RequestMapping(value="/upload", method= RequestMethod.POST)
     public ResponseEntity<ResponseModel> uploadImage(@RequestParam MultipartFile[] images, HttpServletRequest request, HttpServletResponse response){
 
         return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
