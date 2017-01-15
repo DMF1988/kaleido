@@ -8,6 +8,8 @@
 
 (function(angular, window) {
 
+    window.HOST = window.HOST || '/kaleido-webapp';
+
     angular.element(document).ready(function() {
         angular.bootstrap(document, ['kaleidoApp']);
     });
@@ -87,8 +89,6 @@
                 });
         }])
         .run(['$setting', function($setting){
-            
-            window.HOST = window.HOST || '/kaleido-webapp';
 
             $setting.startup();
 

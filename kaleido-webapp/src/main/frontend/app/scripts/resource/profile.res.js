@@ -13,6 +13,7 @@
     kaleidoApp.factory('_$profile', ['$resource', function($resource) {
 
         var resource = {
+            //获取用户详细信息
             getProfileInfo: $resource(window.HOST + '/profile/get', {}, { get: { method: 'GET' } })
         };
 

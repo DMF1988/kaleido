@@ -13,8 +13,11 @@
     kaleidoApp.factory('_$user', ['$resource', function($resource){
 
         var resource = {
+            //获取用户信息
             getUserInfo: $resource(window.HOST + '/user/get', {}, { get: { method: 'GET' } }),
+            //登录
             login: $resource(window.HOST + '/user/login', {}, { post: { method: 'POST' } }),
+            //注册
             signup: $resource(window.HOST + '/user/signup', {}, { post: { method: 'POST' } })
         };
 

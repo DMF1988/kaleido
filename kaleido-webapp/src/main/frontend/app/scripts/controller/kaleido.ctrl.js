@@ -16,7 +16,7 @@
 
         $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 
-            if(!$sessionStorage.userId){
+            if(!$sessionStorage.userId && ['monitor', 'footstep', 'album', 'diary', 'friend', 'profile'].indexOf(toState.name) !== -1){
                 event.preventDefault();
                 $state.go('login');
             }
@@ -34,7 +34,7 @@
 
         vm.menus = $MENUS;
 
-        if (!$rootScope.userInfo.userId) {
+        if (!$rootScope.userInfo || !$rootScope.userInfo.userId) {
             $state.go('login');
             return;
         }

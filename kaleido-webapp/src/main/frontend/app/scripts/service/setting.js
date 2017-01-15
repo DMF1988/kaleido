@@ -10,7 +10,7 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.factory('$setting', ['$rootScope', '$sessionStorage', '$state', '$uibModal', function($rootScope, $sessionStorage, $state, $uibModal) {
+    kaleidoApp.factory('$setting', ['$rootScope', '$state', '$sessionStorage', '$localStorage', '$uibModal', '_$meta', function($rootScope, $state, $sessionStorage, $localStorage, $uibModal, _$meta) {
 
         function login() {
 
@@ -70,9 +70,22 @@
         function startup() {
 
             var userId = $sessionStorage.userId;
+
             $rootScope.userInfo = {
                 userId: userId
             };
+
+            if(!$localStorage.countries){
+                _$meta.getCountryMeta().then(function(res){
+                    $localStorage.countries = res.data;
+                });
+            }
+
+            if(!$localStorage.cities){
+                _$meta.getCityCN().then(function(res){
+                    $localStorage.cities = res.data;
+                });
+            }
 
         }
 

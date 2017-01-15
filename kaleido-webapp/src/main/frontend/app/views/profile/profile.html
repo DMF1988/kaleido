@@ -8,22 +8,44 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <div class="row">
-                       <div class="col-sm-5 text-right">邮箱</div>
-                       <div ng-bind="vm.commonInfo.profile.loginName" class="col-sm-7"></div>
-                    </div>
-                    <div class="row">
+                    <div class="row pb15">
                        <div class="col-sm-5 text-right">昵称</div>
                        <div ng-bind="vm.commonInfo.profile.userName" class="col-sm-7"></div>
                     </div>
-                    <div class="row">
+                    <div class="row pb15">
                        <div class="col-sm-5 text-right">姓名</div>
                        <div ng-bind="vm.commonInfo.profile.realName" class="col-sm-7"></div>
                     </div>
-                    <div class="row">
+                    <div class="row pb15">
                        <div class="col-sm-5 text-right">电话号码</div>
                        <div ng-bind="vm.commonInfo.profile.phoneNum" class="col-sm-7"></div>
                     </div>
+                    <div class="row pb15">
+                       <div class="col-sm-5 text-right">性别</div>
+                       <div ng-bind="vm.commonInfo.profile.gender | gender" class="col-sm-7"></div>
+                    </div>
+                    <div class="row pb15">
+                       <div class="col-sm-5 text-right">生日</div>
+                       <div class="col-sm-7">
+                          <span ng-bind="vm.commonInfo.profile.birthday | date:'yyyy-MM-dd'"></span>
+                       </div>
+                    </div>
+                    <div class="row pb15">
+                       <div class="col-sm-5 text-right">地址</div>
+                       <div class="col-sm-7">
+                          <span ng-bind="vm.commonInfo.profile.country | country"></span>
+                          <span ng-bind="vm.commonInfo.profile.province | city"></span>
+                          <span ng-bind="vm.commonInfo.profile.city | city"></span>
+                          <span ng-bind="vm.commonInfo.profile.address"></span>
+                       </div>
+                    </div>
+                    <div class="row pb15">
+                       <div class="col-sm-5 text-right">职业</div>
+                       <div class="col-sm-7">
+                          <span ng-bind="vm.commonInfo.profile.occupation | occupation"></span>
+                       </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
