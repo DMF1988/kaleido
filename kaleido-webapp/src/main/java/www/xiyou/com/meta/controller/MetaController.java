@@ -50,7 +50,7 @@ public class MetaController {
         return new ResponseEntity<ResponseModel>(new ResponseModel(result), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/getMetaDetail", method = RequestMethod.POST)
+    @RequestMapping(value = "/getMetaDetail", method = RequestMethod.GET)
     public ResponseEntity<ResponseModel> getMetaDetail(@RequestParam(required = true) String parent, @RequestParam(required = true) String value) throws KaleidoException {
 
         Meta meta = metaService.getMetaDetail(parent, value);

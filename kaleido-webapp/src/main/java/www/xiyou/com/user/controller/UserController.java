@@ -59,7 +59,7 @@ public class UserController {
 
     }
 
-    @RequestMapping(value="/login", method= RequestMethod.POST)
+    @RequestMapping(value="/login", method= RequestMethod.GET)
     public ResponseEntity<ResponseModel> login(@RequestParam String loginName, @RequestParam String loginPassword, HttpServletResponse response) throws KaleidoException {
 
         Cookie cookie = new Cookie("TOKEN", "12345678");
@@ -72,7 +72,7 @@ public class UserController {
         return new ResponseEntity<ResponseModel>(new ResponseModel(user.getUserId()), HttpStatus.OK);
     }
 
-    @RequestMapping(value="/signup", method=RequestMethod.POST)
+    @RequestMapping(value="/signup", method=RequestMethod.GET)
     public ResponseEntity<ResponseModel> signup(@RequestParam String loginName, @RequestParam String loginPassword, HttpServletRequest request) throws KaleidoException {
 
         String userId = userService.addUser(loginName, loginPassword);

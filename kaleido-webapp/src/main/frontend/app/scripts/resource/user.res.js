@@ -16,9 +16,9 @@
             //获取用户信息
             getUserInfo: $resource(window.HOST + '/user/get', {}, { get: { method: 'GET' } }),
             //登录
-            login: $resource(window.HOST + '/user/login', {}, { post: { method: 'POST' } }),
+            login: $resource(window.HOST + '/user/login', {}, { send: { method: 'GET' } }),
             //注册
-            signup: $resource(window.HOST + '/user/signup', {}, { post: { method: 'POST' } })
+            signup: $resource(window.HOST + '/user/signup', {}, { send: { method: 'GET' } })
         };
 
         function getUserInfo(params){
@@ -27,12 +27,12 @@
         }
 
         function login(params) {
-            var q = resource.login.post(params, {}).$promise;
+            var q = resource.login.send(params).$promise;
             return q;
         }
 
         function signup(params) {
-            var q = resource.signup.post(params, {}).$promise;
+            var q = resource.signup.send(params).$promise;
             return q;
         }
 

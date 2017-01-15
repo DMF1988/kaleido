@@ -20,7 +20,7 @@
             //获取字典信息
             getMetaByParent: $resource(window.HOST + '/meta/getByParent', {}, { get: { method: 'GET' } }),
             //获取字典信息
-            getMetaDetail: $resource(window.HOST + '/meta/getMetaDetail', {}, { get: { method: 'POST' } })
+            getMetaDetail: $resource(window.HOST + '/meta/getMetaDetail', {}, { get: { method: 'GET' } })
 		};
 
 		function getCountryMeta(params){
@@ -58,14 +58,14 @@
 
 		}
 
-		function getMetaByParent(param){
+		function getMetaByParent(params){
 			var q = resource.getMetaByParent.get(params).$promise;
 
 			return q;
 		}
 
 		function getMetaDetail(params){
-			var q = resource.getMetaDetail.get(params, {}).$promise;
+			var q = resource.getMetaDetail.get(params).$promise;
 			return q;
 		}
 

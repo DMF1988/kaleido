@@ -74,25 +74,25 @@
 
     kaleidoApp.filter('occupation', ['_$meta', function(_$meta) {
 
+        var occupations = [],
+            params = {
+                parent: 'occupation'
+            };
+
+        _$meta.getMetaByParent(params).then(function(res) {
+            occupations = res.data;
+        });
+
         return function(input) {
             if (!input) {
                 return '';
             }
 
-            var result = '',
-                params = {
-                    parent: 'occupation',
-                    value: input
-                };
+           
 
-            _$meta.getMetaDetail(params).then(function(res) {
-
-            	if(res.data){
-            		result = res.data.text;
-            	}
-            });
-
-            return result;
+            return occupations.filter(function(item){
+            	return input === item.value;
+            })[0].text;
         };
 
     }]);

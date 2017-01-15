@@ -16,7 +16,7 @@
 		parent, value, text, description, create_time, last_update_time, deleted
 	</sql>
 	
-	<select id="getByParent" resultType="java.util.List" parameterType="java.lang.String">
+	<select id="getByParent" resultMap="BaseResultMap" parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" /> from meta_dic where parent = #{parent,jdbcType=VARCHAR} and deleted=0
 	</select>
