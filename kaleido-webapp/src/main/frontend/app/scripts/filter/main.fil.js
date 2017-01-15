@@ -88,8 +88,6 @@
                 return '';
             }
 
-           
-
             return occupations.filter(function(item){
             	return input === item.value;
             })[0].text;

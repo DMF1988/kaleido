@@ -5,47 +5,123 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2><i class="fa fa-user-circle-o"></i> 个人信息</h2>
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            编辑<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a ng-click="vm.commonInfo.edit = true" href="javascript:;"><i class="fa fa-pencil-square-o"></i>&nbsp;编辑个人信息</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"><i class="fa fa-envelope"></i>&nbsp;修改邮箱</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"><i class="fa fa-lock"></i>&nbsp;&nbsp;修改密码</a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <div class="row pb15">
-                       <div class="col-sm-5 text-right">昵称</div>
-                       <div ng-bind="vm.commonInfo.profile.userName" class="col-sm-7"></div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img style="width: 100%;" src="images/user.png" alt="">
+                        </div>
+                        <div class="col-sm-9">
+                            <div ng-if="!vm.commonInfo.edit">
+                                <div class="row pb15">
+                                    <div class="col-sm-3 text-right">昵称</div>
+                                    <div ng-bind="vm.commonInfo.profile.userName" class="col-sm-9"></div>
+                                </div>
+                                <div class="row pb15">
+                                    <div class="col-sm-3 text-right">姓名</div>
+                                    <div ng-bind="vm.commonInfo.profile.realName" class="col-sm-9"></div>
+                                </div>
+                                <div class="row pb15">
+                                    <div class="col-sm-3 text-right">电话号码</div>
+                                    <div ng-bind="vm.commonInfo.profile.phoneNum" class="col-sm-9"></div>
+                                </div>
+                                <div class="row pb15">
+                                    <div class="col-sm-3 text-right">性别</div>
+                                    <div ng-bind="vm.commonInfo.profile.gender | gender" class="col-sm-9"></div>
+                                </div>
+                                <div class="row pb15">
+                                    <div class="col-sm-3 text-right">生日</div>
+                                    <div class="col-sm-9">
+                                        <span ng-bind="vm.commonInfo.profile.birthday | date:'yyyy-MM-dd'"></span>
+                                    </div>
+                                </div>
+                                <div class="row pb15">
+                                    <div class="col-sm-3 text-right">地址</div>
+                                    <div class="col-sm-9">
+                                        <span ng-bind="vm.commonInfo.profile.country | country"></span>
+                                        <span ng-bind="vm.commonInfo.profile.province | city"></span>
+                                        <span ng-bind="vm.commonInfo.profile.city | city"></span>
+                                        <span ng-bind="vm.commonInfo.profile.address"></span>
+                                    </div>
+                                </div>
+                                <div class="row pb15">
+                                    <div class="col-sm-3 text-right">职业</div>
+                                    <div class="col-sm-9">
+                                        <span ng-bind="vm.commonInfo.profile.occupation"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="vm.commonInfo.edit">
+                                <form class="form-horizontal form-label-left" novalidate>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">昵称</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input ng-model="vm.formOptions.userName" name="userName" type="text" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">姓名</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input ng-model="vm.formOptions.realName" name="realName" type="text" class="form-control col-md-7 col-xs-12">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">手机号</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input ng-model="vm.formOptions.phoneNum" name="phoneNum" class="form-control col-md-7 col-xs-12" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">性别</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="btn-group">
+                                                <label ng-class="{'btn-primary': vm.formOptions.gender == 'M', 'btn-default': vm.formOptions.gender != 'M'}" class="btn">
+                                                    <input ng-model="vm.formOptions.gender" class="hidden" type="radio" name="gender" value="M">男
+                                                </label>
+                                                <label ng-class="{'btn-primary': vm.formOptions.gender == 'F', 'btn-default': vm.formOptions.gender != 'F'}" class="btn">
+                                                    <input ng-model="vm.formOptions.gender" class="hidden" type="radio" name="gender" value="F">女
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">生日</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div style="margin-left: -10px;" class="col-md-11 xdisplay_inputx form-group has-feedback">
+                                                <input type="text" class="form-control has-feedback-left active" id="single_cal1" placeholder="生日" aria-describedby="inputSuccess2Status">
+                                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                            <button ng-click="vm.commonInfo.edit = false" type="button" class="btn btn-primary">取消</button>
+                                            <button type="button" class="btn btn-success">确定</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row pb15">
-                       <div class="col-sm-5 text-right">姓名</div>
-                       <div ng-bind="vm.commonInfo.profile.realName" class="col-sm-7"></div>
-                    </div>
-                    <div class="row pb15">
-                       <div class="col-sm-5 text-right">电话号码</div>
-                       <div ng-bind="vm.commonInfo.profile.phoneNum" class="col-sm-7"></div>
-                    </div>
-                    <div class="row pb15">
-                       <div class="col-sm-5 text-right">性别</div>
-                       <div ng-bind="vm.commonInfo.profile.gender | gender" class="col-sm-7"></div>
-                    </div>
-                    <div class="row pb15">
-                       <div class="col-sm-5 text-right">生日</div>
-                       <div class="col-sm-7">
-                          <span ng-bind="vm.commonInfo.profile.birthday | date:'yyyy-MM-dd'"></span>
-                       </div>
-                    </div>
-                    <div class="row pb15">
-                       <div class="col-sm-5 text-right">地址</div>
-                       <div class="col-sm-7">
-                          <span ng-bind="vm.commonInfo.profile.country | country"></span>
-                          <span ng-bind="vm.commonInfo.profile.province | city"></span>
-                          <span ng-bind="vm.commonInfo.profile.city | city"></span>
-                          <span ng-bind="vm.commonInfo.profile.address"></span>
-                       </div>
-                    </div>
-                    <div class="row pb15">
-                       <div class="col-sm-5 text-right">职业</div>
-                       <div class="col-sm-7">
-                          <span ng-bind="vm.commonInfo.profile.occupation | occupation"></span>
-                       </div>
-                    </div>
-                    
                 </div>
             </div>
         </div>

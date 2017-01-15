@@ -18,15 +18,23 @@
 
         function init(){
             vm.commonInfo = {
+                edit: false,
                 profile: {}
+            };
+
+            vm.formOptions = {
+                form: 'profileForm',
+                submitted: false
             };
 
             var params = {
                 userId: $scope.userInfo.userId
             };
 
-            _$profile.getProfileInfo(params).then(function(data){
-                vm.commonInfo.profile = data.data;
+            _$profile.getProfileInfo(params).then(function(res){
+                vm.commonInfo.profile = res.data;
+
+                angular.extend(vm.formOptions, res.data);
             });
         }
 
