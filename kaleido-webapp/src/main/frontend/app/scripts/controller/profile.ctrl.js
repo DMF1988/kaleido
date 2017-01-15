@@ -21,7 +21,11 @@
                 profile: {}
             };
 
-            _$profile.getProfileInfo().then(function(data){
+            var params = {
+                userId: $scope.userInfo.userId
+            };
+
+            _$profile.getProfileInfo(params).then(function(data){
                 vm.commonInfo.profile = data.data;
             });
         }

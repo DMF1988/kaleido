@@ -10,7 +10,7 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('SignupCtrl', ['$scope', '$state', '_$account', function($scope, $state, _$account){
+    kaleidoApp.controller('SignupCtrl', ['$scope', '$state', '_$user', function($scope, $state, _$user){
 
         var vm = this;
 
@@ -18,8 +18,7 @@
             form: 'signupForm',
             submitted: false,
             loginName: '',
-            loginPassword: '',
-            userName: ''
+            loginPassword: ''
         };
 
         vm.signup = function(event){
@@ -32,11 +31,10 @@
 
             var params = {
                 loginName: $.trim(vm.formOptions.loginName),
-                loginPassword: $.trim(vm.formOptions.loginPassword),
-                userName: $.trim(vm.formOptions.userName)
+                loginPassword: $.trim(vm.formOptions.loginPassword)
             };
 
-            _$account.signup(params).then(function(data){
+            _$user.signup(params).then(function(data){
                 $state.go('kaleido.album');
             });
 

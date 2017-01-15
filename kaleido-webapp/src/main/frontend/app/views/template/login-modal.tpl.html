@@ -1,0 +1,41 @@
+<div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <button ng-click="vm.cancel($event)" type="button" class="close"><span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title">请登录</h4>
+        </div>
+        <div class="modal-body">
+            <form name="vm.formOptions.form" class="form-horizontal form-label-left" novalidate>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="login-name">
+                        账号<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input ng-class="{'parsley-error': vm.formOptions.form.loginName.$invalid && vm.formOptions.submitted}" ng-model="vm.formOptions.loginName" name="loginName" type="email" id="login-name" required="required" class="form-control col-md-7 col-xs-12">
+                        <ul class="parsley-errors-list filled">
+                            <li ng-if="vm.formOptions.form.loginName.$error.required && vm.formOptions.submitted" class="parsley-required text-left">账号不能为空</li>
+                            <li ng-if="vm.formOptions.form.loginName.$error.email && vm.formOptions.submitted" class="parsley-required text-left">请输入正确的邮箱号</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="login-password">
+                        密码<span class="required">*</span>
+                    </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input ng-class="{'parsley-error': vm.formOptions.form.loginPassword.$invalid && vm.formOptions.submitted}" ng-model="vm.formOptions.loginPassword" name="loginPassword" type="password" id="login-password" required="required" class="form-control col-md-7 col-xs-12">
+                        <ul class="parsley-errors-list filled">
+                            <li ng-if="vm.formOptions.form.loginPassword.$error.required && vm.formOptions.submitted" class="parsley-required text-left">密码不能为空</li>
+                            <li ng-if="vm.formOptions.form.loginPassword.$error.pattern && vm.formOptions.submitted" class="parsley-required text-left">密码必须为不少于6位的英文字母或数字</li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button ng-click="vm.cancel($event)" type="button" class="mg0 btn btn-default">取消</button>
+            <button ng-click="vm.ok($event)" type="button" class="btn btn-primary">登录</button>
+        </div>
+    </div>
+</div>

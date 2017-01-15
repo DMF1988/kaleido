@@ -11,7 +11,7 @@
     var kaleidoApp = angular.module('kaleidoApp');
 
     kaleidoApp.controller('MonitorCtrl', ['$scope', function($scope){
-
+		
     }]);
     
 })(angular);

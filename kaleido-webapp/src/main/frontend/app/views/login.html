@@ -6,14 +6,14 @@
                     <h1>登录</h1>
                     <div>
                         <input ng-class="{'parsley-error': vm.formOptions.form.email.$invalid && vm.formOptions.submitted}" ng-model="vm.formOptions.loginName" name="email" type="email" class="form-control" placeholder="账号" required="true">
-                        <ul class="parsley-errors-list filled" id="parsley-id-5">
+                        <ul class="parsley-errors-list filled">
                             <li ng-if="vm.formOptions.form.email.$error.required && vm.formOptions.submitted" class="parsley-required text-left">账号不能为空</li>
                             <li ng-if="vm.formOptions.form.email.$error.email && vm.formOptions.submitted" class="parsley-required text-left">请输入正确的邮箱号</li>
                         </ul>
                     </div>
                     <div>
                         <input ng-class="{'parsley-error': vm.formOptions.form.password.$invalid && vm.formOptions.submitted}" ng-model="vm.formOptions.loginPassword" ng-pattern="/^[0-9a-zA-Z]{6,}$/" name="password" type="password" class="form-control" placeholder="密码" required="true">
-                        <ul class="parsley-errors-list filled" id="parsley-id-5">
+                        <ul class="parsley-errors-list filled">
                             <li ng-if="vm.formOptions.form.password.$error.required && vm.formOptions.submitted" class="parsley-required text-left">密码不能为空</li>
                             <li ng-if="vm.formOptions.form.password.$error.pattern && vm.formOptions.submitted" class="parsley-required text-left">密码必须为不少于6位的英文字母或数字</li>
                         </ul>

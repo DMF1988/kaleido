@@ -21,11 +21,15 @@ public class ResponseModel<T> {
     }
 
     public ResponseModel(T data){
-        this(data, 200, null);
+        this(data, 200, "success");
     }
 
     public ResponseModel(int code, String msg){
         this(null, code, msg);
+    }
+
+    public ResponseModel(T data, String msg){
+        this(data, 200, msg);
     }
 
 }

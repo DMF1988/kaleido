@@ -16,6 +16,8 @@
             'ng',
             'ngResource',
             'ngRoute',
+            'ngCookies',
+            'ngStorage',
             'ngAnimate',
             'ui.bootstrap',
             'ui.router'
@@ -28,7 +30,7 @@
         .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
             $urlRouterProvider
-                .when('/', '/kaleido/album')
+                .when('/', '/kaleido/monitor')
                 .otherwise('/login');
 
             $stateProvider
@@ -84,9 +86,11 @@
                     controller: 'LoginCtrl as vm'
                 });
         }])
-        .run(['$startup', function($startup){
+        .run(['$setting', function($setting){
             
             window.HOST = window.HOST || '/kaleido-webapp';
+
+            $setting.startup();
 
         }]);
 

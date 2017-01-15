@@ -10,8 +10,8 @@ import www.xiyou.com.user.entity.User;
 @Repository(value="userDao")
 public interface UserDao {
     User getUserInfo(String userId);
-    User login(@Param("user") User user);
-    int addUser(@Param("user") User user);
+    User login(@Param("loginName") String loginName, @Param("loginPassword") String loginPassword);
+    long addUser(@Param("user") User user);
     String getLatestId();
     int checkUserExist(String loginName);
 }

@@ -9,5 +9,5 @@ import www.xiyou.com.user.entity.User;
 public interface UserService {
     User getUserInfo(String userId) throws KaleidoException;
     User login(String loginName, String loginPassword) throws KaleidoException;
-    String addUser(String loginName, String loginPassword, String userName) throws KaleidoException;
+    String addUser(String loginName, String loginPassword) throws KaleidoException;
 }

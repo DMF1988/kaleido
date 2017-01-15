@@ -6,14 +6,14 @@
 
 'use strict';
 
-(function(angular, $){
+(function(angular, $) {
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('LoginCtrl', ['$scope', '$state', '$notify', '_$account', function($scope, $state, $notify, _$account){
+    kaleidoApp.controller('LoginCtrl', ['$rootScope', '$scope', '$state', '$sessionStorage', '$notify', '_$user', function($rootScope, $scope, $state, $sessionStorage, $notify, _$user) {
 
         var vm = this;
-        
+
         vm.formOptions = {
             form: 'loginForm',
             submitted: false,
@@ -21,11 +21,11 @@
             loginPassword: ''
         };
 
-        vm.login = function(event){
+        vm.login = function(event) {
             event && event.stopPropagation();
 
             vm.formOptions.submitted = true;
-            if(vm.formOptions.form.$invalid){
+            if (vm.formOptions.form.$invalid) {
                 return;
             }
 
@@ -34,8 +34,15 @@
                 loginPassword: $.trim(vm.formOptions.loginPassword)
             };
 
-            _$account.login(params).then(function(data){
-                $state.go('kaleido.album');
+            _$user.login(params).then(function(res) {
+
+                $sessionStorage.userId = res.data;
+                $rootScope.userInfo = {
+                    userId: res.data
+                };
+
+                $state.go('kaleido.monitor');
+
             });
 
         };

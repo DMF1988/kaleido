@@ -15,7 +15,7 @@
                     </div>
                     <div class="profile_info">
                         <span>你好,</span>
-                        <h2>习近平</h2>
+                        <h2 ng-bind="userInfo.userName"></h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -23,7 +23,7 @@
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section active">
-                        <h3>2017-01-08 21:51:22</h3>
+                        <h3>最后登录: {{userInfo.lastLoginTime | date:'yyyy-MM-dd HH:mm:ss'}}</h3>
                         <ul class="nav side-menu">
                             <li ng-class="{'active': menu.active}" ng-repeat="menu in vm.menus">
                                 <a href="{{menu.url}}">

@@ -10,9 +10,18 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('KaleidoCtrl', ['$scope', '$MENUS', function($scope, $MENUS) {
+    kaleidoApp.controller('KaleidoCtrl', ['$rootScope', '$scope', '$state', '$sessionStorage', '$MENUS', '$setting', '_$user', function($rootScope, $scope, $state, $sessionStorage, $MENUS, $setting, _$user) {
 
         var vm = this;
+
+        $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+
+            if(!$sessionStorage.userId){
+                event.preventDefault();
+                $state.go('login');
+            }
+
+        });
 
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
 
@@ -24,7 +33,26 @@
         });
 
         vm.menus = $MENUS;
-        vm.userId = 1;
+
+        if (!$rootScope.userInfo.userId) {
+            $state.go('login');
+            return;
+        }
+
+        getUserInfo();
+
+        function getUserInfo() {
+            var userId = $rootScope.userInfo.userId;
+            var params = {
+                userId: userId
+            };
+
+            _$user.getUserInfo(params).then(function(res) {
+
+                $rootScope.userInfo = res.data;
+
+            });
+        }
 
     }]);
 

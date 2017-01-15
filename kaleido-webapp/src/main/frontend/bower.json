@@ -17,7 +17,9 @@
     "noty": "^2.3.11",
     "animate.css": "^3.5.2",
     "fex-webuploader": "webuploader_fex#^0.1.5",
-    "js-md5": "md5#^0.4.1"
+    "js-md5": "md5#^0.4.1",
+    "angular-cookies": "^1.6.1",
+    "ngstorage": "^0.3.11"
   },
   "devDependencies": {},
   "overrides": {

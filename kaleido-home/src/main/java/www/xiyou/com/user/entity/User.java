@@ -14,13 +14,12 @@ import java.util.Date;
 @Getter
 @Data
 public class User {
-    private int id;
+    private long id;
     private String userId;
     private String loginName;
     private String loginPassword;
-    private String userName;
-    private String realName;
-    private String phoneNum;
+    private Date lastLoginTime;
     private Date createTime;
     private Date lastUpdateTime;
+    private int deleted;
 }
