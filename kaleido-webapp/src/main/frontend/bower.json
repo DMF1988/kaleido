@@ -19,8 +19,7 @@
     "fex-webuploader": "webuploader_fex#^0.1.5",
     "js-md5": "md5#^0.4.1",
     "angular-cookies": "^1.6.1",
-    "ngstorage": "^0.3.11",
-    "daterangepicker": "^1.5.3"
+    "ngstorage": "^0.3.11"
   },
   "devDependencies": {},
   "overrides": {

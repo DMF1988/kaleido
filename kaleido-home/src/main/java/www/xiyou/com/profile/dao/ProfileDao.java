@@ -1,6 +1,6 @@
 package www.xiyou.com.profile.dao;
 
-import org.apache.ibatis.annotations.Param;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import www.xiyou.com.profile.entity.Profile;
 
