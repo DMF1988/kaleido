@@ -9,7 +9,7 @@
 
     <mvc:annotation-driven/>
     <!--scan all @Controller class only-->
-    <context:component-scan base-package="www.xiyou.com.**.controller" use-default-filters="false">
+    <context:component-scan base-package="com.xiyou.kaleido.**.controller" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

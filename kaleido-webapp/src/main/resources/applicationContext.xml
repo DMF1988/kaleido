@@ -10,10 +10,10 @@
    	   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:annotation-config />
-    <context:component-scan base-package="www.xiyou.com.**.aspect" />
+    <context:component-scan base-package="com.xiyou.kaleido.**.aspect" />
 
     <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
-    <bean class="www.xiyou.com.common.exception.KaleidoExceptionHandler"></bean>
+    <bean class="com.xiyou.kaleido.common.exception.KaleidoExceptionHandler"></bean>
 
     <!-- multipart Resolver -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

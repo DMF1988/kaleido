@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="www.xiyou.com.user.dao.UserDao">
+<mapper namespace="com.xiyou.kaleido.user.dao.UserDao">
 
-	<resultMap id="BaseResultMap" type="www.xiyou.com.user.entity.User">
+	<resultMap id="BaseResultMap" type="com.xiyou.kaleido.user.entity.User">
 		<id column="id" property="id" jdbcType="BIGINT" />
 		<result column="user_id" property="userId" jdbcType="VARCHAR" />
 		<result column="login_name" property="loginName" jdbcType="VARCHAR" />
@@ -17,7 +17,7 @@
 		user_id, login_name, login_password, last_login_time, create_time, last_update_time, deleted
 	</sql>
 
-	<insert id="addUser" parameterType="www.xiyou.com.user.entity.User" useGeneratedKeys="true" keyProperty="id">
+	<insert id="addUser" parameterType="com.xiyou.kaleido.user.entity.User" useGeneratedKeys="true" keyProperty="id">
 		insert into user ( <include refid="Base_Column_List" /> )
         values (#{userId, jdbcType=VARCHAR}, #{loginName, jdbcType=VARCHAR}, #{loginPassword, jdbcType=VARCHAR},
         #{lastUpdateTime, jdbcType=DATE}, #{createTime, jdbcType=DATE}, #{lastUpdateTime, jdbcType=DATE}, #{deleted, jdbcType=TINYINT})
