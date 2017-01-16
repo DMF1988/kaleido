@@ -20,21 +20,15 @@
             templateUrl: 'views/template/datetime-picker.html',
             link: function(scope, element, attrs) {
 
-                scope.dateStr = $filter('date')(scope.datetime, 'dd/MM/yyyy');
-
-                scope.$watch('dateStr', function(nValue, oValue){
-                    if(nValue === oValue){
-                        return;
-                    }
-
-                    scope.datetime = new Date(scope.dateStr).getTime();
-                });
+                var date = scope.datetime || new Date();
 
                 $(element).find('#date-store').daterangepicker({
                     singleDatePicker: true,
-                    calender_style: "picker_1"
+                    calender_style: "picker_1",
+                    startDate: moment(),
+                    endDate: moment()
                 }, function(start, end, label) {
-                    console.log(start.toISOString(), end.toISOString(), label);
+                    scope.dateStr = start;
                 });
 
             }
