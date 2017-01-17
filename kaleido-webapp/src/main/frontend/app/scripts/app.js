@@ -72,11 +72,6 @@
                     templateUrl: 'views/profile/profile.html',
                     controller: 'ProfileCtrl as vm'
                 })
-                .state('help', {
-                    url: '/help',
-                    templateUrl: 'views/help.html',
-                    controller: 'HelpCtrl as vm'
-                })
                 .state('signup', {
                     url: '/signup',
                     templateUrl: 'views/signup.html',
@@ -86,9 +81,19 @@
                     url: '/login',
                     templateUrl: 'views/login.html',
                     controller: 'LoginCtrl as vm'
+                })
+                .state('about', {
+                    url: '/about',
+                    templateUrl: 'views/about.html',
+                    controller: 'AboutCtrl as vm'
+                })
+                .state('help', {
+                    url: '/help',
+                    templateUrl: 'views/help.html',
+                    controller: 'HelpCtrl as vm'
                 });
         }])
-        .run(['$setting', function($setting){
+        .run(['$setting', function($setting) {
 
             $setting.startup();
 

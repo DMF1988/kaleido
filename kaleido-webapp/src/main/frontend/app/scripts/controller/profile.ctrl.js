@@ -18,13 +18,17 @@
 
         function init(){
             vm.commonInfo = {
-                edit: false,
+                tab: 'stage',
                 profile: {}
             };
 
             vm.formOptions = {
                 form: 'profileForm',
-                submitted: false
+                submitted: false,
+                oldEmail: '',
+                newEmail: '',
+                oldPassword: '',
+                newPassword: ''
             };
 
             var params = {
@@ -38,7 +42,7 @@
             });
         }
 
-        vm.ok = function(event){
+        vm.editInfo = function(event){
             event && event.stopPropagation();
 
             var params = {
@@ -59,7 +63,7 @@
             _$profile.updateProfile(params).then(function(res){
 
                 vm.commonInfo.profile = params;
-                vm.commonInfo.edit = false;
+                vm.commonInfo.tab = 'stage';
 
             });
 
