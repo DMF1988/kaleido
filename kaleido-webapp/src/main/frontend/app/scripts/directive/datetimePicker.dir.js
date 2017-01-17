@@ -20,16 +20,17 @@
             templateUrl: 'views/template/datetime-picker.html',
             link: function(scope, element, attrs) {
 
-                var date = scope.datetime || new Date();
+                var date = scope.datetime || new Date(),
+                    dateStr = $filter('date')(date, 'dd/MM/yyyy');
 
                 $(element).find('#date-store').daterangepicker({
                     singleDatePicker: true,
-                    calender_style: "picker_1",
-                    startDate: moment(),
-                    endDate: moment()
+                    calender_style: "picker_1"
                 }, function(start, end, label) {
-                    scope.dateStr = start;
+                    scope.datetime = new Date(start._d).getTime();
                 });
+
+                $(element).find('#date-store').val(dateStr);
 
             }
         };

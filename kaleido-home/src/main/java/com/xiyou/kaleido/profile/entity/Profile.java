@@ -24,6 +24,7 @@ public class Profile {
     private Date birthday;
     private String portrait;
     private char gender;
+    private String degree;
     private String occupation;
     private Date createTime;
     private Date lastUpdateTime;

@@ -18,12 +18,12 @@
 	
 	<select id="getByParent" resultMap="BaseResultMap" parameterType="java.lang.String">
 		select
-		<include refid="Base_Column_List" /> from meta_dic where parent = #{parent,jdbcType=VARCHAR} and deleted=0
+		<include refid="Base_Column_List" /> from meta_dic where parent = #{parent,jdbcType=VARCHAR} and deleted=0 order by sort asc
 	</select>
 
 	<select id="getMetaDetail" resultMap="BaseResultMap">
 		select
-		<include refid="Base_Column_List" /> from meta_dic where parent = #{param1, jdbcType=VARCHAR} and value = #{param2, jdbcType=VARCHAR}  and deleted=0
+		<include refid="Base_Column_List" /> from meta_dic where parent = #{param1, jdbcType=VARCHAR} and value = #{param2, jdbcType=VARCHAR} and deleted=0 order by sort asc
 	</select>
 
 </mapper>

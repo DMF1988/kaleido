@@ -43,8 +43,8 @@ public class ProfileController {
         vo.setBirthday(profile.getBirthday());
         vo.setPortrait(profile.getPortrait());
         vo.setGender(profile.getGender());
+        vo.setDegree(profile.getDegree());
         vo.setOccupation(profile.getOccupation());
-
 
         return new ResponseEntity<ResponseModel>(new ResponseModel<ProfileVo>(vo), HttpStatus.OK);
     }

@@ -23,5 +23,6 @@ public class ProfileVo {
     private Date birthday;
     private String portrait;
     private char gender;
+    private String degree;
     private String occupation;
 }

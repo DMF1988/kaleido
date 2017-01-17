@@ -14,6 +14,7 @@
 		<result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
 		<result column="portrait" property="portrait" jdbcType="VARCHAR" />
 		<result column="gender" property="gender" jdbcType="CHAR" />
+        <result column="degree" property="degree" jdbcType="VARCHAR" />
 		<result column="occupation" property="occupation" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="last_update_time" property="lastUpdateTime" jdbcType="VARCHAR" />
@@ -21,7 +22,7 @@
 	</resultMap>
 
 	<sql id="Base_Column_List" >
-		user_id, user_name, real_name, phone_num, phone_num, country, province, city, address, birthday, portrait, gender, occupation, create_time, last_update_time, deleted
+		user_id, user_name, real_name, phone_num, phone_num, country, province, city, address, birthday, portrait, gender, degree, occupation, create_time, last_update_time, deleted
 	</sql>
 	
 	<select id="getProfileByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
@@ -62,6 +63,9 @@
 			<if test="gender != null">
 				gender,
 			</if>
+            <if test="degree != null">
+                degree,
+            </if>
 			<if test="occupation != null">
 				occupation,
 			</if>
@@ -98,6 +102,9 @@
 			<if test="gender != null">
 				gender,
 			</if>
+            <if test="degree != null">
+                degree,
+            </if>
 			<if test="occupation != null">
 				occupation,
 			</if>
@@ -138,6 +145,9 @@
 			<if test="gender != null">
 				gender,
 			</if>
+            <if test="degree != null">
+                occupation,
+            </if>
 			<if test="occupation != null">
 				occupation,
 			</if>
@@ -175,6 +185,9 @@
 			<if test="gender != null">
 				#{gender},
 			</if>
+            <if test="degree != null">
+                #{occupation},
+            </if>
 			<if test="occupation != null">
 				#{occupation},
 			</if>

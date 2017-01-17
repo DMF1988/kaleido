@@ -13,6 +13,7 @@ create table profile (
     city varchar(5) null comment '城市Code',
     address varchar(200) null comment '详细地址',
     portrait varchar(50) null comment '头像',
+    degree varchar(20) null comment '学历',
     occupation varchar(20) null comment '职业',
     create_time datetime not null default now() comment '创建日期',
     last_update_time datetime not null default now() comment '最后更新时间',
