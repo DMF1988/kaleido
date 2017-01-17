@@ -72,27 +72,4 @@
 
     }]);
 
-    kaleidoApp.filter('occupation', ['_$meta', function(_$meta) {
-
-        var occupations = [],
-            params = {
-                parent: 'occupation'
-            };
-
-        _$meta.getMetaByParent(params).then(function(res) {
-            occupations = res.data;
-        });
-
-        return function(input) {
-            if (!input) {
-                return '';
-            }
-
-            return occupations.filter(function(item){
-            	return input === item.value;
-            })[0].text;
-        };
-
-    }]);
-
 })(angular);

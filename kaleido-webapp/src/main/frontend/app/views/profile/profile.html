@@ -64,13 +64,13 @@
                                 <div class="row pb15">
                                     <div class="col-sm-3 text-right">职业</div>
                                     <div class="col-sm-9">
-                                        <span ng-bind="vm.commonInfo.profile.occupation"></span>
+                                        <span meta-translator data-group="occupation" data-meta="vm.commonInfo.profile.occupation"></span>
                                     </div>
                                 </div>
                                 <div class="row pb15">
                                     <div class="col-sm-3 text-right">学历</div>
                                     <div class="col-sm-9">
-                                        <span ng-bind="vm.commonInfo.profile.degree"></span>
+                                        <span meta-translator data-group="degree" data-meta="vm.commonInfo.profile.degree"></span>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,6 @@
                                             <span meta-select data-value="vm.formOptions.occupation" data-group="occupation"></span>
                                         </div>
                                     </div>
-                                    <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                             <button ng-click="vm.commonInfo.edit = false" type="button" class="btn btn-primary">取消</button>
