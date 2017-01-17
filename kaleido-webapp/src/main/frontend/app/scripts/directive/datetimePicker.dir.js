@@ -28,6 +28,7 @@
                     calender_style: "picker_1"
                 }, function(start, end, label) {
                     scope.datetime = new Date(start._d).getTime();
+                    console.log(scope.datetime);
                 });
 
                 $(element).find('#date-store').val(dateStr);

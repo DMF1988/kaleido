@@ -25,7 +25,7 @@
                 }
 
                 scope.$watch('meta', function(nValue, oValue) {
-                    if (nValue === oValue) {
+                    if (nValue === oValue || nValue === null) {
                         return;
                     }
                     translate();
@@ -43,7 +43,7 @@
                     });
                 }
             }
-        }
+        };
 
     }]);
 

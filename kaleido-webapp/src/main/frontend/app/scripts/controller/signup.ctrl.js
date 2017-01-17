@@ -6,7 +6,7 @@
 
 'use strict';
 
-(function(angular){
+(function(angular, $, md5){
 
     var kaleidoApp = angular.module('kaleidoApp');
 
@@ -31,14 +31,14 @@
 
             var params = {
                 loginName: $.trim(vm.formOptions.loginName),
-                loginPassword: $.trim(vm.formOptions.loginPassword)
+                loginPassword: md5($.trim(vm.formOptions.loginPassword))
             };
 
             _$user.signup(params).then(function(data){
-                $state.go('kaleido.album');
+                $state.go('login');
             });
 
         };
 
     }]);
-})(angular);
+})(angular, jQuery, md5);
