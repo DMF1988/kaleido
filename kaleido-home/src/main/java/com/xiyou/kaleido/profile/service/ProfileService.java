@@ -8,4 +8,5 @@ import com.xiyou.kaleido.profile.entity.Profile;
  */
 public interface ProfileService {
     public Profile getProfile(String userId) throws KaleidoException;
+    public long updateProfile(Profile profile) throws KaleidoException;
 }

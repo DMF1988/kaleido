@@ -6,7 +6,7 @@
 
 'use strict';
 
-(function(angular){
+(function(angular, $){
 
     var kaleidoApp = angular.module('kaleidoApp');
 
@@ -38,5 +38,32 @@
             });
         }
 
+        vm.ok = function(event){
+            event && event.stopPropagation();
+
+            var params = {
+                userId: vm.commonInfo.profile.userId,
+                userName: $.trim(vm.formOptions.userName),
+                realName: $.trim(vm.formOptions.realName),
+                phoneNum: $.trim(vm.formOptions.phoneNum),
+                gender: vm.formOptions.gender,
+                birthday: vm.formOptions.birthday,
+                country: vm.formOptions.country,
+                province: vm.formOptions.province,
+                city: vm.formOptions.city,
+                address: $.trim(vm.formOptions.address),
+                degree: vm.formOptions.degree,
+                occupation: vm.formOptions.occupation
+            };
+
+            _$profile.updateProfile(params).then(function(res){
+
+                vm.commonInfo.profile = params;
+                vm.commonInfo.edit = false;
+
+            });
+
+        };
+
     }]);
-})(angular);
+})(angular, jQuery);

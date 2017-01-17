@@ -14,7 +14,9 @@
 
         var resource = {
             //获取用户详细信息
-            getProfileInfo: $resource(window.HOST + '/profile/get', {}, { get: { method: 'GET' } })
+            getProfileInfo: $resource(window.HOST + '/profile/get', {}, { get: { method: 'GET' } }),
+            //更新用户信息
+            updateProfile: $resource(window.HOST + '/profile/update', {}, { update: { method: 'POST' } })
         };
 
         function getProfileInfo(params) {
@@ -22,8 +24,14 @@
             return q;
         }
 
+        function updateProfile(params) {
+            var q = resource.updateProfile.update(params).$promise;
+            return q;
+        }
+
         return {
-            getProfileInfo: getProfileInfo
+            getProfileInfo: getProfileInfo,
+            updateProfile: updateProfile
         };
 
     }]);

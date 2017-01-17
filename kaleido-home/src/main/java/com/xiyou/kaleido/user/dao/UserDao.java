@@ -14,4 +14,5 @@ public interface UserDao {
     long addUser(@Param("user") User user);
     String getLatestId();
     int checkUserExist(String loginName);
+    long updateLoginTime(@Param("userId") String userId);
 }

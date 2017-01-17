@@ -53,9 +53,9 @@
 
     kaleidoApp.filter('city', ['$localStorage', function($localStorage) {
 
-        var cities = $localStorage.cities;
+        return function(input, countryCode) {
+            var cities = $localStorage[countryCode];
 
-        return function(input) {
             if (!input) {
                 return input;
             }

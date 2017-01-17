@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,29 @@ public class ProfileController {
 
     @Autowired
     private ProfileService profileService;
+
+    @RequestMapping(value="update", method=RequestMethod.POST)
+    public ResponseEntity<ResponseModel> updateProfile(@RequestBody ProfileVo vo) throws KaleidoException {
+
+        Profile profile = new Profile();
+
+        profile.setUserId(vo.getUserId());
+        profile.setUserName(vo.getUserName());
+        profile.setRealName(vo.getRealName());
+        profile.setPhoneNum(vo.getPhoneNum());
+        profile.setGender(vo.getGender());
+        profile.setBirthday(vo.getBirthday());
+        profile.setCountry(vo.getCountry());
+        profile.setProvince(vo.getProvince());
+        profile.setCity(vo.getCity());
+        profile.setAddress(vo.getAddress());
+        profile.setDegree(vo.getDegree());
+        profile.setOccupation(vo.getOccupation());
+
+        profileService.updateProfile(profile);
+
+        return new ResponseEntity<ResponseModel>(new ResponseModel<String>("success"), HttpStatus.OK);
+    }
 
     @RequestMapping(value="/get", method = RequestMethod.GET)
     public ResponseEntity<ResponseModel> getUserInfo(@RequestParam String userId) throws KaleidoException {

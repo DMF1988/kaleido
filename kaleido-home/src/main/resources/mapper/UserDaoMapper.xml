@@ -45,4 +45,8 @@
 		select count(*) from user where login_name = #{loginName, jdbcType=VARCHAR}
 	</select>
 
+	<update id="updateLoginTime" parameterType="java.lang.String">
+		update user set last_login_time = now() where user_id = #{userId, jdbcType = VARCHAR}
+	</update>
+
 </mapper>

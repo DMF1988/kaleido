@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-sm-4">
+        <select ng-model="country" ng-options="item.code as item.name for item in commonInfo.countries" class="form-control"></select>
+    </div>
+    <div class="col-sm-4">
+        <select ng-model="province" ng-options="item.code as item.name for item in commonInfo.provinces" class="form-control"></select>
+    </div>
+    <div class="col-sm-4">
+        <select ng-model="city" ng-options="item.code as item.name for item in commonInfo.province.cities" class="form-control"></select>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import com.xiyou.kaleido.common.util.KaleidoException;
 import com.xiyou.kaleido.profile.dao.ProfileDao;
 import com.xiyou.kaleido.profile.entity.Profile;
 import com.xiyou.kaleido.profile.exception.ProfileError;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by DMF on 2017/1/13.
@@ -28,4 +29,14 @@ public class ProfileServiceImpl implements ProfileService {
 
         return profile;
     }
+
+    @Transactional
+    public long updateProfile(Profile profile) throws KaleidoException {
+
+        if(profile == null){
+            throw new KaleidoException(ProfileError.PROFILE_NOT_EXIST);
+        }
+
+        return profileDao.updateByUserId(profile);
+    };
 }

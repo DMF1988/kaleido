@@ -13,19 +13,19 @@
 	kaleidoApp.factory('_$meta', ['$resource', function($resource){
 
 		var resource = {
-			//获取用户信息
-            getCountryMeta: $resource('meta/country.json', {}, { get: { method: 'GET' } }),
+			//获取国家信息
+            getCountry: $resource('meta/country.json', {}, { get: { method: 'GET' } }),
             //获取中国省市信息
-            getCityCN: $resource('meta/CN.json', {}, { get: { method: 'GET' } }),
+            getCity: $resource('meta/:countryCode.json', {}, { get: { method: 'GET' } }),
             //获取字典信息
             getMetaByParent: $resource(window.HOST + '/meta/getByParent', {}, { get: { method: 'GET' } }),
             //获取字典信息
             getMetaDetail: $resource(window.HOST + '/meta/getMetaDetail', {}, { get: { method: 'GET' } })
 		};
 
-		function getCountryMeta(params){
+		function getCountry(params){
 
-			var q = resource.getCountryMeta.get().$promise;
+			var q = resource.getCountry.get().$promise;
 			return q.then(function(res){
 				var data = {};
 				for(var key in res){
@@ -41,9 +41,9 @@
 
 		}
 
-		function getCityCN(params){
+		function getCity(params){
 
-			var q = resource.getCityCN.get(params).$promise;
+			var q = resource.getCity.get(params).$promise;
 			return q.then(function(res){
 				var data = {};
 				for(var key in res){
@@ -70,8 +70,8 @@
 		}
 
 		return {
-			getCountryMeta: getCountryMeta,
-			getCityCN: getCityCN,
+			getCountry: getCountry,
+			getCity: getCity,
 			getMetaByParent: getMetaByParent,
 			getMetaDetail: getMetaDetail
 		};

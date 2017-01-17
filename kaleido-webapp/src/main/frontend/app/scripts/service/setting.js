@@ -76,14 +76,18 @@
             };
 
             if(!$localStorage.countries){
-                _$meta.getCountryMeta().then(function(res){
+                _$meta.getCountry().then(function(res){
                     $localStorage.countries = res.data;
                 });
             }
 
             if(!$localStorage.cities){
-                _$meta.getCityCN().then(function(res){
-                    $localStorage.cities = res.data;
+                var params = {
+                    countryCode: '86' //china for default
+                };
+
+                _$meta.getCity(params).then(function(res){
+                    $localStorage['86'] = res.data;
                 });
             }
 

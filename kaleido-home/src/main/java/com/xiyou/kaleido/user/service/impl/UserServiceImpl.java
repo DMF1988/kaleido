@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @Transactional
     public User getUserInfo(String userId) throws KaleidoException {
 
         User user = userDao.getUserInfo(userId);
@@ -38,10 +39,12 @@ public class UserServiceImpl implements UserService {
         if(user == null){
             throw new KaleidoException(UserError.USER_NOT_EXIST, String.valueOf(userId));
         }
+        userDao.updateLoginTime(user.getUserId());
 
         return user;
     }
 
+    @Transactional
     public User login( String loginName, String loginPassword) throws KaleidoException {
 
         User user = userDao.login(loginName, loginPassword);
@@ -49,6 +52,7 @@ public class UserServiceImpl implements UserService {
         if(user == null){
             throw new KaleidoException(UserError.LOGIN_FAILED, String.valueOf(loginName));
         }
+
         return user;
     }
 
