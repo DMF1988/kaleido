@@ -6,11 +6,11 @@
 
 'use strict';
 
-(function(angular){
+(function(angular) {
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.directive('metaTranslator', ['_$meta', function(_$meta){
+    kaleidoApp.directive('metaTranslator', ['_$meta', function(_$meta) {
 
         return {
             restrict: 'AE',
@@ -18,22 +18,30 @@
                 group: '@',
                 meta: '='
             },
-            link: function(scope, element, attrs){
+            link: function(scope, element, attrs) {
 
-                scope.$watch('meta', function(nValue, oValue){
-                    if(nValue === oValue){
+                if (!!scope.meta) {
+                    translate();
+                }
+
+                scope.$watch('meta', function(nValue, oValue) {
+                    if (nValue === oValue) {
                         return;
                     }
+                    translate();
+                });
+
+                function translate() {
                     var params = {
                         parent: scope.group,
                         value: scope.meta
                     };
-                    _$meta.getMetaDetail(params).then(function(res){
+                    _$meta.getMetaDetail(params).then(function(res) {
 
                         element.text(res.data.text);
-                        
+
                     });
-                });
+                }
             }
         }
 
