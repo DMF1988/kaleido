@@ -37,13 +37,4 @@
         buttons: false // an array of buttons
     };
 
-    $(document).ready(function() {
-        $('#single_cal1').daterangepicker({
-            singleDatePicker: true,
-            calender_style: "picker_1"
-        }, function(start, end, label) {
-            console.log(start.toISOString(), end.toISOString(), label);
-        });
-    });
-
 })(jQuery);
