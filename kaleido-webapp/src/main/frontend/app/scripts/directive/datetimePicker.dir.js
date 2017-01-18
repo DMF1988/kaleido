@@ -25,10 +25,13 @@
 
                 $(element).find('#date-store').daterangepicker({
                     singleDatePicker: true,
-                    calender_style: "picker_1"
+                    calender_style: "picker_1",
+                    startDate: moment()
                 }, function(start, end, label) {
-                    scope.datetime = new Date(start._d).getTime();
-                    console.log(scope.datetime);
+                    scope.$apply(function(){
+                        scope.datetime = new Date(start._d).getTime();
+                    });
+                    
                 });
 
                 $(element).find('#date-store').val(dateStr);
