@@ -1,52 +1,46 @@
 /**
  *@Author: chad.ding
  *@Copyright: 2017-2018 DMF
- *@Date: 2017-01-10 17:51:26
+ *@Date: 2017-01-18 15:37:52
  */
 
 'use strict';
 
-(function(angular, $){
+(function(angular){
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('ProfileCtrl', ['$scope', '$notify', '_$profile', function($scope, $notify, _$profile){
+    kaleidoApp.controller('UpdateProfileCtrl', ['$scope', '$state', '_$profile', function($scope, $state, _$profile){
 
         var vm = this;
 
-        init();
-
         function init(){
-            vm.commonInfo = {
-                tab: 'stage',
-                profile: {}
-            };
-
             vm.formOptions = {
                 form: 'profileForm',
-                submitted: false,
-                oldEmail: '',
-                newEmail: '',
-                oldPassword: '',
-                newPassword: ''
+                submitted: false
             };
 
-            var params = {
-                userId: $scope.userInfo.userId
-            };
+            if($scope.profile){
+                angular.extend(vm.formOptions, $scope.profile);
+            }
 
-            _$profile.getProfileInfo(params).then(function(res){
-                vm.commonInfo.profile = res.data;
-
-                angular.extend(vm.formOptions, res.data);
+            $scope.$on('$profileLoadSuccess', function(){
+                angular.extend(vm.formOptions, $scope.profile);
             });
         }
 
-        vm.editInfo = function(event){
+        init();
+
+        vm.cancel = function(event){
+            event && event.stopPropagation();
+            $state.go('kaleido.profile.stage');
+        };
+
+        vm.ok = function(event){
             event && event.stopPropagation();
 
             var params = {
-                userId: vm.commonInfo.profile.userId,
+                userId: vm.formOptions.userId,
                 userName: $.trim(vm.formOptions.userName),
                 realName: $.trim(vm.formOptions.realName),
                 phoneNum: $.trim(vm.formOptions.phoneNum),
@@ -61,13 +55,11 @@
             };
 
             _$profile.updateProfile(params).then(function(res){
-
-                vm.commonInfo.profile = params;
-                vm.commonInfo.tab = 'stage';
-
+                $state.go('kaleido.profile.stage');
             });
 
         };
 
     }]);
-})(angular, jQuery);
+
+})(angular);

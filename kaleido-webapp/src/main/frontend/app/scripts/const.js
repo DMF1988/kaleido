@@ -47,8 +47,8 @@
         active: false
     },{
         key: 'profile',
-        children: [],
-        url: '#!/kaleido/profile',
+        children: ['profile.stage', 'profile.updateProfile', 'profile.updateEmail', 'profile.updatePassword'],
+        url: '#!/kaleido/profile/stage',
         text: '个人中心',
         icon: 'fa-drivers-license',
         active: false

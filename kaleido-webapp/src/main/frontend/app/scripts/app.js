@@ -70,7 +70,28 @@
                 .state('kaleido.profile', {
                     url: '/profile',
                     templateUrl: 'views/profile/profile.html',
-                    controller: 'ProfileCtrl as vm'
+                    controller: 'ProfileCtrl as vm',
+                    abstrict: true
+                })
+                .state('kaleido.profile.stage', {
+                    url: '/stage',
+                    templateUrl: 'views/profile/profile-stage.html',
+                    controller: 'ProfileStageCtrl as vm'
+                })
+                .state('kaleido.profile.updateProfile', {
+                    url: '/updateProfile',
+                    templateUrl: 'views/profile/update-profile.html',
+                    controller: 'UpdateProfileCtrl as vm'
+                })
+                .state('kaleido.profile.updateEmail', {
+                    url: '/updateEmail',
+                    templateUrl: 'views/profile/update-email.html',
+                    controller: 'UpdateEmailCtrl as vm'
+                })
+                .state('kaleido.profile.updatePassword', {
+                    url: '/updatePassword',
+                    templateUrl: 'views/profile/update-password.html',
+                    controller: 'UpdatePassowrdCtrl as vm'
                 })
                 .state('signup', {
                     url: '/signup',

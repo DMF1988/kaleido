@@ -59,7 +59,7 @@
 
             if (!$localStorage[countryCode]) {
                 var params = {
-                    countryCode: countryCode
+                    countryCode: countryCode || '86'
                 };
 
                 _$meta.getCity(params).then(function(res) {
