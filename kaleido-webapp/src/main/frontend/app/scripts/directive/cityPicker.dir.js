@@ -40,12 +40,12 @@
 
                 getCities(scope.country, scope.province, scope.commonInfo);
 
-                scope.$watch('province', function(nValue, oValue){
-                    if(nValue === oValue){
+                scope.$watch('province', function(nValue, oValue) {
+                    if (nValue === oValue) {
                         return;
                     }
 
-                    var province = scope.commonInfo.provinces.filter(function(item){
+                    var province = scope.commonInfo.provinces.filter(function(item) {
                         return item.code === nValue;
                     });
 
@@ -57,9 +57,11 @@
 
         function getCities(countryCode, provinceCode, handler) {
 
+            countryCode = countryCode || '86';
+
             if (!$localStorage[countryCode]) {
                 var params = {
-                    countryCode: countryCode || '86'
+                    countryCode: countryCode
                 };
 
                 _$meta.getCity(params).then(function(res) {
@@ -68,11 +70,11 @@
                 });
             } else {
                 handler.provinces = formatCity($localStorage[countryCode]);
-                var province = handler.provinces.filter(function(item){
-                        return item.code === provinceCode;
-                    });
+                var province = handler.provinces.filter(function(item) {
+                    return item.code === provinceCode;
+                });
 
-                    handler.province = province[0];
+                handler.province = province[0];
             }
 
         }
@@ -100,7 +102,7 @@
                         var cities = [];
                         cityIds.forEach(function(item) {
                             var city = {
-                                    code: ''+item
+                                    code: '' + item
                                 },
                                 cityObj = data[item];
                             city.name = cityObj.name;

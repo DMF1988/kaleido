@@ -15,7 +15,8 @@
         <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">手机号</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-                <input ng-model="vm.formOptions.phoneNum" name="phoneNum" class="form-control col-md-7 col-xs-12" type="text">
+                <input ng-model="vm.formOptions.phoneNum" name="phoneNum" class="form-control has-feedback-left col-md-7 col-xs-12" type="text">
+                <span class="fa fa-mobile form-control-feedback left" aria-hidden="true"></span>
             </div>
         </div>
         <div class="form-group">
@@ -23,10 +24,10 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="btn-group">
                     <label ng-class="{'btn-primary': vm.formOptions.gender == 'M', 'btn-default': vm.formOptions.gender != 'M'}" class="btn">
-                        <input ng-model="vm.formOptions.gender" class="hidden" type="radio" name="gender" value="M">男
+                        <input ng-model="vm.formOptions.gender" class="hidden" type="radio" name="gender" value="M"><i class="fa fa-male"></i>
                     </label>
                     <label ng-class="{'btn-primary': vm.formOptions.gender == 'F', 'btn-default': vm.formOptions.gender != 'F'}" class="btn">
-                        <input ng-model="vm.formOptions.gender" class="hidden" type="radio" name="gender" value="F">女
+                        <input ng-model="vm.formOptions.gender" class="hidden" type="radio" name="gender" value="F"><i class="fa fa-female"></i>
                     </label>
                 </div>
             </div>
