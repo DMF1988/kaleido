@@ -55,6 +55,7 @@
             };
 
             _$profile.updateProfile(params).then(function(res){
+                $scope.$emit('$userUpdateSuccess');
                 $state.go('kaleido.profile.stage');
             });
 

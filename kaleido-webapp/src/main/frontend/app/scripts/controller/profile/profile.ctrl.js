@@ -6,28 +6,35 @@
 
 'use strict';
 
-(function(angular, $){
+(function(angular, $) {
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('ProfileCtrl', ['$scope', '$notify', '_$profile', function($scope, $notify, _$profile){
+    kaleidoApp.controller('ProfileCtrl', ['$scope', '$notify', '_$profile', function($scope, $notify, _$profile) {
 
         var vm = this;
 
-        function init(){
+        init();
 
+        function init() {
+            
+            getProfile();
+
+            $scope.$on('$userUpdateSuccess', function(){
+                getProfile();
+            });
+        }
+
+        function getProfile() {
             var params = {
                 userId: $scope.userInfo.userId
             };
 
-            _$profile.getProfileInfo(params).then(function(res){
+            _$profile.getProfileInfo(params).then(function(res) {
                 $scope.profile = res.data;
                 $scope.$broadcast('$profileLoadSuccess');
             });
         }
-
-        init();
-
 
     }]);
 })(angular, jQuery);

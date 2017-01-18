@@ -32,6 +32,11 @@
 
         });
 
+
+        $scope.$on('$userUpdateSuccess', function(){
+            getUserInfo();
+        });
+
         vm.menus = $MENUS;
 
         if (!$rootScope.userInfo || !$rootScope.userInfo.userId) {
