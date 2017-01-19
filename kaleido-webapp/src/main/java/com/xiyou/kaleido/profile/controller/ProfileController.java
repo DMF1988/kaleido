@@ -3,6 +3,7 @@ package com.xiyou.kaleido.profile.controller;
 import com.xiyou.kaleido.common.ResponseModel;
 import com.xiyou.kaleido.profile.model.ProfileVo;
 import com.xiyou.kaleido.profile.service.ProfileService;
+import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.xiyou.kaleido.common.annotation.KaleidoController;
 import com.xiyou.kaleido.common.util.KaleidoException;
 import com.xiyou.kaleido.profile.entity.Profile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import java.io.IOException;
 
 /**
  * Created by chad.ding on 2017/1/6.
@@ -26,6 +30,15 @@ public class ProfileController {
 
     @Autowired
     private ProfileService profileService;
+
+    @RequestMapping(value="uploadPortrait", method=RequestMethod.POST)
+    public ResponseEntity<ResponseModel> uploadPortrait(@RequestParam("image") CommonsMultipartFile image, @RequestParam("userId") String userId) throws IOException, KaleidoException {
+
+        FileItem item = image.getFileItem();
+
+        profileService.uploadPortrait(item.getInputStream(), item.getFieldName(),  userId);
+        return null;
+    }
 
     @RequestMapping(value="update", method=RequestMethod.POST)
     public ResponseEntity<ResponseModel> updateProfile(@RequestBody ProfileVo vo) throws KaleidoException {

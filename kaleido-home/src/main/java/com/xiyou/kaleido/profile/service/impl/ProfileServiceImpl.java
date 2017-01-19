@@ -1,5 +1,6 @@
 package com.xiyou.kaleido.profile.service.impl;
 
+import com.xiyou.kaleido.common.Configuration;
 import com.xiyou.kaleido.profile.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,9 @@ import com.xiyou.kaleido.profile.dao.ProfileDao;
 import com.xiyou.kaleido.profile.entity.Profile;
 import com.xiyou.kaleido.profile.exception.ProfileError;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.io.File;
+import java.io.InputStream;
 
 /**
  * Created by DMF on 2017/1/13.
@@ -18,6 +22,14 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Autowired
     private ProfileDao profileDao;
+
+    @Autowired
+    private Configuration configuration;
+
+    public String uploadPortrait(InputStream image, String fileName, String userId) throws KaleidoException {
+        System.out.println(configuration.getPortraitDir());
+        return null;
+    }
 
     public Profile getProfile(String userId) throws KaleidoException {
 
