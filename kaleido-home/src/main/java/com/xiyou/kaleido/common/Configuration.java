@@ -15,6 +15,6 @@ import org.springframework.stereotype.Component;
 public class Configuration {
 
     @Value("${profile.portraitDir}")
-    public String portraitDir;
+    public final String portraitDir = "";
 
 }

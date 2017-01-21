@@ -6,7 +6,7 @@
 
 'use strict';
 
-(function(angular){
+(function(angular, $){
 
     var kaleidoApp = angular.module('kaleidoApp');
 
@@ -63,4 +63,4 @@
 
     }]);
 
-})(angular);
+})(angular, jQuery);

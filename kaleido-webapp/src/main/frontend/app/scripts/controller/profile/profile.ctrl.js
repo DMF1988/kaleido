@@ -20,18 +20,18 @@
 
             getProfile();
 
-            $scope.$on('$userUpdateSuccess', function(){
+            $scope.$on('$userUpdateSuccess', function() {
                 getProfile();
             });
 
-            $('div#portrait').mouseenter(function(){
+            $('div#portrait').mouseenter(function() {
                 $('div.portrait-tool').slideDown();
-            }).mouseleave(function(){
-               $('div.portrait-tool').slideUp(); 
+            }).mouseleave(function() {
+                $('div.portrait-tool').slideUp();
             });
         }
 
-        vm.uploadPortrait = function(event){
+        vm.uploadPortrait = function(event) {
             event && event.stopPropagation();
 
             $uibModal.open({
@@ -39,10 +39,26 @@
                 backdrop: 'static',
                 size: 'lg',
                 controllerAs: 'vm',
-                controller: ['$scope', '$uibModalInstance', function($scope, $uibModalInstance){
+                controller: ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
                     var vm = this;
 
-                    vm.cancel = function(event){
+                    setTimeout(function() {
+                        var image = document.getElementById('image-portrait');
+                        var cropper = new Cropper(image, {
+                            aspectRatio: 16 / 9,
+                            crop: function(e) {
+                                console.log(e.detail.x);
+                                console.log(e.detail.y);
+                                console.log(e.detail.width);
+                                console.log(e.detail.height);
+                                console.log(e.detail.rotate);
+                                console.log(e.detail.scaleX);
+                                console.log(e.detail.scaleY);
+                            }
+                        });
+                    }, 1000);
+
+                    vm.cancel = function(event) {
                         event && event.stopPropagation();
                         $uibModalInstance.dismiss();
                     };

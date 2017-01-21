@@ -20,7 +20,8 @@
     "js-md5": "md5#^0.4.1",
     "angular-cookies": "^1.6.1",
     "ngstorage": "^0.3.11",
-    "moment": "2.9.0"
+    "moment": "2.9.0",
+    "cropperjs": "^0.8.1"
   },
   "devDependencies": {},
   "overrides": {
