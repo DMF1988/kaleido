@@ -2,7 +2,7 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                <form name="vm.formOptions.form">
+                <form name="vm.formOptions.form" novalidate>
                     <h1>登录</h1>
                     <div>
                         <input ng-class="{'parsley-error': vm.formOptions.form.email.$invalid && vm.formOptions.submitted}" ng-model="vm.formOptions.loginName" name="email" type="email" class="form-control" placeholder="账号" required="true">
@@ -17,6 +17,9 @@
                             <li ng-if="vm.formOptions.form.password.$error.required && vm.formOptions.submitted" class="parsley-required text-left">密码不能为空</li>
                             <li ng-if="vm.formOptions.form.password.$error.pattern && vm.formOptions.submitted" class="parsley-required text-left">密码必须为不少于6位的英文字母或数字</li>
                         </ul>
+                    </div>
+                    <div>
+                        <span random-code></span>
                     </div>
                     <div>
                         <a ng-click="vm.login($event)" class="btn btn-default submit" href="javascript:;">登录</a>
