@@ -18,7 +18,8 @@
             form: 'loginForm',
             submitted: false,
             loginName: '',
-            loginPassword: ''
+            loginPassword: '',
+            codeMatch: false
         };
 
         vm.login = function(event) {

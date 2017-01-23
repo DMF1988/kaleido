@@ -15,11 +15,13 @@
         return {
             restrict: 'AE',
             scope: {
-                callback: '&'
+                match: '='
             },
             replace: true,
             templateUrl: 'views/template/random-code.tpl.html',
             link: function(scope, element, attrs){
+
+                scope.inputCode = '';
 
                 scope.codes = generateCode();
 
@@ -28,6 +30,14 @@
 
                     scope.codes = generateCode();
                 };
+
+                scope.$watch('inputCode+codes', function(nValue, oValue){
+                    if(nValue === oValue){
+                        return;
+                    }
+
+                    scope.match = $.trim(scope.inputCode) === scope.codes.join('');
+                });
 
             }
 

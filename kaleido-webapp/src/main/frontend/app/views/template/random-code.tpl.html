@@ -3,10 +3,10 @@
     <li class="code code-bg{{codes[1]}}"></li>
     <li class="code code-bg{{codes[2]}}"></li>
     <li class="code code-bg{{codes[3]}}"></li>
-    <li style="width: 45%">
-        <input pattern="/\d{4}/" maxlength="4" type="text" class="form-control">
+    <li style="width: 45%; vertical-align: top;">
+        <input ng-model="inputCode" pattern="/\d{4}/" maxlength="4" type="text" class="form-control">
     </li>
-    <li>
+    <li style="vertical-align: top;">
         <button ng-click="refreshCode($event)" class="btn">
             <i class="fa fa-history"></i>
         </button>
