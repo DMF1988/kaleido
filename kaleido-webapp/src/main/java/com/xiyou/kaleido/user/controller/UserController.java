@@ -3,6 +3,7 @@ package com.xiyou.kaleido.user.controller;
 import com.xiyou.kaleido.common.ResponseModel;
 import com.xiyou.kaleido.profile.service.ProfileService;
 import com.xiyou.kaleido.user.entity.User;
+import com.xiyou.kaleido.user.exception.UserError;
 import com.xiyou.kaleido.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import com.xiyou.kaleido.common.util.KaleidoException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
 /**
  * Created by chad.ding on 2017/1/10.
@@ -34,6 +36,36 @@ public class UserController {
 
     @Autowired
     private ProfileService profileService;
+
+    @RequestMapping(value="/updatePassword", method=RequestMethod.POST)
+    public ResponseEntity<ResponseModel> updatePassword(@RequestParam String loginName, @RequestParam String oldPassword, @RequestParam String newPassword) throws KaleidoException {
+
+        User user = userService.login(loginName, oldPassword);
+
+        if(user == null){
+            throw new KaleidoException(UserError.USER_NOT_EXIST);
+        }
+
+        user.setLoginPassword(newPassword);
+        user.setLastUpdateTime(new Date());
+
+        return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/updateEmail", method=RequestMethod.POST)
+    public ResponseEntity<ResponseModel> updateEmail(@RequestParam String oldEmail, @RequestParam String newEmail, @RequestParam String password) throws KaleidoException{
+
+        User user = userService.login(oldEmail, password);
+
+        if(user == null){
+            throw new KaleidoException(UserError.USER_NOT_EXIST);
+        }
+
+        user.setLoginName(newEmail);
+        user.setLastLoginTime(new Date());
+
+        return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
+    }
 
     @RequestMapping(value="/get", method=RequestMethod.GET)
     public ResponseEntity<ResponseModel> getUserInfo(@RequestParam String userId, HttpServletRequest request) throws KaleidoException {

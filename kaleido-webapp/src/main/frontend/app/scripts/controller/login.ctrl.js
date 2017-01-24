@@ -32,6 +32,7 @@
 
             if(!vm.formOptions.codeMatch){
                 $notify.warn('请输入正确的验证码');
+                return;
             }
 
             var params = {

@@ -13,6 +13,10 @@
     kaleidoApp.factory('_$user', ['$resource', function($resource){
 
         var resource = {
+            //修改登录账号
+            updateEmail: $resource(window.HOST + '/user/updateEmail', {}, { update: { method: 'POST' } }),
+            //修改登录密码
+            updatePassword: $resource(window.HOST + '/user/updatePassword', {}, { update: { method: 'POST' } }),
             //获取用户信息
             getUserInfo: $resource(window.HOST + '/user/get', {}, { get: { method: 'GET' } }),
             //登录
@@ -20,6 +24,16 @@
             //注册
             signup: $resource(window.HOST + '/user/signup', {}, { send: { method: 'GET' } })
         };
+
+        function updateEmail(params){
+            var q = resource.updateEmail.update(params).$promise;
+            return q;
+        }
+
+        function updatePassword(params){
+            var q = resource.updatePassword.update(params).$promise;
+            return q;
+        }
 
         function getUserInfo(params){
             var q = resource.getUserInfo.get(params, {}).$promise;
@@ -37,6 +51,8 @@
         }
 
         return {
+            updateEmail: updateEmail,
+            updatePassword: updatePassword,
             getUserInfo: getUserInfo,
             login: login,
             signup: signup

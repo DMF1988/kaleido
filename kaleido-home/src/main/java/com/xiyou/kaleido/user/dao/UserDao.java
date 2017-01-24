@@ -15,4 +15,6 @@ public interface UserDao {
     String getLatestId();
     int checkUserExist(String loginName);
     long updateLoginTime(@Param("userId") String userId);
+    long updateEmail(@Param("user") User user);
+    long updatePassword(@Param("user") User user);
 }

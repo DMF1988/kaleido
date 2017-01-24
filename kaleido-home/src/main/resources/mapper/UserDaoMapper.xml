@@ -17,6 +17,14 @@
 		user_id, login_name, login_password, last_login_time, create_time, last_update_time, deleted
 	</sql>
 
+	<update id="updatePassword" parameterType="com.xiyou.kaleido.user.entity.User">
+		update user set login_password = #{loginPassword} where user_id = #{userId}
+	</update>
+
+	<update id="updateEmail" parameterType="com.xiyou.kaleido.user.entity.User">
+		update user set login_name = #{userName}, last_update_time = #{lastUpdateTime} where user_id = #{userId}
+	</update>
+
 	<insert id="addUser" parameterType="com.xiyou.kaleido.user.entity.User" useGeneratedKeys="true" keyProperty="id">
 		insert into user ( <include refid="Base_Column_List" /> )
         values (#{userId, jdbcType=VARCHAR}, #{loginName, jdbcType=VARCHAR}, #{loginPassword, jdbcType=VARCHAR},
