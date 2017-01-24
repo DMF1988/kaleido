@@ -30,6 +30,10 @@
                 return;
             }
 
+            if(!vm.formOptions.codeMatch){
+                $notify.warn('请输入正确的验证码');
+            }
+
             var params = {
                 loginName: $.trim(vm.formOptions.loginName),
                 loginPassword: md5($.trim(vm.formOptions.loginPassword))

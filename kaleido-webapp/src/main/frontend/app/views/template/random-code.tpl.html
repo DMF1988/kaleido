@@ -1,14 +1,15 @@
 <ul class="list-inline random-code">
-    <li class="code code-bg{{codes[0]}}"></li>
-    <li class="code code-bg{{codes[1]}}"></li>
-    <li class="code code-bg{{codes[2]}}"></li>
-    <li class="code code-bg{{codes[3]}}"></li>
+    <li class="code code-bg{{commonInfo.codes[0]}}"></li>
+    <li class="code code-bg{{commonInfo.codes[1]}}"></li>
+    <li class="code code-bg{{commonInfo.codes[2]}}"></li>
+    <li class="code code-bg{{commonInfo.codes[3]}}"></li>
     <li style="width: 45%; vertical-align: top;">
-        <input ng-model="inputCode" pattern="/\d{4}/" maxlength="4" type="text" class="form-control">
+        <input ng-model="commonInfo.inputCode" placeholder="请输入验证码" maxlength="4" type="text" class="form-control">
     </li>
     <li style="vertical-align: top;">
-        <button ng-click="refreshCode($event)" class="btn">
-            <i class="fa fa-history"></i>
+        <button ng-disabled="commonInfo.clock > 0" ng-click="refreshCode($event)" style="width: 40px;" class="btn">
+            <i ng-show="commonInfo.clock == 0" class="fa fa-history"></i>
+            <span ng-show="commonInfo.clock > 0" ng-bind="commonInfo.clock"></span>
         </button>
     </li>
 </ul>

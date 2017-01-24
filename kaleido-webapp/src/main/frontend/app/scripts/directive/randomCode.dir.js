@@ -10,7 +10,7 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.directive('randomCode', [function(){
+    kaleidoApp.directive('randomCode', ['$timeout', function($timeout){
 
         return {
             restrict: 'AE',
@@ -21,23 +21,43 @@
             templateUrl: 'views/template/random-code.tpl.html',
             link: function(scope, element, attrs){
 
-                scope.inputCode = '';
+                scope.commonInfo = {
+                    timer: null,
+                    clock: 0,
+                    inputCode: '',
+                    codes: []
+                };
 
-                scope.codes = generateCode();
-
+                scope.commonInfo.codes = generateCode();
                 scope.refreshCode = function(event){
                     event && event.stopPropagation();
 
-                    scope.codes = generateCode();
+                    scope.commonInfo.codes = generateCode();
+                    scope.commonInfo.clock = 10;
+                    click();
                 };
 
-                scope.$watch('inputCode+codes', function(nValue, oValue){
+                scope.$watch('commonInfo.inputCode+commonInfo.codes', function(nValue, oValue){
                     if(nValue === oValue){
                         return;
                     }
 
-                    scope.match = $.trim(scope.inputCode) === scope.codes.join('');
+                    scope.match = $.trim(scope.commonInfo.inputCode) === scope.commonInfo.codes.join('');
                 });
+
+                function click(){
+
+                    if(scope.commonInfo.clock <= 0){
+                        $timeout.cancel(scope.commonInfo.timer);
+                        scope.commonInfo.timer = null;
+                        return;
+                    }
+
+                    scope.commonInfo.timer = $timeout(function(){
+                        scope.commonInfo.clock--;
+                        click();
+                    }, 1000);
+                }
 
             }
 
