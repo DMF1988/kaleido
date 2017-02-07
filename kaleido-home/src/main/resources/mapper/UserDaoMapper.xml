@@ -22,7 +22,7 @@
 	</update>
 
 	<update id="updateEmail" parameterType="com.xiyou.kaleido.user.entity.User">
-		update user set login_name = #{userName}, last_update_time = #{lastUpdateTime} where user_id = #{userId}
+		update user set login_name = #{loginName}, last_update_time = #{lastUpdateTime} where user_id = #{userId}
 	</update>
 
 	<insert id="addUser" parameterType="com.xiyou.kaleido.user.entity.User" useGeneratedKeys="true" keyProperty="id">

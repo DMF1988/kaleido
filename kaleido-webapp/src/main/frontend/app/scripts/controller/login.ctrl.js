@@ -49,6 +49,8 @@
 
                 $state.go('kaleido.monitor');
 
+            }, function(){
+                $scope.$broadcast('$refreshCode');
             });
 
         };

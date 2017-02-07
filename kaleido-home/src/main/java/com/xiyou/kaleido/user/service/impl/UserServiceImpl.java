@@ -31,20 +31,26 @@ public class UserServiceImpl implements UserService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public boolean updateEmail(User user) {
+    public void updateEmail(User user) throws KaleidoException {
+
+        int isEmailExist = userDao.checkUserExist(user.getLoginName());
+
+        if(isEmailExist > 0){
+            throw new KaleidoException(UserError.USER_EXISTS, user.getLoginName());
+        }
 
         userDao.updateEmail(user);
 
         logger.info("user login account update to %s", user.getLoginName());
-        return false;
+
     }
 
-    public boolean updatePassword(User user) {
+    public void updatePassword(User user) {
 
         userDao.updatePassword(user);
 
         logger.info("update user %s login password", user.getLoginName());
-        return false;
+
     }
 
     @Transactional

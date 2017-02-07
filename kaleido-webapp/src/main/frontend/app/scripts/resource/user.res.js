@@ -14,9 +14,9 @@
 
         var resource = {
             //修改登录账号
-            updateEmail: $resource(window.HOST + '/user/updateEmail', {}, { update: { method: 'POST' } }),
+            updateEmail: $resource(window.HOST + '/user/updateEmail', {}, { update: { method: 'GET' } }),
             //修改登录密码
-            updatePassword: $resource(window.HOST + '/user/updatePassword', {}, { update: { method: 'POST' } }),
+            updatePassword: $resource(window.HOST + '/user/updatePassword', {}, { update: { method: 'GET' } }),
             //获取用户信息
             getUserInfo: $resource(window.HOST + '/user/get', {}, { get: { method: 'GET' } }),
             //登录

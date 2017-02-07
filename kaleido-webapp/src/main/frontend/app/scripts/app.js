@@ -91,7 +91,7 @@
                 .state('kaleido.profile.updatePassword', {
                     url: '/updatePassword',
                     templateUrl: 'views/profile/update-password.html',
-                    controller: 'UpdatePassowrdCtrl as vm'
+                    controller: 'UpdatePasswordCtrl as vm'
                 })
                 .state('signup', {
                     url: '/signup',

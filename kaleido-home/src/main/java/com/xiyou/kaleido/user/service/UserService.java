@@ -10,6 +10,6 @@ public interface UserService {
     User getUserInfo(String userId) throws KaleidoException;
     User login(String loginName, String loginPassword) throws KaleidoException;
     String addUser(String loginName, String loginPassword) throws KaleidoException;
-    boolean updateEmail(User user);
-    boolean updatePassword(User user);
+    void updateEmail(User user) throws KaleidoException;
+    void updatePassword(User user);
 }

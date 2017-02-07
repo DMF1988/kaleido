@@ -6,11 +6,11 @@
 
 'use strict';
 
-(function(angular, $, md5){
+(function(angular, $, md5) {
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('SignupCtrl', ['$scope', '$state', '_$user', function($scope, $state, _$user){
+    kaleidoApp.controller('SignupCtrl', ['$scope', '$state', '_$user', '$notify', function($scope, $state, _$user, $notify) {
 
         var vm = this;
 
@@ -18,14 +18,20 @@
             form: 'signupForm',
             submitted: false,
             loginName: '',
-            loginPassword: ''
+            loginPassword: '',
+            codeMatch: false
         };
 
-        vm.signup = function(event){
+        vm.signup = function(event) {
             event && event.stopPropagation();
 
             vm.formOptions.submitted = true;
-            if(vm.formOptions.form.$invalid){
+            if (vm.formOptions.form.$invalid) {
+                return;
+            }
+
+            if (!vm.formOptions.codeMatch) {
+                $notify.warn('请输入正确的验证码');
                 return;
             }
 
@@ -34,8 +40,10 @@
                 loginPassword: md5($.trim(vm.formOptions.loginPassword))
             };
 
-            _$user.signup(params).then(function(data){
+            _$user.signup(params).then(function(data) {
                 $state.go('login');
+            }, function() {
+                $scope.$broadcast('$refreshCode');
             });
 
         };

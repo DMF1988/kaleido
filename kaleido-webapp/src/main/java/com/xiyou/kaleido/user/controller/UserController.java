@@ -37,7 +37,7 @@ public class UserController {
     @Autowired
     private ProfileService profileService;
 
-    @RequestMapping(value="/updatePassword", method=RequestMethod.POST)
+    @RequestMapping(value="/updatePassword", method=RequestMethod.GET)
     public ResponseEntity<ResponseModel> updatePassword(@RequestParam String loginName, @RequestParam String oldPassword, @RequestParam String newPassword) throws KaleidoException {
 
         User user = userService.login(loginName, oldPassword);
@@ -49,10 +49,12 @@ public class UserController {
         user.setLoginPassword(newPassword);
         user.setLastUpdateTime(new Date());
 
+        userService.updatePassword(user);
+
         return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
     }
 
-    @RequestMapping(value="/updateEmail", method=RequestMethod.POST)
+    @RequestMapping(value="/updateEmail", method=RequestMethod.GET)
     public ResponseEntity<ResponseModel> updateEmail(@RequestParam String oldEmail, @RequestParam String newEmail, @RequestParam String password) throws KaleidoException{
 
         User user = userService.login(oldEmail, password);
@@ -63,6 +65,8 @@ public class UserController {
 
         user.setLoginName(newEmail);
         user.setLastLoginTime(new Date());
+
+        userService.updateEmail(user);
 
         return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
     }

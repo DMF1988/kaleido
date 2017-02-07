@@ -2,7 +2,7 @@
 drop table if exists meta_dic;
 
 create table meta_dic (
-	id bigint(20) not null auto_increment comment '自增长记录ID,主键',
+	  id bigint(20) not null auto_increment comment '自增长记录ID,主键',
     parent varchar(20) not null comment '字典分组',
     value varchar(20) not null comment '字典值',
     text varchar(50) not null comment '字典字符',

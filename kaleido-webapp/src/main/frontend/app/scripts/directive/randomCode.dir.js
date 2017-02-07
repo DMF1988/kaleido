@@ -34,6 +34,7 @@
 
                     scope.commonInfo.codes = generateCode();
                     scope.commonInfo.clock = 10;
+                    scope.commonInfo.inputCode = '';
                     click();
                 };
 
@@ -43,6 +44,11 @@
                     }
 
                     scope.match = $.trim(scope.commonInfo.inputCode) === scope.commonInfo.codes.join('');
+                });
+
+                scope.$on('$refreshCode', function(){
+                    scope.commonInfo.inputCode = '';
+                    scope.commonInfo.codes = generateCode();
                 });
 
                 function click(){
