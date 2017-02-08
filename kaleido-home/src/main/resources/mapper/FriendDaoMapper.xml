@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xiyou.kaleido.meta.dao.MetaDao">
+	<resultMap id="BaseResultMap" type="com.xiyou.kaleido.meta.entity.Meta">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="parent" property="parent" jdbcType="VARCHAR" />
+		<result column="value" property="value" jdbcType="VARCHAR" />
+		<result column="text" property="text" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="last_update_time" property="lastUpdateTime" jdbcType="VARCHAR" />
+		<result column="deleted" property="deleted" jdbcType="TINYINT" />
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		parent, value, text, description, create_time, last_update_time, deleted
+	</sql>
+	
+	<select id="getByParent" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" /> from meta_dic where parent = #{parent,jdbcType=VARCHAR} and deleted=0 order by sort asc
+	</select>
+
+	<select id="getMetaDetail" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" /> from meta_dic where parent = #{param1, jdbcType=VARCHAR} and value = #{param2, jdbcType=VARCHAR} and deleted=0 order by sort asc
+	</select>
+
+</mapper>

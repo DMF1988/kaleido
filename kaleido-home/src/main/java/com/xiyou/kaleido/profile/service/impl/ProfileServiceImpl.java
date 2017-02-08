@@ -31,6 +31,11 @@ public class ProfileServiceImpl implements ProfileService {
         return null;
     }
 
+    public String queryUser(String keyword) throws KaleidoException {
+
+        return null;
+    }
+
     public Profile getProfile(String userId) throws KaleidoException {
 
         Profile profile = profileDao.getProfileByUserId(userId);

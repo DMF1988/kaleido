@@ -24,10 +24,24 @@
 	<sql id="Base_Column_List" >
 		user_id, user_name, real_name, phone_num, phone_num, country, province, city, address, birthday, portrait, gender, degree, occupation, create_time, last_update_time, deleted
 	</sql>
+
+	<select id="queryUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from profile where user_id like %#{param1}% or user_name like %#{param1}%
+		<if test="param2 != null" >
+			<if test="param2.sort != null" >
+				order by
+				<foreach collection="param2.sort" item="order" separator="," >
+					${order.property} ${order.direction}
+				</foreach>
+			</if>
+			<if test="param2.offset >= 0 and param2.pageSize > 0" >
+				limit ${param2.offset}, ${param2.pageSize}
+			</if>
+		</if>
+	</select>
 	
 	<select id="getProfileByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
-		select
-		<include refid="Base_Column_List" /> from profile where user_id = #{userId}
+		select <include refid="Base_Column_List" /> from profile where user_id = #{userId}
 	</select>
 
 	<update id="updateByUserId" parameterType="com.xiyou.kaleido.profile.entity.Profile">
