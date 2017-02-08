@@ -65,7 +65,23 @@
                 .state('kaleido.friend', {
                     url: '/friend',
                     templateUrl: 'views/friend/friend.html',
-                    controller: 'FriendCtrl as vm'
+                    controller: 'FriendCtrl as vm',
+                    abstrict: true
+                })
+                .state('kaleido.friend.list', {
+                    url: '/list',
+                    templateUrl: 'views/friend/friend-list.html',
+                    controller: 'FriendListCtrl as vm'
+                })
+                .state('kaleido.friend.pending', {
+                    url: '/pending',
+                    templateUrl: 'views/friend/pending-list.html',
+                    controller: 'PendingListCtrl as vm'
+                })
+                .state('kaleido.friend.blacklist', {
+                    url: '/blacklist',
+                    templateUrl: 'views/friend/black-list.html',
+                    controller: 'BlackListCtrl as vm'
                 })
                 .state('kaleido.profile', {
                     url: '/profile',

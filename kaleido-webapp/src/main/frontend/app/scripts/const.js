@@ -40,8 +40,8 @@
         active: false
     },{
         key: 'friend',
-        children: [],
-        url: '#!/kaleido/friend',
+        children: ['friend.list', 'friend.pending', 'friend.blacklist'],
+        url: '#!/kaleido/friend/list',
         text: '好友',
         icon: 'fa-group',
         active: false

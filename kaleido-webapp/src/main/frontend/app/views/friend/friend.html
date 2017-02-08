@@ -1,3 +1,36 @@
 <div>
-	friend
+    <div class="clearfix"></div>
+    <div class="">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><i class="fa fa-group"></i> 好友</h2>
+                    <div class="btn-group pull-right">
+                        <button ng-click="vm.addFriend($event)" type="button" class="btn btn-primary">新增好友</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div>
+                        <ul class="nav nav-tabs bar_tabs">
+                            <li ng-class="{'active': vm.commonInfo.currentState == 'kaleido.friend.list'}">
+                                <a href="#!/kaleido/friend/list">好友列表</a>
+                            </li>
+                            <li ng-class="{'active': vm.commonInfo.currentState == 'kaleido.friend.pending'}">
+                                <a href="#!/kaleido/friend/pending">待审批</a>
+                            </li>
+                            <li ng-class="{'active': vm.commonInfo.currentState == 'kaleido.friend.blacklist'}">
+                                <a href="#!/kaleido/friend/blacklist">黑名单</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in">
+                                <div ui-view></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
