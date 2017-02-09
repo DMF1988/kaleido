@@ -16,7 +16,7 @@ public class LoggerAspect {
 
     private final Logger logger  = LoggerFactory.getLogger(LoggerAspect.class);
 
-    @AfterThrowing(throwing= "ex", pointcut = "execution(* www.xiyou.com..service.*.*(..))")
+    @AfterThrowing(throwing= "ex", pointcut = "execution(* com.xiyou.kaleido..service.*.*(..))")
     public void doLog(final Throwable ex){
 
        if(ex == null){
