@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by DMF on 2017/2/1.
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/friend")
 public class FriendController {
 
+    @RequestMapping(value="add", method= RequestMethod.POST)
     public ResponseEntity<ResponseModel> addFriend(@RequestBody FriendVo friend){
 
         return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);

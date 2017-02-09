@@ -40,6 +40,11 @@
 
                     var vm = this;
 
+                    vm.pageInfo = {
+                        pageSize: 15,
+                        pageNum: 1
+                    };
+
                     vm.cancel = function(event){
                         event && event.stopPropagation();
                         $uibModalInstance.dismiss();

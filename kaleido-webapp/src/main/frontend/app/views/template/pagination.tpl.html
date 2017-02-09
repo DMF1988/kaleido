@@ -1,0 +1,17 @@
+<nav>
+    <ul class="pagination">
+        <li>
+            <a ng-click="page('previous', $event)" href="javascript:;">
+                <span>上一页</span>
+            </a>
+        </li>
+        <li ng-class="{'active': item == pageNum}" ng-repeat="item in pageItem track by $index">
+        	<a ng-click="page(item, $event)" href="javascript:;" ng-bind="item"></a>
+    	</li>
+        <li>
+            <a ng-click="page('next', $event)" href="javascript:;">
+                <span>下一页</span>
+            </a>
+        </li>
+    </ul>
+</nav>
