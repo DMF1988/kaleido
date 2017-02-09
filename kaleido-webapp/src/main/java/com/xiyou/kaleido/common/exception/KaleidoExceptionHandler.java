@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import com.xiyou.kaleido.common.annotation.KaleidoController;
-import com.xiyou.kaleido.common.util.KaleidoException;
 
 /**
  * Created by chad.ding on 2017/1/9.

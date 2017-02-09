@@ -4,7 +4,7 @@ import com.xiyou.kaleido.meta.exception.MetaError;
 import com.xiyou.kaleido.meta.service.MetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.xiyou.kaleido.common.util.KaleidoException;
+import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.meta.dao.MetaDao;
 import com.xiyou.kaleido.meta.entity.Meta;
 

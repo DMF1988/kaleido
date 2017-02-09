@@ -4,7 +4,7 @@ package com.xiyou.kaleido.profile.exception;
  * Created by DMF on 2017/1/13.
  */
 
-import com.xiyou.kaleido.common.util.ErrorCode;
+import com.xiyou.kaleido.common.exception.ErrorCode;
 import lombok.Getter;
 
 public enum ProfileError implements ErrorCode {

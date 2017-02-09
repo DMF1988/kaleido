@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.xiyou.kaleido.common.util.KaleidoException;
+import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.profile.dao.ProfileDao;
 import com.xiyou.kaleido.profile.entity.Profile;
 import com.xiyou.kaleido.user.dao.UserDao;

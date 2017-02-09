@@ -1,5 +1,6 @@
-package com.xiyou.kaleido.common.util;
+package com.xiyou.kaleido.common.exception;
 
+import com.xiyou.kaleido.common.exception.ErrorCode;
 import lombok.Getter;
 
 /**

@@ -1,7 +1,7 @@
 package com.xiyou.kaleido.user.service;
 
 import com.xiyou.kaleido.user.entity.User;
-import com.xiyou.kaleido.common.util.KaleidoException;
+import com.xiyou.kaleido.common.exception.KaleidoException;
 
 /**
  * Created by chad.ding on 2017/1/6.

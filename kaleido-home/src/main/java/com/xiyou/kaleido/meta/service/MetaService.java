@@ -1,6 +1,6 @@
 package com.xiyou.kaleido.meta.service;
 
-import com.xiyou.kaleido.common.util.KaleidoException;
+import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.meta.entity.Meta;
 
 import java.util.List;

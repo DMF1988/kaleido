@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.xiyou.kaleido.common.annotation.KaleidoController;
-import com.xiyou.kaleido.common.util.KaleidoException;
+import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.profile.entity.Profile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 

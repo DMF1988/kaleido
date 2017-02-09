@@ -1,6 +1,6 @@
 package com.xiyou.kaleido.profile.service;
 
-import com.xiyou.kaleido.common.util.KaleidoException;
+import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.profile.entity.Profile;
 import java.io.InputStream;
 import java.util.List;

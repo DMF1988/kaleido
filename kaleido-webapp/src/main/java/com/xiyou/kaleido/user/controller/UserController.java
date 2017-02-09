@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.xiyou.kaleido.profile.entity.Profile;
 import com.xiyou.kaleido.user.model.UserVo;
 import com.xiyou.kaleido.common.annotation.KaleidoController;
-import com.xiyou.kaleido.common.util.KaleidoException;
+import com.xiyou.kaleido.common.exception.KaleidoException;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
