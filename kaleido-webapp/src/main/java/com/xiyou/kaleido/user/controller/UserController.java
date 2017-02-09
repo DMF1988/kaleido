@@ -1,6 +1,6 @@
 package com.xiyou.kaleido.user.controller;
 
-import com.xiyou.kaleido.common.ResponseModel;
+import com.xiyou.kaleido.common.model.ResponseModel;
 import com.xiyou.kaleido.profile.service.ProfileService;
 import com.xiyou.kaleido.user.entity.User;
 import com.xiyou.kaleido.user.exception.UserError;

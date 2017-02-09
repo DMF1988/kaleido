@@ -1,6 +1,6 @@
 package com.xiyou.kaleido.meta.controller;
 
-import com.xiyou.kaleido.common.ResponseModel;
+import com.xiyou.kaleido.common.model.ResponseModel;
 import com.xiyou.kaleido.meta.entity.Meta;
 import com.xiyou.kaleido.meta.mode.MetaVo;
 import com.xiyou.kaleido.meta.service.MetaService;

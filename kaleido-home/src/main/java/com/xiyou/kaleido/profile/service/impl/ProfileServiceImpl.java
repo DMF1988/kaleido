@@ -3,6 +3,8 @@ package com.xiyou.kaleido.profile.service.impl;
 import com.xiyou.kaleido.common.Configuration;
 import com.xiyou.kaleido.profile.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.xiyou.kaleido.common.util.KaleidoException;
 import com.xiyou.kaleido.profile.dao.ProfileDao;
@@ -12,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by DMF on 2017/1/13.
@@ -31,9 +34,12 @@ public class ProfileServiceImpl implements ProfileService {
         return null;
     }
 
-    public String queryUser(String keyword) throws KaleidoException {
+    public List<Profile> queryUser(String keyword, int pageNum, int pageSize) throws KaleidoException {
+        PageRequest pageRequest = new PageRequest(pageNum, pageSize, new Sort(Sort.Direction.DESC, "create_time"));
 
-        return null;
+        List<Profile> list = profileDao.queryUser(keyword, pageRequest);
+
+        return list;
     }
 
     public Profile getProfile(String userId) throws KaleidoException {

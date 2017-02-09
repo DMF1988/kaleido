@@ -1,6 +1,6 @@
 package com.xiyou.kaleido.album.controller;
 
-import com.xiyou.kaleido.common.ResponseModel;
+import com.xiyou.kaleido.common.model.ResponseModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

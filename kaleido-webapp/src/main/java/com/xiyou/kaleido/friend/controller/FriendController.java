@@ -1,6 +1,6 @@
 package com.xiyou.kaleido.friend.controller;
 
-import com.xiyou.kaleido.common.ResponseModel;
+import com.xiyou.kaleido.common.model.ResponseModel;
 import com.xiyou.kaleido.friend.model.FriendVo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

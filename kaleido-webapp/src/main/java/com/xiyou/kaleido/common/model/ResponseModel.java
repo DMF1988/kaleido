@@ -1,4 +1,4 @@
-package com.xiyou.kaleido.common;
+package com.xiyou.kaleido.common.model;
 
 import lombok.Getter;
 
