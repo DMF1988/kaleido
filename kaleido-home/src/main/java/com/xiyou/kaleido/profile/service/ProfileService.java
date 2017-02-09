@@ -13,4 +13,5 @@ public interface ProfileService {
     public long updateProfile(Profile profile) throws KaleidoException;
     public String uploadPortrait(InputStream image, String fileName, String userId) throws KaleidoException;
     public List<Profile> queryUser(String keyword, int pageNum, int pageSize) throws KaleidoException;
+    public int countUser(String keyword);
 }

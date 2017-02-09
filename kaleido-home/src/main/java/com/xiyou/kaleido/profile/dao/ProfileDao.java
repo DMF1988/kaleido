@@ -18,4 +18,5 @@ public interface ProfileDao {
     long addProfile(@Param("profile") Profile profile);
     long updateByUserId(@Param("profile") Profile profile);
     List queryUser(@Param("keyword") String keyword, @Param("pageable") Pageable pageable);
+    int countUser(@Param("keyword") String keyword);
 }

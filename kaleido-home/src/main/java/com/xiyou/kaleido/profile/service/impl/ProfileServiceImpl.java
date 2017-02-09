@@ -29,6 +29,12 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private Configuration configuration;
 
+    public int countUser(String keyword){
+        int result = profileDao.countUser(keyword);
+
+        return result;
+    }
+
     public String uploadPortrait(InputStream image, String fileName, String userId) throws KaleidoException {
         System.out.println(configuration.getPortraitDir());
         return null;

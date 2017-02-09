@@ -2,6 +2,7 @@ package com.xiyou.kaleido.profile.controller;
 
 import com.xiyou.kaleido.common.model.PaginationVo;
 import com.xiyou.kaleido.common.model.ResponseModel;
+import com.xiyou.kaleido.common.util.PaginitionUtils;
 import com.xiyou.kaleido.profile.model.ProfileVo;
 import com.xiyou.kaleido.profile.model.UserQueryVo;
 import com.xiyou.kaleido.profile.service.ProfileService;
@@ -20,6 +21,8 @@ import com.xiyou.kaleido.profile.entity.Profile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by chad.ding on 2017/1/6.
@@ -35,7 +38,27 @@ public class ProfileController {
 
     @RequestMapping(value="query", method=RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<ResponseModel<PaginationVo>> queryUser(@RequestBody UserQueryVo queryVo) throws KaleidoException {
-        return null;
+
+        int total = profileService.countUser(queryVo.getKeyword());
+
+        List<ProfileVo> list = new ArrayList<ProfileVo>();
+        List<Profile> profiles = profileService.queryUser(queryVo.getKeyword(), queryVo.getPageNum(), queryVo.getPageSize());
+
+        for(Profile profile : profiles){
+            ProfileVo profileVo = new ProfileVo();
+            profileVo.setPortrait(profile.getPortrait());
+            profileVo.setUserName(profile.getUserName());
+            profileVo.setCountry(profile.getCountry());
+            profileVo.setProvince(profile.getProvince());
+            profileVo.setCity(profile.getCity());
+
+            list.add(profileVo);
+        }
+
+        PaginationVo paginationVo = new PaginationVo();
+        paginationVo.setData(list);
+        paginationVo.setTotal(PaginitionUtils.getTotalPage(queryVo.getPageSize(), total));
+        return new ResponseEntity<ResponseModel<PaginationVo>>(new ResponseModel<PaginationVo>(paginationVo), HttpStatus.OK);
     }
 
     @RequestMapping(value="uploadPortrait", method=RequestMethod.POST)
