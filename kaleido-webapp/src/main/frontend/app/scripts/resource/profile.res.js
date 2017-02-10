@@ -13,11 +13,18 @@
     kaleidoApp.factory('_$profile', ['$resource', function($resource) {
 
         var resource = {
+            //搜索用户
+            queryUser: $resource(window.HOST + '/profile/query', {}, { query: { method: 'POST' } }),
             //获取用户详细信息
             getProfileInfo: $resource(window.HOST + '/profile/get', {}, { get: { method: 'GET' } }),
             //更新用户信息
             updateProfile: $resource(window.HOST + '/profile/update', {}, { update: { method: 'POST' } })
         };
+
+        function queryUser(params){
+            var q = resource.queryUser.query(params).$promise;
+            return q;
+        }
 
         function getProfileInfo(params) {
             var q = resource.getProfileInfo.get(params).$promise;
@@ -30,6 +37,7 @@
         }
 
         return {
+            queryUser: queryUser,
             getProfileInfo: getProfileInfo,
             updateProfile: updateProfile
         };

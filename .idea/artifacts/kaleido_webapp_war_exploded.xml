@@ -17,6 +17,7 @@
           <element id="library" level="project" name="Maven: com.carrotsearch:java-sizeof:0.0.4" />
           <element id="library" level="project" name="Maven: org.codehaus.janino:janino:2.7.5" />
           <element id="library" level="project" name="Maven: org.codehaus.janino:commons-compiler:2.7.5" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.10" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />

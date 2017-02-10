@@ -6,7 +6,7 @@
 
 'use strict';
 
-(function(angular){
+(function(angular, $){
 
 	var kaleidoApp = angular.module('kaleidoApp');
 
@@ -30,19 +30,26 @@
             $uibModal.open({
                 templateUrl: 'views/friend/add-friend-modal.tpl.html',
                 backdrop: 'static',
+                size: 'lg',
                 resolve: {
                     userId: function(){
                         return $scope.userInfo.userId;
                     }
                 },
                 controllerAs: 'vm',
-                controller: ['$scope', '$uibModalInstance', '_$user', '_$friend', function($scope, $uibModalInstance, _$user, _$friend){
+                controller: ['$scope', '$uibModalInstance', '_$profile', '_$friend', function($scope, $uibModalInstance, _$profile, _$friend){
 
                     var vm = this;
 
                     vm.pageInfo = {
-                        pageSize: 15,
-                        pageNum: 1
+                        pageSize: 3,
+                        pageNum: 1,
+                        pageTotal: 0
+                    };
+
+                    vm.commonInfo = {
+                        keyword: '',
+                        userList: []
                     };
 
                     vm.cancel = function(event){
@@ -50,10 +57,36 @@
                         $uibModalInstance.dismiss();
                     };
 
+                    vm.query = function(event){
+                        event && event.stopPropagation();
+
+                        queryUser(vm.pageInfo.pageNum)
+                    };
+
+                    function queryUser(pageNum){
+
+                        var params = {
+                            keyword: $.trim(vm.commonInfo.keyword),
+                            pageSize: vm.pageInfo.pageSize,
+                            pageNum: pageNum
+                        };
+
+                        _$profile.queryUser(params).then(function(res){
+                            vm.commonInfo.userList = res.data.data;
+                            vm.pageInfo.pageTotal = res.data.total;
+                        }); 
+                    }
+
+                    queryUser(vm.pageInfo.pageNum);
+
+                    $scope.$on('$pageChangeSuccess', function(event, pageNum){
+                        queryUser(pageNum);
+                    });
+
                 }]
             });
         };
 
 	}]);
 
-})(angular);
+})(angular, jQuery);

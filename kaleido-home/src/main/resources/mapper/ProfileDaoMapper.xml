@@ -25,12 +25,12 @@
 		user_id, user_name, real_name, phone_num, phone_num, country, province, city, address, birthday, portrait, gender, degree, occupation, create_time, last_update_time, deleted
 	</sql>
 
-	<select id="countUser" parameterType="java.lang.String" resultType="java.lang.Integer">
-		select count(*) from profile where user_id like %#{keyword}% or user_name like %#{keyword}%
+	<select id="countUser" resultType="java.lang.Integer"  parameterType="java.lang.String">
+		select count(*) from profile where user_id like concat('%', #{keyword, jdbcType=VARCHAR}, '%') or user_name like concat('%', #{keyword, jdbcType=VARCHAR}, '%')
 	</select>
 
-	<select id="queryUser" parameterType="java.lang.String" resultMap="BaseResultMap">
-		select <include refid="Base_Column_List" /> from profile where user_id like %#{param1}% or user_name like %#{param1}%
+	<select id="queryUser"  resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from profile where user_id like concat('%', #{param1, jdbcType=VARCHAR}, '%') or user_name like concat('%', #{param1, jdbcType=VARCHAR}, '%')
 		<if test="param2 != null" >
 			<if test="param2.sort != null" >
 				order by
@@ -45,7 +45,7 @@
 	</select>
 	
 	<select id="getProfileByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
-		select <include refid="Base_Column_List" /> from profile where user_id = #{userId}
+		select <include refid="Base_Column_List" /> from profile where user_id = #{userId, jdbcType=VARCHAR}
 	</select>
 
 	<update id="updateByUserId" parameterType="com.xiyou.kaleido.profile.entity.Profile">

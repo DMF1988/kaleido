@@ -13,7 +13,6 @@ import java.util.List;
 
 @Repository("profileDao")
 public interface ProfileDao {
-
     Profile getProfileByUserId(@Param("userId") String userId);
     long addProfile(@Param("profile") Profile profile);
     long updateByUserId(@Param("profile") Profile profile);

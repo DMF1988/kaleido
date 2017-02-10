@@ -24,6 +24,14 @@
 
 				$scope.pageItem = [];
 
+				$scope.$watch('pageSize', function(nValue, oValue){
+					if(nValue === oValue){
+						return;
+					}
+
+					generatePage();
+				});
+
 				function generatePage(){
 
 					var size = $scope.pageSize, num = $scope.pageNum;
@@ -71,25 +79,28 @@
 				$scope.page = function(num, event){
 					event && event.stopPropagation();
 
-					if(num === 'previous'){
+					var pageNum = num;
+
+					if(num === $scope.pageNum){
+						return;
+					}else if(num === 'previous'){
 						if($scope.pageNum === 1){
 							return;
 						}
-						$scope.pageNum--;
+						pageNum = --$scope.pageNum;
 					}else if(num === 'next'){
 						if($scope.pageNum === $scope.pageSize){
 							return;
 						}
-						$scope.pageNum++;
+						pageNum = ++$scope.pageNum;
 					}else if(isNaN(num)){
 						return;
 					}else{
 						$scope.pageNum = num;
 					}
 
+					$scope.$emit('$pageChangeSuccess', pageNum);
 					generatePage();
-
-					$scope.$broadcast('$pageChangeSuccess');
 				};
 			}
 		};

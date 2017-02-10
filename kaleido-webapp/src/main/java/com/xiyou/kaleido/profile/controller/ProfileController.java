@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +38,7 @@ public class ProfileController {
     private ProfileService profileService;
 
     @RequestMapping(value="query", method=RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<ResponseModel<PaginationVo>> queryUser(@RequestBody UserQueryVo queryVo) throws KaleidoException {
+    public ResponseEntity<ResponseModel<PaginationVo>> queryUser(@RequestBody @Validated UserQueryVo queryVo) throws KaleidoException {
 
         int total = profileService.countUser(queryVo.getKeyword());
 
@@ -47,7 +48,9 @@ public class ProfileController {
         for(Profile profile : profiles){
             ProfileVo profileVo = new ProfileVo();
             profileVo.setPortrait(profile.getPortrait());
+            profileVo.setUserId(profile.getUserId());
             profileVo.setUserName(profile.getUserName());
+            profileVo.setGender(profile.getGender());
             profileVo.setCountry(profile.getCountry());
             profileVo.setProvince(profile.getProvince());
             profileVo.setCity(profile.getCity());

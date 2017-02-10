@@ -40,7 +40,9 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     public List<Profile> queryUser(String keyword, int pageNum, int pageSize) throws KaleidoException {
-        PageRequest pageRequest = new PageRequest(pageNum, pageSize, new Sort(Sort.Direction.DESC, "create_time"));
+
+        //前端页码从1开始，数据库查询页码从0开始
+        PageRequest pageRequest = new PageRequest(pageNum - 1, pageSize, new Sort(Sort.Direction.DESC, "create_time"));
 
         List<Profile> list = profileDao.queryUser(keyword, pageRequest);
 
