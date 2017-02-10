@@ -20,7 +20,9 @@ import com.xiyou.kaleido.common.exception.KaleidoException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by chad.ding on 2017/1/10.
@@ -96,14 +98,18 @@ public class UserController {
     }
 
     @RequestMapping(value="/login", method= RequestMethod.GET)
-    public ResponseEntity<ResponseModel> login(@RequestParam String loginName, @RequestParam String loginPassword, HttpServletResponse response) throws KaleidoException {
+    public ResponseEntity<ResponseModel> login(@RequestParam String loginName, @RequestParam String loginPassword, HttpServletRequest request,  HttpServletResponse response) throws KaleidoException {
 
-        Cookie cookie = new Cookie("TOKEN", "12345678");
+        User user = userService.login(loginName, loginPassword);
+        HttpSession session = request.getSession();
+        session.setAttribute("LOGIN_USER", user);
+
+        UUID token = UUID.randomUUID();
+        Cookie cookie = new Cookie("TOKEN", token.toString());
         cookie.setMaxAge(0);
         response.addCookie(cookie);
 
-        User user = userService.login(loginName, loginPassword);
-
+        session.setAttribute("TOKEN", token);
 
         return new ResponseEntity<ResponseModel>(new ResponseModel(user.getUserId()), HttpStatus.OK);
     }

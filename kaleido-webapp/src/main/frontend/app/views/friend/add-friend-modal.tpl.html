@@ -41,7 +41,7 @@
                                 <span ng-bind="user.city | city : user.country"></span>
                             </td>
                             <td>
-                                <button class="btn btn-xs btn-primary">添加</button>
+                                <button ng-click="vm.addFriend(user, $event)" class="btn btn-xs btn-primary">添加</button>
                             </td>
                         </tr>
                     </tbody>

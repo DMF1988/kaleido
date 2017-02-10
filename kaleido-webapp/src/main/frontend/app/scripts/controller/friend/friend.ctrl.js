@@ -60,7 +60,7 @@
                     vm.query = function(event){
                         event && event.stopPropagation();
                         vm.pageInfo.pageNum = 1;
-                        queryUser(vm.pageInfo.pageNum)
+                        queryUser(vm.pageInfo.pageNum);
                     };
 
                     function queryUser(pageNum){
@@ -74,7 +74,7 @@
                         _$profile.queryUser(params).then(function(res){
                             vm.commonInfo.userList = res.data.data;
                             vm.pageInfo.pageTotal = res.data.total;
-                        }); 
+                        });
                     }
 
                     queryUser(vm.pageInfo.pageNum);
@@ -82,6 +82,18 @@
                     $scope.$on('$pageChangeSuccess', function(event, pageNum){
                         queryUser(pageNum);
                     });
+
+                    vm.addFriend = function(user, event){
+                        event && event.stopPropagation();
+
+                        var params = {
+                            userId: user.userId
+                        };
+
+                        _$friend.addFriend(params).then(function(res){
+                            console.log(res);
+                        });
+                    };
 
                 }]
             });

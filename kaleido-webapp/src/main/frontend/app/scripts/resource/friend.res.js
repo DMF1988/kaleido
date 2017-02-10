@@ -13,67 +13,19 @@
     kaleidoApp.factory('_$friend', ['$resource', function($resource){
 
         var resource = {
-            //获取国家信息
-            getCountry: $resource('meta/country.json', {}, { get: { method: 'GET' } }),
-            //获取中国省市信息
-            getCity: $resource('meta/:countryCode.json', {}, { get: { method: 'GET' } }),
-            //获取字典信息
-            getMetaByParent: $resource(window.HOST + '/meta/getByParent', {}, { get: { method: 'GET' } }),
-            //获取字典信息
-            getMetaDetail: $resource(window.HOST + '/meta/getMetaDetail', {}, { get: { method: 'GET' } })
+            //添加好友
+            addFriend: $resource(window.HOST + '/friend/add', {}, { add: { method: 'GET' } })
         };
 
-        function getCountry(params){
+        function addFriend(params){
 
-            var q = resource.getCountry.get().$promise;
-            return q.then(function(res){
-                var data = {};
-                for(var key in res){
-                    if(!isNaN(key)){
-                        data[key] = res[key];
-                        delete res[key];
-                    }
-                }
-                res.data = data;
-
-                return res;
-            });
-
-        }
-
-        function getCity(params){
-
-            var q = resource.getCity.get(params).$promise;
-            return q.then(function(res){
-                var data = {};
-                for(var key in res){
-                    if(!isNaN(key)){
-                        data[key] = res[key];
-                        delete res[key];
-                    }
-                }
-                res.data = data;
-                return res;
-            });
-
-        }
-
-        function getMetaByParent(params){
-            var q = resource.getMetaByParent.get(params).$promise;
-
+            var q = resource.addFriend.add(params).$promise;
             return q;
         }
 
-        function getMetaDetail(params){
-            var q = resource.getMetaDetail.get(params).$promise;
-            return q;
-        }
 
         return {
-            getCountry: getCountry,
-            getCity: getCity,
-            getMetaByParent: getMetaByParent,
-            getMetaDetail: getMetaDetail
+            addFriend: addFriend
         };
 
     }]);
