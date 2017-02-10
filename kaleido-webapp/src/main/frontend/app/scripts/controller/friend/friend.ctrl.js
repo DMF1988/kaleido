@@ -59,7 +59,7 @@
 
                     vm.query = function(event){
                         event && event.stopPropagation();
-
+                        vm.pageInfo.pageNum = 1;
                         queryUser(vm.pageInfo.pageNum)
                     };
 
