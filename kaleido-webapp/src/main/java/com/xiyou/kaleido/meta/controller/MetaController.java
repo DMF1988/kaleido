@@ -23,7 +23,7 @@ import java.util.List;
 
 @Controller
 @KaleidoController
-@RequestMapping(value = "/meta")
+@RequestMapping(value = "/api/meta")
 public class MetaController {
 
     @Autowired

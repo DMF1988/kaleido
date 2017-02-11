@@ -18,9 +18,9 @@
             //获取中国省市信息
             getCity: $resource('meta/:countryCode.json', {}, { get: { method: 'GET' } }),
             //获取字典信息
-            getMetaByParent: $resource(window.HOST + '/meta/getByParent', {}, { get: { method: 'GET' } }),
+            getMetaByParent: $resource(window.HOST + '/api/meta/getByParent', {}, { get: { method: 'GET' } }),
             //获取字典信息
-            getMetaDetail: $resource(window.HOST + '/meta/getMetaDetail', {}, { get: { method: 'GET' } })
+            getMetaDetail: $resource(window.HOST + '/api/meta/getMetaDetail', {}, { get: { method: 'GET' } })
 		};
 
 		function getCountry(params){

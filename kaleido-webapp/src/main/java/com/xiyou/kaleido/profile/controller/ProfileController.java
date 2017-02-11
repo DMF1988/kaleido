@@ -31,7 +31,7 @@ import java.util.List;
 
 @Controller
 @KaleidoController
-@RequestMapping("/profile")
+@RequestMapping("/api/profile")
 public class ProfileController {
 
     @Autowired

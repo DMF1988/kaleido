@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @KaleidoController
-@RequestMapping(value = "/friend")
+@RequestMapping(value = "/api/friend")
 public class FriendController {
 
     @RequestMapping(value="/add", method= RequestMethod.GET)

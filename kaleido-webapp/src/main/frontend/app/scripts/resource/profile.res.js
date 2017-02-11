@@ -14,11 +14,11 @@
 
         var resource = {
             //搜索用户
-            queryUser: $resource(window.HOST + '/profile/query', {}, { query: { method: 'POST' } }),
+            queryUser: $resource(window.HOST + '/api/profile/query', {}, { query: { method: 'POST' } }),
             //获取用户详细信息
-            getProfileInfo: $resource(window.HOST + '/profile/get', {}, { get: { method: 'GET' } }),
+            getProfileInfo: $resource(window.HOST + '/api/profile/get', {}, { get: { method: 'GET' } }),
             //更新用户信息
-            updateProfile: $resource(window.HOST + '/profile/update', {}, { update: { method: 'POST' } })
+            updateProfile: $resource(window.HOST + '/api/profile/update', {}, { update: { method: 'POST' } })
         };
 
         function queryUser(params){

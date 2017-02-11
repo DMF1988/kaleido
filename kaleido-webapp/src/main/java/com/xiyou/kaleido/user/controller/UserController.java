@@ -30,7 +30,7 @@ import java.util.UUID;
 
 @Controller
 @KaleidoController
-@RequestMapping(value="/user")
+@RequestMapping(value="/api/user")
 public class UserController {
 
     @Autowired
@@ -106,7 +106,7 @@ public class UserController {
 
         UUID token = UUID.randomUUID();
         Cookie cookie = new Cookie("TOKEN", token.toString());
-        cookie.setMaxAge(0);
+        cookie.setPath("/");
         response.addCookie(cookie);
 
         session.setAttribute("TOKEN", token);

@@ -42,7 +42,7 @@
                     var vm = this;
 
                     vm.pageInfo = {
-                        pageSize: 3,
+                        pageSize: 2,
                         pageNum: 1,
                         pageTotal: 0
                     };

@@ -14,7 +14,7 @@
 
         var resource = {
             //添加好友
-            addFriend: $resource(window.HOST + '/friend/add', {}, { add: { method: 'GET' } })
+            addFriend: $resource(window.HOST + '/api/friend/add', {}, { add: { method: 'GET' } })
         };
 
         function addFriend(params){

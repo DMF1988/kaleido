@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @KaleidoController
-@RequestMapping(value="/album")
+@RequestMapping(value="/api/album")
 public class AlbumController {
 
     @RequestMapping(value="/upload", method= RequestMethod.POST)

@@ -14,15 +14,15 @@
 
         var resource = {
             //修改登录账号
-            updateEmail: $resource(window.HOST + '/user/updateEmail', {}, { update: { method: 'GET' } }),
+            updateEmail: $resource(window.HOST + '/api/user/updateEmail', {}, { update: { method: 'GET' } }),
             //修改登录密码
-            updatePassword: $resource(window.HOST + '/user/updatePassword', {}, { update: { method: 'GET' } }),
+            updatePassword: $resource(window.HOST + '/api/user/updatePassword', {}, { update: { method: 'GET' } }),
             //获取用户信息
-            getUserInfo: $resource(window.HOST + '/user/get', {}, { get: { method: 'GET' } }),
+            getUserInfo: $resource(window.HOST + '/api/user/get', {}, { get: { method: 'GET' } }),
             //登录
-            login: $resource(window.HOST + '/user/login', {}, { send: { method: 'GET' } }),
+            login: $resource(window.HOST + '/api/user/login', {}, { send: { method: 'GET' } }),
             //注册
-            signup: $resource(window.HOST + '/user/signup', {}, { send: { method: 'GET' } })
+            signup: $resource(window.HOST + '/api/user/signup', {}, { send: { method: 'GET' } })
         };
 
         function updateEmail(params){
