@@ -6,7 +6,7 @@
 
 'use strict';
 
-(function(angular){
+(function(angular, window){
 
     var kaleidoApp = angular.module('kaleidoApp');
 
@@ -14,7 +14,9 @@
 
         var resource = {
             //添加好友
-            addFriend: $resource(window.HOST + '/api/friend/add', {}, { add: { method: 'GET' } })
+            addFriend: $resource(window.HOST + '/api/friend/add', {}, { add: { method: 'GET' } }),
+            //拉取好友列表（包括已生效、待审批、黑名单好友）
+            getFriendList: $resource(window.HOST + '/api/friend/list', {}, { get: { method: 'GET' } }),
         };
 
         function addFriend(params){
@@ -23,9 +25,14 @@
             return q;
         }
 
+        function getFriendList(params){
+            var q = resource.getFriendList.get(params).$promise;
+            return q;
+        }
 
         return {
-            addFriend: addFriend
+            addFriend: addFriend,
+            getFriendList: getFriendList
         };
 
     }]);

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ProfileService {
     public Profile getProfile(String userId) throws KaleidoException;
-    public long updateProfile(Profile profile) throws KaleidoException;
+    public void updateProfile(Profile profile) throws KaleidoException;
     public String uploadPortrait(InputStream image, String fileName, String userId) throws KaleidoException;
     public List<Profile> queryUser(String keyword, int pageNum, int pageSize) throws KaleidoException;
     public int countUser(String keyword);

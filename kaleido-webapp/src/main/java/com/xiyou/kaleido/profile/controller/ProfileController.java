@@ -97,7 +97,7 @@ public class ProfileController {
     }
 
     @RequestMapping(value="/get", method = RequestMethod.GET)
-    public ResponseEntity<ResponseModel> getUserInfo(@RequestParam String userId) throws KaleidoException {
+    public ResponseEntity<ResponseModel> getUserInfo(@RequestParam("userId") String userId) throws KaleidoException {
 
         ProfileVo vo = new ProfileVo();
         Profile profile = profileService.getProfile(userId);

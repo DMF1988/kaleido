@@ -15,9 +15,42 @@
 	<sql id="Base_Column_List" >
 		owner, friend, status, mark, create_time, last_update_time, deleted
 	</sql>
+
+    <select id="getFriendList" parameterType="com.xiyou.kaleido.friend.entity.Friend">
+
+    </select>
+
+	<update id="updateFriend" parameterType="com.xiyou.kaleido.friend.entity.Friend">
+        update friend
+        <set>
+            <if test="status != null">
+                status = #{status, jdbcType=INTEGER},
+            </if>
+            <if test="mark != null">
+                mark = #{mark, jdbcType=VARCHAR}
+            </if>
+			<if test="deleted != null">
+				deleted = #{deleted, jdbcType=TINYINT}
+			</if>
+        </set>
+        where owner = #{owner, jdbcType=VARCHAR} and friend = #{friend, jdbcType=VARCHAR}
+	</update>
+
+	<select id="getFriend" parameterType="com.xiyou.kaleido.friend.entity.Friend" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/> from friend where deleted = 0 and owner = #{owner, jdbcType=VARCHAR}
+		<trim prefix="and" suffixOverrides="and">
+			<if test="friend != null">
+				friend = #{friend, jdbcType=VARCHAR} and
+			</if>
+			<if test="status != null">
+				status = #{status, jdbcType=TINYINT} and
+			</if>
+		</trim>
+	</select>
 	
 	<insert id="addFriend" parameterType="com.xiyou.kaleido.friend.entity.Friend">
-        insert into friend (owner, friend, status, mark) values #{owner}, #{friend}, #{status}, #{mark}
+        insert into friend (owner, friend, status) values
+        (#{owner, jdbcType=VARCHAR}, #{friend, jdbcType=VARCHAR}, #{status, jdbcType=TINYINT})
 	</insert>
 
 </mapper>

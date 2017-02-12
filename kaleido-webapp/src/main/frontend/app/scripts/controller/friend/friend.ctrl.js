@@ -10,7 +10,7 @@
 
 	var kaleidoApp = angular.module('kaleidoApp');
 
-	kaleidoApp.controller('FriendCtrl', ['$scope', '$uibModal', function($scope, $uibModal){
+	kaleidoApp.controller('FriendCtrl', ['$scope', '$uibModal', '_$friend', function($scope, $uibModal, _$friend){
 
         var vm = this;
 
@@ -22,6 +22,10 @@
 
             vm.commonInfo.currentState = toState.name;
 
+        });
+
+        _$friend.getFriendList().then(function(res){
+            console.log(res.data);
         });
 
         vm.addFriend = function(event){
@@ -91,7 +95,7 @@
                         };
 
                         _$friend.addFriend(params).then(function(res){
-                            console.log(res);
+                            
                         });
                     };
 

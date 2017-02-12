@@ -1,5 +1,6 @@
 package com.xiyou.kaleido.profile.dao;
 
+import com.xiyou.kaleido.friend.entity.Friend;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,8 @@ import java.util.List;
 public interface ProfileDao {
     Profile getProfileByUserId(@Param("userId") String userId);
     long addProfile(@Param("profile") Profile profile);
-    long updateByUserId(@Param("profile") Profile profile);
+    void updateByUserId(@Param("profile") Profile profile);
     List queryUser(@Param("keyword") String keyword, @Param("pageable") Pageable pageable);
     int countUser(@Param("keyword") String keyword);
+    List<Friend> getFriendList(@Param("friend") Friend friend);
 }

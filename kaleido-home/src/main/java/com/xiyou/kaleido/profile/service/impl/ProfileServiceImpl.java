@@ -61,12 +61,12 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Transactional
-    public long updateProfile(Profile profile) throws KaleidoException {
+    public void updateProfile(Profile profile) throws KaleidoException {
 
         if(profile == null){
             throw new KaleidoException(ProfileError.PROFILE_NOT_EXIST);
         }
 
-        return profileDao.updateByUserId(profile);
+        profileDao.updateByUserId(profile);
     };
 }
