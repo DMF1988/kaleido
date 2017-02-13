@@ -4,6 +4,7 @@ import com.xiyou.kaleido.common.annotation.KaleidoController;
 import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.common.model.ResponseModel;
 import com.xiyou.kaleido.friend.entity.Friend;
+import com.xiyou.kaleido.friend.exception.FriendError;
 import com.xiyou.kaleido.friend.service.FriendService;
 import com.xiyou.kaleido.profile.entity.Profile;
 import com.xiyou.kaleido.user.entity.User;
@@ -64,6 +65,10 @@ public class FriendController {
 
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("LOGIN_USER");
+
+        if(userId.equals(user.getUserId())){
+            throw new KaleidoException(FriendError.INVALID_FRIEND);
+        }
 
         friendService.addFriend(user.getUserId(), userId);
 

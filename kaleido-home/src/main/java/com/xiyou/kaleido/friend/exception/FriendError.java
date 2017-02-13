@@ -8,7 +8,8 @@ import lombok.Getter;
  */
 public enum FriendError implements ErrorCode {
 
-    FRIEND_NOT_EXIST(4001, "好友不存在");
+    FRIEND_NOT_EXIST(4001, "好友不存在"),
+    INVALID_FRIEND(4002, "无效的好友人选");
 
     @Getter
     private int code;

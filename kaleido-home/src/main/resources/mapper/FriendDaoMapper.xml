@@ -8,17 +8,13 @@
 		<result column="status" property="status" jdbcType="TINYINT" />
 		<result column="mark" property="mark" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-		<result column="last_update_time" property="lastUpdateTime" jdbcType="VARCHAR" />
+		<result column="last_update_time" property="lastUpdateTime" jdbcType="TIMESTAMP" />
 		<result column="deleted" property="deleted" jdbcType="TINYINT" />
 	</resultMap>
 
 	<sql id="Base_Column_List" >
 		owner, friend, status, mark, create_time, last_update_time, deleted
 	</sql>
-
-    <select id="getFriendList" parameterType="com.xiyou.kaleido.friend.entity.Friend">
-
-    </select>
 
 	<update id="updateFriend" parameterType="com.xiyou.kaleido.friend.entity.Friend">
         update friend
@@ -49,8 +45,54 @@
 	</select>
 	
 	<insert id="addFriend" parameterType="com.xiyou.kaleido.friend.entity.Friend">
-        insert into friend (owner, friend, status) values
-        (#{owner, jdbcType=VARCHAR}, #{friend, jdbcType=VARCHAR}, #{status, jdbcType=TINYINT})
+        insert into friend
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="owner != null">
+				owner,
+			</if>
+			<if test="friend != null">
+				friend,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="mark != null">
+				mark,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="lastUpdateTime != null">
+				last_update_time,
+			</if>
+			<if test="deleted != null">
+				deleted,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="owner != null">
+				#{owner, jdbcType=VARCHAR},
+			</if>
+			<if test="friend != null">
+				#{friend, jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status, jdbcType=TINYINT},
+			</if>
+			<if test="mark != null">
+				#{mark, jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime, jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastUpdateTime != null">
+				#{lastUpdateTime, jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleted != null">
+				#{deleted, jdbcType=TINYINT},
+			</if>
+		</trim>
 	</insert>
 
 </mapper>

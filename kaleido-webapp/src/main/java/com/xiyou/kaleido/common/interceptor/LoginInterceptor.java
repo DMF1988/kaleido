@@ -23,11 +23,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         UUID TOKEN = (UUID)session.getAttribute("TOKEN");
 
         Cookie[] cookies = request.getCookies();
-        for(Cookie cookie : cookies){
-            if("TOKEN".equals(cookie.getName()) && cookie.getValue().equals(TOKEN.toString())){
-                return true;
+        if(TOKEN != null){
+            for(Cookie cookie : cookies){
+                if("TOKEN".equals(cookie.getName()) && cookie.getValue().equals(TOKEN.toString())){
+                    return true;
+                }
             }
         }
+
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json;charset=UTF-8");
         ResponseModel model = new ResponseModel(KaleidoStatus.SESSION_TIMEOUT, "登录超时");

@@ -140,7 +140,6 @@
             <artifactId>spring-messaging</artifactId>
             <version>4.2.4.RELEASE</version>
         </dependency>
-
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
