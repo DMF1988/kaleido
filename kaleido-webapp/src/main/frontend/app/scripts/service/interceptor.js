@@ -10,7 +10,7 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.factory('$exceptionInterceptor', ['$q', function($q) {
+    kaleidoApp.factory('$exceptionInterceptor', ['$q', '$rootScope', function($q, $rootScope) {
 
         return {
             request: function(config) {
@@ -25,8 +25,11 @@
                 if(res.data.error){
                     noty({ text: res.data.error.message, type: 'error' });
                     return $q.reject(res);
+                }else if(res.data && res.data.data === 'SESSION_TIMEOUT'){
+                    $rootScope.$broadcast('$sessionTimeout');
+                    return;
                 }
-
+                
                 return res;
             },
             responseError: function(error) {

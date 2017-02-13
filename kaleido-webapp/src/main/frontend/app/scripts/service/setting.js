@@ -6,7 +6,7 @@
 
 'use strict';
 
-(function(angular, $) {
+(function(angular, $, window) {
 
     var kaleidoApp = angular.module('kaleidoApp');
 
@@ -44,7 +44,7 @@
 
                         var params = {
                             loginName: $.trim(vm.formOptions.loginName),
-                            loginPassword: $.trim(vm.formOptions.loginPassword)
+                            loginPassword: md5($.trim(vm.formOptions.loginPassword))
                         };
 
                         _$user.login(params).then(function(res) {
@@ -57,7 +57,7 @@
 
                             _$user.getUserInfo(params).then(function(res) {
                                 $rootScope.userInfo = res.data;
-                                $uibModalInstance.dismiss();
+                                window.location.reload();
                             });
 
                         });
@@ -91,6 +91,10 @@
                 });
             }
 
+            $rootScope.$on('$sessionTimeout', function(){
+                login();
+            });
+
         }
 
         return {
@@ -99,4 +103,4 @@
         };
 
     }]);
-})(angular, jQuery);
+})(angular, jQuery, window);
