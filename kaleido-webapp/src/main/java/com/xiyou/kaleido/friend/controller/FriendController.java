@@ -60,7 +60,7 @@ public class FriendController {
     }
 
     @RequestMapping(value="/add", method = RequestMethod.GET)
-    public ResponseEntity<ResponseModel> addFriend(@RequestParam("userId") String userId, HttpServletRequest request){
+    public ResponseEntity<ResponseModel> addFriend(@RequestParam("userId") String userId, HttpServletRequest request) throws KaleidoException{
 
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("LOGIN_USER");

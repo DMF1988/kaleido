@@ -3,6 +3,7 @@ package com.xiyou.kaleido.friend.service.impl;
 import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.friend.dao.FriendDao;
 import com.xiyou.kaleido.friend.entity.Friend;
+import com.xiyou.kaleido.friend.exception.FriendError;
 import com.xiyou.kaleido.friend.service.FriendService;
 import com.xiyou.kaleido.profile.entity.Profile;
 import com.xiyou.kaleido.profile.service.ProfileService;
@@ -27,7 +28,7 @@ public class FriendServiceImpl implements FriendService {
     private ProfileService profileService;
 
     @Transactional
-    public void addFriend(String owner, String friend) {
+    public void addFriend(String owner, String friend) throws KaleidoException{
 
         Friend friendModel = getFriend(owner, friend);
 
@@ -59,7 +60,7 @@ public class FriendServiceImpl implements FriendService {
         return result;
     }
 
-    public Friend getFriend(String owner, String friend) {
+    public Friend getFriend(String owner, String friend) throws KaleidoException{
 
         Friend param = new Friend();
 
@@ -67,6 +68,10 @@ public class FriendServiceImpl implements FriendService {
         param.setFriend(friend);
 
         List<Friend> list = friendDao.getFriend(param);
+
+        if(list == null){
+            throw new KaleidoException(FriendError.FRIEND_NOT_EXIST);
+        }
 
         return list.get(0);
     }

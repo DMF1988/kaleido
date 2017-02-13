@@ -94,7 +94,6 @@ public class UserController {
         vo.setPortrait(profile.getPortrait());
 
         return new ResponseEntity<ResponseModel>(new ResponseModel(vo), HttpStatus.OK);
-
     }
 
     @RequestMapping(value="/login", method= RequestMethod.GET)
