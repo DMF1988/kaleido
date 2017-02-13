@@ -23,7 +23,7 @@ public class KaleidoExceptionHandler extends ResponseEntityExceptionHandler {
         body.setCode(e.getCode());
         body.setMsg(e.getMessage());
         HttpHeaders headers = new HttpHeaders();
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        HttpStatus status = HttpStatus.SERVICE_UNAVAILABLE;
         return handleExceptionInternal(e, body, headers, status, request);
     }
 
@@ -34,7 +34,7 @@ public class KaleidoExceptionHandler extends ResponseEntityExceptionHandler {
         body.setCode(500);
         body.setMsg(e.getMessage());
         HttpHeaders headers = new HttpHeaders();
-        HttpStatus status = HttpStatus.BAD_REQUEST;
+        HttpStatus status = HttpStatus.SERVICE_UNAVAILABLE;
         return handleExceptionInternal(e, body, headers, status, request);
     }
 }
