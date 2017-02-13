@@ -10,7 +10,24 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('FriendListCtrl', ['$scope', function($scope){
+    kaleidoApp.controller('FriendListCtrl', ['$scope', '_$friend', function($scope, _$friend){
+
+        var vm = this;
+
+        vm.commonInfo = {
+            friendList: []
+        };
+
+        $scope.$watch('friendList', function(nValue, oValue){
+            if(nValue === oValue && vm.commonInfo.length !== 0){
+                return;
+            }
+            vm.commonInfo.friendList = nValue.filter(function(item){
+                return item.status === 1;
+            });
+
+        });
+
 
     }]);
 

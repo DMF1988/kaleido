@@ -10,8 +10,14 @@ import lombok.Setter;
 @Setter
 @Getter
 public class FriendVo {
-
-    private String owner;
-    private String friend;
-
+    private String userId;
+    private String portrait;
+    private String userName;
+    private char gender;
+    private String country;
+    private String province;
+    private String city;
+    private String mark;
+    private int status;
+    private int deleted;
 }

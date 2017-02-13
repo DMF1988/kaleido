@@ -14,5 +14,7 @@ public interface FriendService {
 
     Friend getFriend(String owner, String friend) throws KaleidoException;
 
-    List<Profile> getFriendList(Friend friend) throws KaleidoException;
+    List<Friend> getFriendList(Friend friend) throws KaleidoException;
+
+    void updateFriend(Friend friend) throws KaleidoException;
 }

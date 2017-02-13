@@ -1,3 +1,27 @@
-<div>
-    PPPPPPPPPPPP
+<div class="table-responsive">
+    <table class="table table-striped jambo_table bulk_action">
+        <thead>
+            <tr class="headings">
+                <th class="column-title" style="display: table-cell;">头像 </th>
+                <th class="column-title" style="display: table-cell;">昵称</th>
+                <th class="column-title" style="display: table-cell;">用户ID</th>
+                <th class="column-title" style="display: table-cell;">性别</th>
+                <th class="column-title" style="display: table-cell;">城市</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="even pointer" ng-repeat="friend in vm.commonInfo.friendList">
+                <td ng-bind="friend.portrait"></td>
+                <td ng-bind="friend.userName"></td>
+                <td ng-bind="friend.userId"></td>
+                <td ng-bind="friend.gender | gender"></td>
+                <td>{{friend.country | country}} {{friend.province | city : friend.country}} {{friend.city | city : friend.country}}</td>
+                <td>
+                    <button ng-click="vm.activeFriend(friend, $event)" class="btn btn-xs btn-primary">添加</button>
+                    <button ng-click="vm.removePending(friend, $event)" class="btn btn-xs btn-danger">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

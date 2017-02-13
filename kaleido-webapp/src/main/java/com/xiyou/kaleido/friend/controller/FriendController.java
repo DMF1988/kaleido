@@ -5,13 +5,16 @@ import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.common.model.ResponseModel;
 import com.xiyou.kaleido.friend.entity.Friend;
 import com.xiyou.kaleido.friend.exception.FriendError;
+import com.xiyou.kaleido.friend.model.FriendVo;
 import com.xiyou.kaleido.friend.service.FriendService;
 import com.xiyou.kaleido.profile.entity.Profile;
+import com.xiyou.kaleido.profile.service.ProfileService;
 import com.xiyou.kaleido.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,28 +37,67 @@ public class FriendController {
     @Autowired
     private FriendService friendService;
 
+    @Autowired
+    private ProfileService profileService;
+
+    @RequestMapping(value="/update", method=RequestMethod.POST)
+    public ResponseEntity<ResponseModel> updateFriend(@RequestBody FriendVo vo, HttpServletRequest request){
+
+        HttpSession session = request.getSession();
+        User userInfo = (User)session.getAttribute("LOGIN_USER");
+
+        Friend friend = new Friend();
+        friend.setOwner(userInfo.getUserId());
+        friend.setFriend(vo.getUserId());
+        friend.setStatus(vo.getStatus());
+        friend.setMark(vo.getMark());
+        friend.setDeleted(vo.getDeleted());
+
+        return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/list", method=RequestMethod.GET)
     public ResponseEntity<ResponseModel> listFriend(HttpServletRequest request) throws KaleidoException{
 
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("LOGIN_USER");
 
+        List<FriendVo> friendList = new ArrayList<FriendVo>();
+
         Friend friendModel = new Friend();
         friendModel.setOwner(user.getUserId());
 
+        //待审批好友
         friendModel.setStatus(0);
-        List<Profile> pendingList = friendService.getFriendList(friendModel);
-
+        List<Friend> pendingList = friendService.getFriendList(friendModel);
+        //已添加好友
         friendModel.setStatus(1);
-        List<Profile> activeList = friendService.getFriendList(friendModel);
-
+        List<Friend> activeList = friendService.getFriendList(friendModel);
+        //黑名单好友
         friendModel.setStatus(2);
-        List<Profile> blackList = friendService.getFriendList(friendModel);
+        List<Friend> blackList = friendService.getFriendList(friendModel);
 
-        List<Profile> friendList = new ArrayList<Profile>();
-        friendList.addAll(pendingList);
-        friendList.addAll(activeList);
-        friendList.addAll(blackList);
+        List<Friend> friends = new ArrayList<Friend>();
+        friends.addAll(pendingList);
+        friends.addAll(activeList);
+        friends.addAll(blackList);
+
+        for(Friend friend : friends){
+            Profile profile = profileService.getProfile(friend.getFriend());
+
+            FriendVo vo = new FriendVo();
+            vo.setUserId(profile.getUserId());
+            vo.setPortrait(profile.getPortrait());
+            vo.setGender(profile.getGender());
+            vo.setMark(friend.getMark());
+            vo.setUserName(profile.getUserName());
+            vo.setCountry(profile.getCountry());
+            vo.setProvince(profile.getProvince());
+            vo.setCity(profile.getCity());
+            vo.setStatus(friend.getStatus());
+
+            friendList.add(vo);
+        }
 
         return new ResponseEntity<ResponseModel>(new ResponseModel(friendList, "success"), HttpStatus.OK);
     }

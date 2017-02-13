@@ -35,11 +35,7 @@
                             <td ng-bind="user.userName"></td>
                             <td ng-bind="user.userId"></td>
                             <td ng-bind="user.gender | gender"></td>
-                            <td>
-                                <span ng-bind="user.country | country"></span>
-                                <span ng-bind="user.province | city : user.country"></span>
-                                <span ng-bind="user.city | city : user.country"></span>
-                            </td>
+                            <td>{{user.country | country}} {{user.province | city : user.country}} {{user.city | city : user.country}}</td>
                             <td>
                                 <button ng-click="vm.addFriend(user, $event)" class="btn btn-xs btn-primary">添加</button>
                             </td>

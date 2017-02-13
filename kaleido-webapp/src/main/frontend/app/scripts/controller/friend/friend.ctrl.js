@@ -25,7 +25,7 @@
         });
 
         _$friend.getFriendList().then(function(res){
-            console.log(res.data);
+            $scope.friendList = res.data;
         });
 
         vm.addFriend = function(event){

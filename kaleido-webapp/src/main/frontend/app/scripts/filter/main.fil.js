@@ -26,9 +26,9 @@
     kaleidoApp.filter('gender', [function() {
 
         return function(input) {
-            if (input === 'M' || input === 'm') {
+            if (/^M$/i.test(input)) {
                 return '男';
-            } else if (input === 'F' || input === 'f') {
+            } else if (/^F$/i.test(input)) {
                 return '女';
             } else {
                 return input;
@@ -54,7 +54,7 @@
     kaleidoApp.filter('city', ['$localStorage', function($localStorage) {
 
         return function(input, countryCode) {
-            var cities = $localStorage[countryCode];
+            var cities = $localStorage[countryCode || 86];
 
             if (!input) {
                 return input;

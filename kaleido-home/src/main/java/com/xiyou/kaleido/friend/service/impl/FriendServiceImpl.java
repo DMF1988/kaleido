@@ -24,8 +24,12 @@ public class FriendServiceImpl implements FriendService {
     @Autowired
     private FriendDao friendDao;
 
-    @Autowired
-    private ProfileService profileService;
+    @Transactional
+    public void updateFriend(Friend friend) throws KaleidoException {
+        friend.setLastUpdateTime(new Date());
+
+        friendDao.updateFriend(friend);
+    }
 
     @Transactional
     public void addFriend(String owner, String friend) throws KaleidoException{
@@ -54,18 +58,12 @@ public class FriendServiceImpl implements FriendService {
 
     }
 
-    public List<Profile> getFriendList(Friend friend) throws KaleidoException{
+    public List<Friend> getFriendList(Friend friend) throws KaleidoException{
 
         List<Friend> list = friendDao.getFriend(friend);
-        List<Profile> result = new ArrayList<Profile>();
-
-        for(Friend item : list){
-            Profile profile = profileService.getProfile(item.getFriend());
-            result.add(profile);
-        }
-
-        return result;
+        return list;
     }
+
 
     public Friend getFriend(String owner, String friend) throws KaleidoException{
 

@@ -10,7 +10,7 @@
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('BlackListCtrl', ['$scope', function($scope){
+    kaleidoApp.controller('BlackListCtrl', ['$scope', '_$friend', function($scope, _$friend){
 
     }]);
 
