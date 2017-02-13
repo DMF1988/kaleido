@@ -37,7 +37,7 @@
                             <td ng-bind="user.gender | gender"></td>
                             <td>{{user.country | country}} {{user.province | city : user.country}} {{user.city | city : user.country}}</td>
                             <td>
-                                <button ng-click="vm.addFriend(user, $event)" class="btn btn-xs btn-primary">添加</button>
+                                <button ng-disabled="user.checked" ng-click="vm.addFriend(user, $event)" class="btn btn-xs btn-primary">添加</button>
                             </td>
                         </tr>
                     </tbody>

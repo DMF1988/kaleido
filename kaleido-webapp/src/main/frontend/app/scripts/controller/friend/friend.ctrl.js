@@ -28,6 +28,23 @@
             $scope.friendList = res.data;
         });
 
+        function setMatched(source, target){
+
+            if(!angular.isArray(source)){
+                return;
+            }
+
+            target = target || [];
+            target.push($scope.userInfo);
+            source.forEach(function(friend){
+
+                friend.checked = target.some(function(item){
+                    return friend.userId === item.userId;
+                });
+
+            });
+        }
+
         vm.addFriend = function(event){
             event && event.stopPropagation();
 
@@ -36,12 +53,12 @@
                 backdrop: 'static',
                 size: 'lg',
                 resolve: {
-                    userId: function(){
-                        return $scope.userInfo.userId;
+                    friendList: function(){
+                        return $scope.friendList;
                     }
                 },
                 controllerAs: 'vm',
-                controller: ['$scope', '$uibModalInstance', '_$profile', '_$friend', function($scope, $uibModalInstance, _$profile, _$friend){
+                controller: ['$scope', '$uibModalInstance', '_$profile', '_$friend', 'friendList', function($scope, $uibModalInstance, _$profile, _$friend, friendList){
 
                     var vm = this;
 
@@ -78,6 +95,8 @@
                         _$profile.queryUser(params).then(function(res){
                             vm.commonInfo.userList = res.data.data;
                             vm.pageInfo.pageTotal = res.data.total;
+
+                            setMatched(vm.commonInfo.userList, friendList);
                         });
                     }
 
@@ -95,7 +114,7 @@
                         };
 
                         _$friend.addFriend(params).then(function(res){
-                            
+                            user.checked = true;
                         });
                     };
 

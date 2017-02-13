@@ -19,7 +19,7 @@
         };
 
         $scope.$watch('friendList', function(nValue, oValue){
-            if(nValue === oValue && vm.commonInfo.friendList.length !== 0){
+            if(nValue === oValue && vm.commonInfo.friendList.length !== 0 || !angular.isArray(nValue)){
                 return;
             }
             vm.commonInfo.friendList = nValue.filter(function(item){
