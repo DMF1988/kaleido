@@ -33,8 +33,11 @@
 	</update>
 
 	<select id="getFriend" parameterType="com.xiyou.kaleido.friend.entity.Friend" resultMap="BaseResultMap">
-		select <include refid="Base_Column_List"/> from friend where deleted = 0 and owner = #{owner, jdbcType=VARCHAR}
+		select <include refid="Base_Column_List"/> from friend where deleted = 0
 		<trim prefix="and" suffixOverrides="and">
+			<if test="owner != null">
+				owner = #{owner, jdbcType=VARCHAR} and
+			</if>
 			<if test="friend != null">
 				friend = #{friend, jdbcType=VARCHAR} and
 			</if>

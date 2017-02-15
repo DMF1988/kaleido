@@ -4,6 +4,7 @@ import com.xiyou.kaleido.common.annotation.KaleidoController;
 import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.common.model.ResponseModel;
 import com.xiyou.kaleido.friend.entity.Friend;
+import com.xiyou.kaleido.friend.entity.FriendStatus;
 import com.xiyou.kaleido.friend.exception.FriendError;
 import com.xiyou.kaleido.friend.model.FriendVo;
 import com.xiyou.kaleido.friend.service.FriendService;
@@ -40,6 +41,7 @@ public class FriendController {
     @Autowired
     private ProfileService profileService;
 
+
     @RequestMapping(value="/update", method=RequestMethod.POST)
     public ResponseEntity<ResponseModel> updateFriend(@RequestBody FriendVo vo, HttpServletRequest request){
 
@@ -62,7 +64,7 @@ public class FriendController {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("LOGIN_USER");
 
-        List<FriendVo> friendList = new ArrayList<FriendVo>();
+
 
         Friend friendModel = new Friend();
         friendModel.setOwner(user.getUserId());
@@ -82,23 +84,7 @@ public class FriendController {
         friends.addAll(activeList);
         friends.addAll(blackList);
 
-        for(Friend friend : friends){
-            Profile profile = profileService.getProfile(friend.getFriend());
-
-            FriendVo vo = new FriendVo();
-            vo.setUserId(profile.getUserId());
-            vo.setPortrait(profile.getPortrait());
-            vo.setGender(profile.getGender());
-            vo.setMark(friend.getMark());
-            vo.setUserName(profile.getUserName());
-            vo.setCountry(profile.getCountry());
-            vo.setProvince(profile.getProvince());
-            vo.setCity(profile.getCity());
-            vo.setStatus(friend.getStatus());
-
-            friendList.add(vo);
-        }
-
+        List<FriendVo> friendList = convertFriend(friends);
         return new ResponseEntity<ResponseModel>(new ResponseModel(friendList, "success"), HttpStatus.OK);
     }
 
@@ -112,8 +98,36 @@ public class FriendController {
             throw new KaleidoException(FriendError.INVALID_FRIEND);
         }
 
-        friendService.addFriend(user.getUserId(), userId);
+        friendService.addFriend(userId, user.getUserId());
 
         return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
+    }
+
+    private List<FriendVo> convertFriend(List<Friend> friendList) throws KaleidoException {
+
+        if(friendList == null || friendList.size() == 0){
+            return null;
+        }
+
+        List<FriendVo> result = new ArrayList<FriendVo>();
+
+        for(Friend friend : friendList){
+            Profile profile = profileService.getProfile(friend.getFriend());
+
+            FriendVo vo = new FriendVo();
+            vo.setUserId(profile.getUserId());
+            vo.setPortrait(profile.getPortrait());
+            vo.setGender(profile.getGender());
+            vo.setMark(friend.getMark());
+            vo.setUserName(profile.getUserName());
+            vo.setCountry(profile.getCountry());
+            vo.setProvince(profile.getProvince());
+            vo.setCity(profile.getCity());
+            vo.setStatus(friend.getStatus());
+
+            result.add(vo);
+        }
+
+        return result;
     }
 }
