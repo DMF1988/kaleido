@@ -6,11 +6,11 @@
 
 'use strict';
 
-(function(angular){
+(function(angular) {
 
     var kaleidoApp = angular.module('kaleidoApp');
 
-    kaleidoApp.controller('PendingListCtrl', ['$scope', '_$friend', function($scope, _$friend){
+    kaleidoApp.controller('PendingListCtrl', ['$scope', '_$friend', function($scope, _$friend) {
 
         var vm = this;
 
@@ -18,44 +18,46 @@
             friendList: []
         };
 
-        $scope.$watch('friendList', function(nValue, oValue){
-            if(nValue === oValue && vm.commonInfo.friendList.length !== 0 || !angular.isArray(nValue)){
+        $scope.$watch('friendList', function(nValue, oValue) {
+            if (nValue === oValue && vm.commonInfo.friendList.length !== 0 || !angular.isArray(nValue)) {
                 return;
             }
-            vm.commonInfo.friendList = nValue.filter(function(item){
+            vm.commonInfo.friendList = nValue.filter(function(item) {
                 return item.status === 0;
             });
 
         });
 
-        vm.activeFriend = function(item, event){
+        vm.activeFriend = function(index, event) {
+
             event && event.stopPropagation();
+            var item = vm.commonInfo.friendList[index],
+                params = {
+                    userId: item.userId,
+                    status: 1
+                };
 
-            var params = {
-                friend: item.userId,
-                status: 1
-            };
-
-            _$friend.updateFriend(params).then(function(res){
+            _$friend.updateFriend(params).then(function(res) {
                 item.status = 1;
+                vm.commonInfo.splice(index, 1);
             });
         };
 
-        vm.removePending = function(item, event){
+        vm.removePending = function(index, event) {
 
             event && event.stopPropagation();
+            var item = vm.commonInfo.friendList[index],
+                params = {
+                    userId: item.userId,
+                    deleted: 1
+                };
 
-            var params = {
-                friend: item.userId,
-                deleted: 1
-            };
-
-            _$friend.updateFriend(params).then(function(res){
-                item.deleted = 1;
+            _$friend.updateFriend(params).then(function(res) {
+                vm.commonInfo.splice(index, 1);
             });
 
         };
 
     }]);
-    
+
 })(angular);

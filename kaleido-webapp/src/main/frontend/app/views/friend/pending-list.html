@@ -18,8 +18,8 @@
                 <td ng-bind="friend.gender | gender"></td>
                 <td>{{friend.country | country}} {{friend.province | city : friend.country}} {{friend.city | city : friend.country}}</td>
                 <td>
-                    <button ng-click="vm.activeFriend(friend, $event)" class="btn btn-xs btn-primary">添加</button>
-                    <button ng-click="vm.removePending(friend, $event)" class="btn btn-xs btn-danger">删除</button>
+                    <button ng-click="vm.activeFriend($index, $event)" class="btn btn-xs btn-primary">添加</button>
+                    <button ng-click="vm.removePending($index, $event)" class="btn btn-xs btn-danger">删除</button>
                 </td>
             </tr>
         </tbody>

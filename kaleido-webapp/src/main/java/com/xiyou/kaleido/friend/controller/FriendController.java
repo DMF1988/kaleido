@@ -43,7 +43,7 @@ public class FriendController {
 
 
     @RequestMapping(value="/update", method=RequestMethod.POST)
-    public ResponseEntity<ResponseModel> updateFriend(@RequestBody FriendVo vo, HttpServletRequest request){
+    public ResponseEntity<ResponseModel> updateFriend(@RequestBody FriendVo vo, HttpServletRequest request) throws KaleidoException {
 
         HttpSession session = request.getSession();
         User userInfo = (User)session.getAttribute("LOGIN_USER");
@@ -51,9 +51,12 @@ public class FriendController {
         Friend friend = new Friend();
         friend.setOwner(userInfo.getUserId());
         friend.setFriend(vo.getUserId());
+        friend.setFriend(vo.getUserId());
         friend.setStatus(vo.getStatus());
         friend.setMark(vo.getMark());
         friend.setDeleted(vo.getDeleted());
+
+        friendService.updateFriend(friend);
 
         return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
     }
