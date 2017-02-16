@@ -1,3 +1,32 @@
 <div>
-    HHHHHHHHHHHHHHHHH
+    <div class="col-md-4">
+        <div ng-repeat="user in vm.commonInfo.friendList">
+            <div class="profile_details">
+                <div class="well profile_view">
+                    <div class="col-sm-12">
+                        <div class="left col-xs-5 text-center">
+                            <img src="images/portrait.jpg" alt="" class="img-circle img-responsive">
+                        </div>
+                        <div class="right col-xs-7">
+                            <h2 ng-bind="user.userName"></h2>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <i class="fa fa-id-card"></i>ID:&nbsp;{{user.userId}}
+                                </li>
+                                <li>
+                                    <i class="fa fa-building"></i>城市:&nbsp;{{user.country | country}}&nbsp;{{user.province | city : user.country}}&nbsp;{{user.city | city : user.country}}
+                                </li>
+                                <li>
+                                    <i class="fa fa-venus-mars"></i>性别:&nbsp;{{user.gender | gender}}
+                                </li>
+                            </ul>
+                            <p>不开心</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+    </div>
 </div>
