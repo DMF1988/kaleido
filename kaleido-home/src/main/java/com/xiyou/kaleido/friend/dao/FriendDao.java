@@ -14,6 +14,7 @@ import java.util.List;
 public interface FriendDao {
 
     long addFriend(Friend friend);
-    List<Friend> getFriend(@Param("friend") Friend friend);
+    List<Friend> getFriends(@Param("friend") Friend friend);
     void updateFriend(@Param("friend") Friend friend);
+
 }

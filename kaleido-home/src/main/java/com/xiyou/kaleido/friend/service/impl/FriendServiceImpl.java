@@ -5,13 +5,12 @@ import com.xiyou.kaleido.friend.dao.FriendDao;
 import com.xiyou.kaleido.friend.entity.Friend;
 import com.xiyou.kaleido.friend.exception.FriendError;
 import com.xiyou.kaleido.friend.service.FriendService;
-import com.xiyou.kaleido.profile.entity.Profile;
-import com.xiyou.kaleido.profile.service.ProfileService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +19,8 @@ import java.util.List;
  */
 @Service("friendService")
 public class FriendServiceImpl implements FriendService {
+
+    private static Logger logger = LoggerFactory.getLogger(FriendServiceImpl.class);
 
     @Autowired
     private FriendDao friendDao;
@@ -34,14 +35,14 @@ public class FriendServiceImpl implements FriendService {
     @Transactional
     public void addFriend(String owner, String objective) throws KaleidoException{
 
-        Friend friendModel = null;
+        Friend friendModel;
         try{
             friendModel = getFriend(owner, objective);
+            friendModel.setStatus(0);
+            friendDao.updateFriend(friendModel);
         }catch(KaleidoException e){
 
-        }
-
-        if(friendModel == null){
+            logger.info("apply new friend.");
             friendModel = new Friend();
             friendModel.setOwner(owner);
             friendModel.setObjective(objective);
@@ -49,18 +50,12 @@ public class FriendServiceImpl implements FriendService {
             friendModel.setCreateTime(new Date());
             friendModel.setLastUpdateTime(new Date());
             friendModel.setDeleted(0);
-
-            friendDao.addFriend(friendModel);
-        }else{
-            friendModel.setStatus(0);
-            friendDao.updateFriend(friendModel);
         }
-
     }
 
     public List<Friend> getFriendList(Friend friend) throws KaleidoException{
 
-        List<Friend> list = friendDao.getFriend(friend);
+        List<Friend> list = friendDao.getFriends(friend);
         return list;
     }
 
@@ -72,7 +67,7 @@ public class FriendServiceImpl implements FriendService {
         param.setOwner(owner);
         param.setObjective(objective);
 
-        List<Friend> list = friendDao.getFriend(param);
+        List<Friend> list = friendDao.getFriends(param);
 
         if(list == null || list.size() == 0){
             throw new KaleidoException(FriendError.FRIEND_NOT_EXIST);

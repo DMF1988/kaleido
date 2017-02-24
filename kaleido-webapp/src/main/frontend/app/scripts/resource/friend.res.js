@@ -14,11 +14,13 @@
 
         var resource = {
             //添加好友
-            addFriend: $resource(window.HOST + '/api/friend/add', {}, { add: { method: 'GET' } }),
+            addFriend: $resource(window.HOST + '/api/friend/apply', {}, { add: { method: 'GET' } }),
             //拉取好友列表（包括已生效、待审批、黑名单好友）
             getFriendList: $resource(window.HOST + '/api/friend/list', {}, { get: { method: 'GET' } }),
             //更新好友
-            updateFriend: $resource(window.HOST + '/api/friend/update', {}, { update: { method: 'POST' } })
+            updateFriend: $resource(window.HOST + '/api/friend/update', {}, { update: { method: 'POST' } }),
+            //处理好友申请
+            updateApplication: $resource(window.HOST + '/api/friend/updateApplication', {}, { update: { method: 'POST' } })
         };
 
         function addFriend(params){
@@ -37,10 +39,16 @@
             return q;
         }
 
+        function updateApplication(params){
+            var q = resource.updateApplication.update(params).$promise;
+            return q;
+        }
+
         return {
             addFriend: addFriend,
             getFriendList: getFriendList,
-            updateFriend: updateFriend
+            updateFriend: updateFriend,
+            updateApplication: updateApplication
         };
 
     }]);

@@ -7,9 +7,11 @@ import lombok.Getter;
  */
 public enum FriendStatus {
 
-    PENDING(0),
-    ACTIVE(1),
-    BLACK_LIST(2);
+    PENDING(0),     //申请中
+    ACTIVE(1),      //已加为好友
+    BLACK_LIST(2),  //黑名单
+    REJECT(3),      //拒绝好友申请
+    DELETE(4);      //删除好友
 
     @Getter
     private int status;

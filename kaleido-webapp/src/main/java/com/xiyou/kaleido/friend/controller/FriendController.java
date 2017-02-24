@@ -1,5 +1,6 @@
 package com.xiyou.kaleido.friend.controller;
 
+import com.sun.istack.internal.NotNull;
 import com.xiyou.kaleido.common.annotation.KaleidoController;
 import com.xiyou.kaleido.common.exception.KaleidoException;
 import com.xiyou.kaleido.common.model.ResponseModel;
@@ -41,6 +42,31 @@ public class FriendController {
     @Autowired
     private ProfileService profileService;
 
+    @RequestMapping(value="/updateApplication", method=RequestMethod.GET)
+    public ResponseEntity<ResponseModel> updateApplication(@RequestParam String userId, @RequestParam @NotNull int status, HttpServletRequest request) throws KaleidoException {
+
+        HttpSession session = request.getSession();
+        User userInfo = (User)session.getAttribute("LOGIN_USER");
+
+        Friend friend  = new Friend();
+        if(FriendStatus.REJECT.getStatus() == status){
+            friend.setOwner(userId);
+            friend.setObjective(userInfo.getUserId());
+            friend.setStatus(FriendStatus.REJECT.getStatus());
+            friendService.updateFriend(friend);
+        }else if(FriendStatus.ACTIVE.getStatus() == status){
+            friend.setOwner(userId);
+            friend.setObjective(userInfo.getUserId());
+            friend.setStatus(FriendStatus.ACTIVE.getStatus());
+            friendService.updateFriend(friend);
+
+            friendService.addFriend(userInfo.getUserId(), userId);
+        }else{
+            new KaleidoException(FriendError.INVALID_OPERATION);
+        }
+
+        return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
+    }
 
     @RequestMapping(value="/update", method=RequestMethod.POST)
     public ResponseEntity<ResponseModel> updateFriend(@RequestBody FriendVo vo, HttpServletRequest request) throws KaleidoException {
@@ -88,7 +114,7 @@ public class FriendController {
         return new ResponseEntity<ResponseModel>(new ResponseModel(friendList, "success"), HttpStatus.OK);
     }
 
-    @RequestMapping(value="/add", method = RequestMethod.GET)
+    @RequestMapping(value="/apply", method = RequestMethod.GET)
     public ResponseEntity<ResponseModel> addFriend(@RequestParam("userId") String userId, HttpServletRequest request) throws KaleidoException{
 
         HttpSession session = request.getSession();
@@ -98,7 +124,7 @@ public class FriendController {
             throw new KaleidoException(FriendError.INVALID_FRIEND);
         }
 
-        friendService.addFriend(userId, user.getUserId());
+        friendService.addFriend(user.getUserId(), userId);
 
         return new ResponseEntity<ResponseModel>(new ResponseModel("success"), HttpStatus.OK);
     }
