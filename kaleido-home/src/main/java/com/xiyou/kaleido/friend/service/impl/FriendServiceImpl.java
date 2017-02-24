@@ -32,11 +32,11 @@ public class FriendServiceImpl implements FriendService {
     }
 
     @Transactional
-    public void addFriend(String owner, String friend) throws KaleidoException{
+    public void addFriend(String owner, String objective) throws KaleidoException{
 
         Friend friendModel = null;
         try{
-            friendModel = getFriend(owner, friend);
+            friendModel = getFriend(owner, objective);
         }catch(KaleidoException e){
 
         }
@@ -44,7 +44,7 @@ public class FriendServiceImpl implements FriendService {
         if(friendModel == null){
             friendModel = new Friend();
             friendModel.setOwner(owner);
-            friendModel.setFriend(friend);
+            friendModel.setObjective(objective);
             friendModel.setStatus(0);
             friendModel.setCreateTime(new Date());
             friendModel.setLastUpdateTime(new Date());
@@ -65,12 +65,12 @@ public class FriendServiceImpl implements FriendService {
     }
 
 
-    public Friend getFriend(String owner, String friend) throws KaleidoException{
+    public Friend getFriend(String owner, String objective) throws KaleidoException{
 
         Friend param = new Friend();
 
         param.setOwner(owner);
-        param.setFriend(friend);
+        param.setObjective(objective);
 
         List<Friend> list = friendDao.getFriend(param);
 

@@ -14,11 +14,10 @@ import java.util.Date;
 public class Friend {
     private long id;
     private String owner;
-    private String friend;
+    private String objective;
     private int status;
     private String mark;
     private Date createTime;
     private Date lastUpdateTime;
     private int deleted;
-
 }

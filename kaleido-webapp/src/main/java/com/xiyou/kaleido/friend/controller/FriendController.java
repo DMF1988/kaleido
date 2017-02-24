@@ -50,8 +50,7 @@ public class FriendController {
 
         Friend friend = new Friend();
         friend.setOwner(userInfo.getUserId());
-        friend.setFriend(vo.getUserId());
-        friend.setFriend(vo.getUserId());
+        friend.setObjective(vo.getUserId());
         friend.setStatus(vo.getStatus());
         friend.setMark(vo.getMark());
         friend.setDeleted(vo.getDeleted());
@@ -66,8 +65,6 @@ public class FriendController {
 
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("LOGIN_USER");
-
-
 
         Friend friendModel = new Friend();
         friendModel.setOwner(user.getUserId());
@@ -115,7 +112,7 @@ public class FriendController {
         List<FriendVo> result = new ArrayList<FriendVo>();
 
         for(Friend friend : friendList){
-            Profile profile = profileService.getProfile(friend.getFriend());
+            Profile profile = profileService.getProfile(friend.getObjective());
 
             FriendVo vo = new FriendVo();
             vo.setUserId(profile.getUserId());

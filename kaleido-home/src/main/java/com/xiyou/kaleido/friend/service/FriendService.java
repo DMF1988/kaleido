@@ -10,9 +10,9 @@ import java.util.List;
  * Created by chad.ding on 2017/2/8.
  */
 public interface FriendService {
-    void addFriend(String owner, String friend) throws KaleidoException;
+    void addFriend(String owner, String objective) throws KaleidoException;
 
-    Friend getFriend(String owner, String friend) throws KaleidoException;
+    Friend getFriend(String owner, String objective) throws KaleidoException;
 
     List<Friend> getFriendList(Friend friend) throws KaleidoException;
 

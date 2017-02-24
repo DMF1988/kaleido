@@ -4,7 +4,7 @@
 	<resultMap id="BaseResultMap" type="com.xiyou.kaleido.friend.entity.Friend">
 		<id column="id" property="id" jdbcType="BIGINT" />
 		<result column="owner" property="owner" jdbcType="VARCHAR" />
-		<result column="friend" property="friend" jdbcType="VARCHAR" />
+		<result column="objective" property="objective" jdbcType="VARCHAR" />
 		<result column="status" property="status" jdbcType="TINYINT" />
 		<result column="mark" property="mark" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -13,7 +13,7 @@
 	</resultMap>
 
 	<sql id="Base_Column_List" >
-		owner, friend, status, mark, create_time, last_update_time, deleted
+		owner, objective, status, mark, create_time, last_update_time, deleted
 	</sql>
 
 	<update id="updateFriend" parameterType="com.xiyou.kaleido.friend.entity.Friend">
@@ -29,7 +29,7 @@
 				deleted = #{deleted, jdbcType=TINYINT},
 			</if>
         </set>
-        where owner = #{owner, jdbcType=VARCHAR} and friend = #{friend, jdbcType=VARCHAR}
+        where owner = #{owner, jdbcType=VARCHAR} and objective = #{objective, jdbcType=VARCHAR}
 	</update>
 
 	<select id="getFriend" parameterType="com.xiyou.kaleido.friend.entity.Friend" resultMap="BaseResultMap">
@@ -38,8 +38,8 @@
 			<if test="owner != null">
 				owner = #{owner, jdbcType=VARCHAR} and
 			</if>
-			<if test="friend != null">
-				friend = #{friend, jdbcType=VARCHAR} and
+			<if test="objective != null">
+				objective = #{objective, jdbcType=VARCHAR} and
 			</if>
 			<if test="status != null">
 				status = #{status, jdbcType=TINYINT} and
@@ -53,8 +53,8 @@
 			<if test="owner != null">
 				owner,
 			</if>
-			<if test="friend != null">
-				friend,
+			<if test="objective != null">
+				objective,
 			</if>
 			<if test="status != null">
 				status,
@@ -77,8 +77,8 @@
 			<if test="owner != null">
 				#{owner, jdbcType=VARCHAR},
 			</if>
-			<if test="friend != null">
-				#{friend, jdbcType=VARCHAR},
+			<if test="objective != null">
+				#{objective, jdbcType=VARCHAR},
 			</if>
 			<if test="status != null">
 				#{status, jdbcType=TINYINT},
