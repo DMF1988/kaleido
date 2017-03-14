@@ -66,7 +66,7 @@
                     url: '/friend',
                     templateUrl: 'views/friend/friend.html',
                     controller: 'FriendCtrl as vm',
-                    abstrict: true
+                    abstract: true
                 })
                 .state('kaleido.friend.list', {
                     url: '/list',
@@ -87,7 +87,7 @@
                     url: '/profile',
                     templateUrl: 'views/profile/profile.html',
                     controller: 'ProfileCtrl as vm',
-                    abstrict: true
+                    abstract: true
                 })
                 .state('kaleido.profile.stage', {
                     url: '/stage',
