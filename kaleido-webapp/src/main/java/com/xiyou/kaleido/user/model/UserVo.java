@@ -3,7 +3,9 @@ package com.xiyou.kaleido.user.model;
 import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -13,7 +15,11 @@ import java.util.Date;
 @Setter
 @Getter
 public class UserVo {
+    @NotEmpty
+    @Size(min=1, max=50)
     private String loginName;
+    @NotEmpty
+    @Size(min=6, max=50)
     private String loginPassword;
     private String userId;
     private String userName;
