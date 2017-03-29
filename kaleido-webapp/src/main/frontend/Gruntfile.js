@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             less: {
-                files: ['<%= yeoman.app %>/styles/*.less'],
+                files: ['<%= yeoman.app %>/styles/main.less'],
                 tasks: ['less:compile'],
                 options: { livereload: true }
             },
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
                     yuicompress: false
                 },
                 files: {
-                    '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/*.less'
+                    '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.less'
                 }
             }
         },
