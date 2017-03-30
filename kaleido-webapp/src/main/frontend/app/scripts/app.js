@@ -24,10 +24,11 @@
             'ui.bootstrap',
             'ui.router'
         ])
-        .config(['$httpProvider', function($httpProvider) {
+        .config(['$httpProvider', '$qProvider' function($httpProvider, $qProvider) {
             $httpProvider.defaults.headers.common['Context-Type'] = 'application/json;charset=utf-8';
-
             $httpProvider.interceptors.push('$exceptionInterceptor');
+
+            $qProvider.errorOnUnhandledRejections(false);  //this code to avoid console show error message when http request failed or rejected.
         }])
         .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
 
