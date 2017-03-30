@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "appPath": "app",
   "dependencies": {
-    "jquery": "~1.9.1",
+    "jquery": "~1.11.0",
     "bootstrap": "3.3.6",
     "font-awesome": "font-awsome#^4.7.0",
     "angular": "^1.6.1",
@@ -12,7 +12,7 @@
     "angular-ui-router": "^0.3.2",
     "angular-bootstrap": "^2.4.0",
     "angular-animate": "^1.6.1",
-    "noty": "^2.3.11",
+    "noty": "2.3.10",
     "animate.css": "^3.5.2",
     "fex-webuploader": "webuploader_fex#^0.1.5",
     "js-md5": "md5#^0.4.1",
