@@ -21,6 +21,7 @@ public class UserVo {
     @NotEmpty
     @Size(min=6, max=50)
     private String loginPassword;
+    private char gender;
     private String userId;
     private String userName;
     private String portrait;

@@ -89,6 +89,7 @@ public class UserController {
         }else{
             userName = profile.getUserName();
         }
+        vo.setGender(profile.getGender());
         vo.setLoginName(user.getLoginName());
         vo.setUserName(userName);
         vo.setLastLoginTime(user.getLastLoginTime());

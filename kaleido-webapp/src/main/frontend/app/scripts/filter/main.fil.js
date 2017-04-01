@@ -37,6 +37,22 @@
 
     }]);
 
+    kaleidoApp.filter('portraitConvert', [function(){
+        return function(gender, portrait){
+            if(portrait){
+                return portrait;
+            }
+
+            if (/^M$/i.test(gender)) {
+                return 'images/male.png';
+            } else if (/^F$/i.test(gender)) {
+                return 'images/female.png';
+            } else {
+                return 'images/male.png';
+            }
+        };
+    }]);
+
     kaleidoApp.filter('country', ['$localStorage', function($localStorage) {
 
         var countries = $localStorage.countries;

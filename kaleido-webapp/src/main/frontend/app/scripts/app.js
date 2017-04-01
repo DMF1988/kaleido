@@ -24,7 +24,7 @@
             'ui.bootstrap',
             'ui.router'
         ])
-        .config(['$httpProvider', '$qProvider' function($httpProvider, $qProvider) {
+        .config(['$httpProvider', '$qProvider', function($httpProvider, $qProvider) {
             $httpProvider.defaults.headers.common['Context-Type'] = 'application/json;charset=utf-8';
             $httpProvider.interceptors.push('$exceptionInterceptor');
 
