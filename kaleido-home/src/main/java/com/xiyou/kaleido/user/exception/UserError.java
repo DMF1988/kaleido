@@ -8,9 +8,9 @@ import lombok.Getter;
  */
 public enum UserError implements ErrorCode {
 
-    USER_NOT_EXIST(1001, "用户%s不存在"),
-    LOGIN_FAILED(1002, "用户%s登录失败,请检查账号密码重新登录"),
-    USER_EXISTS(1003, "邮箱账号%s已经注册过");
+    USER_NOT_EXIST(2001, "用户%s不存在"),
+    LOGIN_FAILED(2002, "用户%s登录失败,请检查账号密码重新登录"),
+    USER_EXISTS(2003, "邮箱账号%s已经注册过");
 
     @Getter
     private int code;

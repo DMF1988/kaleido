@@ -19,3 +19,9 @@ kaleido
     3.6、grunt serve命令启动web服务，服务启用了livereload配置，对LESS、html、js的修改不用按F5刷新即可呈现，如果想要关闭这个特性请在Gruntfile.js文件中进行配置。
     3.7、grunt test命令将对项目进行测试(暂缺)。
     3.8、grunt build命令对项目进行打包，打包项目包括删除临时文件,编译LESS,合并压缩重命名js、html、css等，默认打包目录为dist。
+4、异常码规范
+    4.1、10XX通用异常码。
+    4.2、20XX用户模块异常码。
+    4.3、30XX元数据模块异常码。
+    4.4、40XX用户详情异常码。
+    4.5、50XX好友模块异常码。

@@ -9,7 +9,7 @@ import lombok.Getter;
 
 public enum ProfileError implements ErrorCode {
 
-    PROFILE_NOT_EXIST(2001, "用户%s信息不存在");
+    PROFILE_NOT_EXIST(4001, "用户%s信息不存在");
 
 
     @Getter

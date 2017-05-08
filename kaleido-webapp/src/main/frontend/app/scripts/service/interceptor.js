@@ -25,9 +25,6 @@
                 if(res.data.error){
                     noty({ text: res.data.error.message, type: 'error' });
                     return $q.reject(res);
-                }else if(res.data && res.data.data === 'SESSION_TIMEOUT'){
-                    $rootScope.$broadcast('$sessionTimeout');
-                    return;
                 }
                 
                 return res;
@@ -36,6 +33,9 @@
                 var msg = '';
                 if(error.data){
                     msg = error.data.msg;
+                    if(error.data.code = 1001){
+                        $rootScope.$broadcast('$sessionTimeout');
+                    }
                 }else{
                     msg = error.statusText; 
                 }
