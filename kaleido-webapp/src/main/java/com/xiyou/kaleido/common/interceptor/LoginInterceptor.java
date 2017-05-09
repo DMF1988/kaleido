@@ -1,10 +1,7 @@
 package com.xiyou.kaleido.common.interceptor;
 
-import com.alibaba.fastjson.JSONObject;
 import com.xiyou.kaleido.common.KaleidoError;
 import com.xiyou.kaleido.common.exception.KaleidoException;
-import com.xiyou.kaleido.common.http.KaleidoStatus;
-import com.xiyou.kaleido.common.model.ResponseModel;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.Cookie;
@@ -37,7 +34,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         response.setContentType("application/json;charset=UTF-8");
         ResponseModel model = new ResponseModel(KaleidoError.SESSION_TIMEOUT.getCode(), KaleidoError.SESSION_TIMEOUT.getMsg());
         response.getWriter().write(JSONObject.toJSONString(model));
-
         return false;*/
 
         throw new KaleidoException(KaleidoError.SESSION_TIMEOUT);
