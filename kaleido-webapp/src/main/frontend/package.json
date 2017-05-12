@@ -2,6 +2,9 @@
     "name": "kaleido",
     "version": "1.0.0",
     "dependencies": {},
+    "scripts": {
+        "test": "grunt test"
+    },
     "devDependencies": {
         "grunt": "^0.4.5",
         "grunt-autoprefixer": "^0.7.3",
@@ -34,8 +37,5 @@
     },
     "engines": {
         "node": ">=0.10.0"
-    },
-    "scripts": {
-        "test": "grunt test"
     }
 }

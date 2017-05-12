@@ -23,6 +23,7 @@ module.exports = function(grunt) {
 
 
     grunt.loadNpmTasks('grunt-connect-proxy');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     // Define the configuration for all the tasks
     grunt.initConfig({
@@ -140,7 +141,10 @@ module.exports = function(grunt) {
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
-                reporter: require('jshint-stylish')
+                reporter: require('jshint-stylish'),
+                globals: {
+                    angular: true
+                }
             },
             all: {
                 src: [
@@ -413,6 +417,8 @@ module.exports = function(grunt) {
         grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         grunt.task.run(['serve:' + target]);
     });
+
+    grunt.registerTask('lint', ['jshint:all']);
 
     grunt.registerTask('test', [
         'clean:server',

@@ -1,4 +1,6 @@
-{
+{   
+    "strict": true,
+    "onevar": true,
     "curly": true, // true: Require {} for every new block or scope
     "eqeqeq": true, // true: Require triple equals (===) for comparison
     "immed": true, // true: Require immediate invocations to be wrapped in parens e.g. `(function () { } ());`
