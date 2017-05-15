@@ -142,16 +142,15 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc',
                 reporter: require('jshint-stylish'),
+                extensions: '.js',
                 globals: {
                     angular: true
                 }
             },
-            all: {
-                src: [
-                    'Gruntfile.js',
-                    '<%= yeoman.app %>/scripts/{,*/}*.js'
-                ]
-            },
+            all: [
+                'Gruntfile.js',
+                '<%= yeoman.app %>/scripts/{,**/}*.js'
+            ],
             test: {
                 options: {
                     jshintrc: '.jshintrc'
