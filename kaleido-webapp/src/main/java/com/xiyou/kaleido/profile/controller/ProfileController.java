@@ -2,7 +2,7 @@ package com.xiyou.kaleido.profile.controller;
 
 import com.xiyou.kaleido.common.model.PaginationVo;
 import com.xiyou.kaleido.common.model.ResponseModel;
-import com.xiyou.kaleido.common.util.PaginitionUtils;
+import com.xiyou.kaleido.common.util.PaginationUtils;
 import com.xiyou.kaleido.profile.model.ProfileVo;
 import com.xiyou.kaleido.profile.model.UserQueryVo;
 import com.xiyou.kaleido.profile.service.ProfileService;
@@ -60,7 +60,7 @@ public class ProfileController {
 
         PaginationVo paginationVo = new PaginationVo();
         paginationVo.setData(list);
-        paginationVo.setTotal(PaginitionUtils.getTotalPage(queryVo.getPageSize(), total));
+        paginationVo.setTotal(PaginationUtils.getTotalPage(queryVo.getPageSize(), total));
         return new ResponseEntity<ResponseModel<PaginationVo>>(new ResponseModel<PaginationVo>(paginationVo), HttpStatus.OK);
     }
 
