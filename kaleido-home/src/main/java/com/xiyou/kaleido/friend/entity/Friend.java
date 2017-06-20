@@ -1,16 +1,13 @@
 package com.xiyou.kaleido.friend.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.util.Date;
 
 /**
  * Created by chad.ding on 2017/2/8.
  */
 
-@Setter
-@Getter
+@Data
 public class Friend {
     private long id;
     private String owner;

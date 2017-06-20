@@ -1,16 +1,13 @@
 package com.xiyou.kaleido.profile.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.util.Date;
 
 /**
  * Created by DMF on 2017/1/13.
  */
 
-@Setter
-@Getter
+@Data
 public class Profile {
     private long id;
     private String userId;

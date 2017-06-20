@@ -1,16 +1,13 @@
 package com.xiyou.kaleido.profile.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.util.Date;
 
 /**
  * Created by chad.ding on 2017/1/6.
  */
 
-@Setter
-@Getter
+@Data
 public class ProfileVo {
     private String userId;
     private String userName;

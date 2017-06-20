@@ -1,14 +1,12 @@
 package com.xiyou.kaleido.friend.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * Created by DMF on 2017/2/1.
  */
 
-@Setter
-@Getter
+@Data
 public class FriendVo {
     private String userId;
     private String portrait;

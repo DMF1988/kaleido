@@ -1,10 +1,7 @@
 package com.xiyou.kaleido.user.model;
 
-import com.sun.istack.internal.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -12,8 +9,7 @@ import java.util.Date;
  * Created by chad.ding on 2017/1/10.
  */
 
-@Setter
-@Getter
+@Data
 public class UserVo {
     @NotEmpty
     @Size(min=1, max=50)

@@ -1,16 +1,13 @@
 package com.xiyou.kaleido.meta.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
 import java.util.Date;
 
 /**
  * Created by DMF on 2017/1/15.
  */
 
-@Setter
-@Getter
+@Data
 public class Meta {
     private long id;
     private String parent;
