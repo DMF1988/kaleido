@@ -102,9 +102,9 @@
 
                     queryUser(vm.pageInfo.pageNum);
 
-                    $scope.$on('$pageChangeSuccess', function(event, pageNum){
+                    vm.turnPage = function(pageNum){
                         queryUser(pageNum);
-                    });
+                    }
 
                     vm.addFriend = function(user, event){
                         event && event.stopPropagation();

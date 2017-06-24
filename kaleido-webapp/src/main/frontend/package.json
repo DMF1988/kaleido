@@ -3,9 +3,11 @@
     "version": "1.0.0",
     "dependencies": {},
     "scripts": {
-        "test": "grunt test"
+        "test": "grunt test",
+        "hint": "jshint *.js app"
     },
     "devDependencies": {
+        "express": "^4.15.3",
         "grunt": "^0.4.5",
         "grunt-autoprefixer": "^0.7.3",
         "grunt-concurrent": "^0.5.0",

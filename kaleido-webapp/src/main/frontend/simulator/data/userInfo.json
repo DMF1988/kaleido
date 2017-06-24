@@ -1,0 +1,13 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+		"loginName": "a@b.com",
+		"loginPassword": "123456",
+		"gender": "M",
+		"userId": "20170624",
+		"userName": "西门吹雪",
+		"portrait": "",
+		"lastLoginTime": "1498318151538"
+    }
+}
