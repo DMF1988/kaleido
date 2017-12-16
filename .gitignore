@@ -32,3 +32,5 @@ kaleido.iml
 .idea/dataSources.ids
 .idea/dataSources.local.xml
 .idea/dataSources.xml
+*.iml
+yarn.lock
