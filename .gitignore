@@ -34,3 +34,4 @@ kaleido.iml
 .idea/dataSources.xml
 *.iml
 yarn.lock
+*.DS_Store
