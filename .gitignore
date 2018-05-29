@@ -23,14 +23,11 @@ kaleido-webapp/src/main/frontend/node_modules
 kaleido-webapp/src/main/webapp/frontend
 kaleido-webapp/src/main/frontend/app/styles/*.css
 
-.idea/misc.xml
-.idea/workspace.xml
+.idea/
 kaleido-dashboard/kaleido-dashboard.iml
 kaleido-home/kaleido-home.iml
 kaleido-webapp/kaleido-webapp.iml
 kaleido.iml
-.idea/dataSources.ids
-.idea/dataSources.local.xml
-.idea/dataSources.xml
+
 *.iml
 yarn.lock
