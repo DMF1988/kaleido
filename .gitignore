@@ -31,3 +31,4 @@ kaleido.iml
 
 *.iml
 yarn.lock
+*.DS_Store
